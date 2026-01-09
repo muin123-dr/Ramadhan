@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berpuasalah, Kamu Akan Sehat! - Tinjauan Syariat dan Medis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fbff 0%, #e6f0ff 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 80, 150, 0.15);
+            padding: 30px 40px;
+            margin-top: 20px;
+            border: 1px solid #d0e4ff;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(to right, #2c6cb0, #4a90e2);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(44, 108, 176, 0.3);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="white" opacity="0.05" width="100" height="100"/><path fill="none" stroke="white" stroke-width="1" opacity="0.1" d="M0,50 Q25,25 50,50 T100,50"/></svg>');
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h2 {
+            color: #2c6cb0;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e6f0ff;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: #4a90e2;
+        }
+        
+        h3 {
+            color: #3a7bc8;
+            margin: 20px 0 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 i {
+            margin-right: 10px;
+            color: #4a90e2;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            transition: all 0.3s ease;
+        }
+        
+        .arabic {
+            font-family: 'Traditional Arabic', 'Simplified Arabic', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            direction: rtl;
+            color: #1a5a96;
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(to right, #f0f7ff, #e8f2ff);
+            border-radius: 12px;
+            border-right: 6px solid #4a90e2;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .arabic:hover {
+            transform: translateY(-3px);
+        }
+        
+        .highlight {
+            background-color: #e8f2ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4a90e2;
+            margin: 25px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+            align-items: center;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(to right, #2c6cb0, #4a90e2);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(44, 108, 176, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(44, 108, 176, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .reference-label {
+            font-weight: bold;
+            color: #2c6cb0;
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .accordion {
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .accordion-header {
+            background-color: #f0f7ff;
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #2c6cb0;
+        }
+        
+        .accordion-header:hover {
+            background-color: #e1edff;
+        }
+        
+        .accordion-header.active {
+            background-color: #d4e5ff;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #f9fbff;
+        }
+        
+        .accordion-content-inner {
+            padding: 0 20px;
+        }
+        
+        .accordion-content-inner ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .accordion-content-inner li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-content-inner li:hover {
+            padding-left: 10px;
+            color: #2c6cb0;
+        }
+        
+        .medical-note {
+            background: linear-gradient(to bottom, #f0faff, #e6f4ff);
+            border: 1px solid #b8d9ff;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .medical-note:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #555;
+            padding: 20px 25px;
+            background-color: #f9fdff;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2c6cb0;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #4a90e2;
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-family: serif;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #eef5ff, #e0eeff);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 35px;
+            border: 2px solid #c6deff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .conclusion:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(95, 39, 205, 0.05) 0%, rgba(52, 31, 151, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #5f27cd, #f7b731, #5f27cd);
+        }
+
+        .ramadhan-decoration {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(247, 183, 49, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.0em;
+            color: #5f27cd;
+            border: 2px dashed #f7b731;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #f7b731;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #f7b731;
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, #2c6cb0, #4a90e2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(44, 108, 176, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(44, 108, 176, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .arabic {
+                font-size: 1.8rem;
+                padding: 15px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .arabic {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Berpuasalah, Kamu Akan Sehat!</h1>
+            <div class="subtitle">Tinjauan Syariat dan Medis Terhadap Hadits "Shuumuu Tashihhu"</div>
+        </header>
+        
+        <section>
+            <p>Barangkali Anda pernah mendengar ungkapan atau hadits berikut:</p>
+            
+            <div class="arabic">
+                صوموا تصحوا
+            </div>
+            
+            <p>"Berpuasalah agar kalian sehat."</p>
+            
+            <div class="highlight">
+                <p>Sebagai Muslim, kita meyakini bahwa jika suatu hadits shahih dan tidak bertentangan dengan nash lain yang shahih (baik hadits maupun Al-Qur'an), maka ia adalah kebenaran dari Allah.</p>
+            </div>
+            
+            <p>Namun, setelah diteliti oleh para ulama, hadits ini dinyatakan lemah (dha'if). Artinya, hadits ini tidak dapat dijadikan hujjah atau dalil syar'i yang pasti.</p>
+            
+            <div class="btn-container">
+                <span class="reference-label">Penjelasan Dhoifnya hadits tersebut silahkan klik:</span>
+                <a href="https://www.islamweb.net/ar/fatwa/131751/%D8%AF%D8%B1%D8%AC%D8%A9-%D8%AD%D8%AF%D9%8A%D8%AB-%D8%B5%D9%88%D9%85%D9%88%D8%A7-%D8%AA%D8%B5%D8%AD%D9%88%D8%A7" target="_blank" class="btn">
+                    <i class="fas fa-external-link-alt"></i> Baca Analisis Ulama (IslamWeb)
+                </a>
+                <a href="https://goo.gl/1DB2qc" target="_blank" class="btn">
+                    <i class="fas fa-external-link-alt"></i> Referensi Tambahan
+                </a>
+            </div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-stethoscope"></i> Lalu, Bagaimana Tinjauan Dunia Kedokteran?</h2>
+            
+            <h3><i class="fas fa-clipboard-check"></i> Secara Medis: <br>Benar Dalam Kondisi Tertentu, Tetapi Bukan Hukum Umum</h3>
+            
+            <p>Pernyataan "Berpuasalah agar kalian sehat" tidak bisa dijadikan klaim medis yang universal. <br>Kebenarannya sangat bergantung pada kondisi individu:</p>
+            
+            <div class="medical-note">
+                <h3><i class="fas fa-user-check"></i> Bagi Orang yang Sehat:</h3>
+                <p>Puasa terbukti memberikan banyak manfaat. Ia dapat meningkatkan kesehatan, membantu detoksifikasi, dan mencegah penyakit yang timbul akibat berlebihan makan dan minum, seperti dislipidemia (kolesterol tinggi) atau dispepsia fungsional (maag tanpa kelainan organ).</p>
+                
+                <h3><i class="fas fa-user-injured"></i> Bagi Orang yang Sakit:</h3>
+                <p>Pernyataan ini bisa benar, bisa juga salah. Puasa memiliki efek yang berbeda-beda:</p>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Membantu Penyembuhan</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <ul>
+                                    <li>Dispepsia fungsional (maag tanpa kelainan organ)</li>
+                                    <li>Gangguan metabolik seperti diabetes tipe 2 ringan</li>
+                                    <li>Obesitas dan sindrom metabolik</li>
+                                    <li>Hipertensi ringan hingga sedang</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Dapat Memperberat Penyakit</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <ul>
+                                    <li>Kekurangan gizi berat (marasmus)</li>
+                                    <li>Tukak lambung aktif</li>
+                                    <li>Penyakit tuberkulosis (TBC) aktif</li>
+                                    <li>Penyakit ginjal stadium lanjut</li>
+                                    <li>Gangguan makan (anoreksia, bulimia)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-exclamation-triangle"></i> Kondisi yang Memerlukan Kehati-hatian dan Konsultasi Dokter</h3>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Ibu Hamil dan Menyusui</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Berisiko kekurangan nutrisi jika puasa tidak diatur dengan sangat baik. Perlu konsultasi kepada dokter dan ahli gizi untuk memastikan kebutuhan nutrisi tercukupi.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Anak-anak dalam Masa Pertumbuhan</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Kebutuhan energi dan nutrisinya tinggi untuk mendukung pertumbuhan dan perkembangan optimal. <br>Puasa pada anak perlu disesuaikan dengan usia dan kondisi kesehatan.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Pasien Penyakit Kronis</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <ul>
+                                <li><strong>Diabetes</strong> (terutama pengguna insulin) - risiko hipoglikemia</li>
+                                <li><strong>Gagal ginjal</strong> - risiko gangguan elektrolit dan dehidrasi</li>
+                                <li><strong>Penyakit jantung</strong> - risiko dehidrasi dan gangguan irama jantung</li>
+                                <li><strong>Kanker yang sedang dalam pengobatan</strong> - risiko malnutrisi dan penurunan daya tahan tubuh</li>
+                            </ul>
+                        </div>
+			<p><b>Perlu konsultasi kepada dokter dan pemantauan yang ketat</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-heartbeat"></i> Prinsip Kedokteran: Puasa Bukan Terapi Tunggal</h2>
+            
+            <p>Dalam dunia medis, puasa (seperti intermittent fasting) yang bermanfaat adalah bagian dari gaya hidup sehat yang harus diimbangi dengan pola makan bergizi, olahraga, dan istirahat cukup. <br><b>Puasa terapeutik (medis) berbeda dengan puasa ibadah.</b> <br>Puasa medis memiliki aturan ketat, durasi, dan seleksi pasien, sehingga tidak bisa disamakan secara mutlak dengan puasa Ramadhan atau puasa sunnah.</p>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-hands-helping"></i> Perspektif Syariat yang Realistis dan Manusiawi</h2>
+            
+            <p>Islam sendiri telah mengantisipasi keragaman kondisi manusia melalui keringanan (rukhshah).</p>
+            
+            <div class="quote">
+                "Barangsiapa sakit atau dalam perjalanan, maka (wajib mengganti) pada hari-hari yang lain." (QS. Al-Baqarah: 184)
+            </div>
+            
+            <p>Ayat ini menunjukkan dengan jelas bahwa puasa <b>tidak dimaksudkan</b> sebagai terapi untuk <b>semua penyakit.</b> <br>Jika puasa justru membahayakan, maka meninggalkannya adalah bentuk ketaatan kepada Allah. <br>Islam adalah agama yang realistis dan penuh hikmah.</p>
+        </section>
+        
+        <section>
+            <h2><i class="fas fa-balance-scale"></i> Sikap Ilmiah yang Seimbang bagi Seorang Muslim</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Tidak Menolak Manfaat Puasa yang Telah Terbukti</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Manfaat puasa seperti peningkatan sensitivitas insulin, detoksifikasi, dan pengaturan metabolisme telah dibuktikan secara ilmiah. <br>Sebagai seorang Muslim kita mengakui hal ini.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Tidak Menggeneralisasi Klaim "Puasa Menyembuhkan Semua Penyakit"</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Klaim bahwa puasa dapat menyembuhkan semua penyakit tidak memiliki dasar syar'i yang shahih maupun bukti medis yang kuat. <br>Setiap penyakit memiliki mekanisme dan penanganan yang berbeda.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Menyadari Dinamika Ilmu Kedokteran</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Ilmu kedokteran terus berkembang dan kesimpulannya dapat berubah seiring dengan penelitian terbaru. <br>Hal ini berbeda dengan wahyu yang tetap dan abadi.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Memisahkan Niat Ibadah dan Tujuan Medis</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Ketika berpuasa, <b>niat utama adalah ibadah untuk mendekatkan diri kepada Allah.</b> Manfaat kesehatan adalah bonus, bukan tujuan utama. Ini menjaga keikhlasan dalam beribadah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="footer">
+            <h2><i class="fas fa-check-circle"></i> Kesimpulan</h2>
+            
+            <p>Hadits "Shuumuu tashihhu" statusnya lemah sehingga tidak dapat dijadikan landasan syar'i. Maknanya bisa benar secara kasuistik, namun bukanlah hukum umum dalam medis. Puasa adalah ibadah agung yang utama karena perintah Allah, bukan semata-mata klaim kesehatan. Bagi yang sehat, ia adalah sebab tambahnya kesehatan dan ketakwaan. Bagi yang sakit, mengambil rukhsah (keringanan) untuk tidak berpuasa adalah wujud rahmat dan kemudahan dari Allah.</p>
+            
+            <p>Islam tidak bertentangan dengan ilmu pengetahuan yang valid, namun juga tidak tunduk pada klaim ilmiah yang tidak pasti. Kebijaksanaan adalah dengan menyelaraskan antara ketundukan pada syariat dan kepatuhan pada kaidah medis yang telah terbukti, demi kemaslahatan diri.</p>
+            
+            <p style="text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1rem; color: #2c6cb0;">Wallāhu a'lam bish-shawāb.</p>
+            	    
+            <div class="ramadhan-decoration" style="margin-top: 30px; font-size: 1.8em;">☪️ ✨ 🌙</div>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+	</div>
+    </div>
+    </div>
+    
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const accordionContent = header.nextElementSibling;
+                
+                // Toggle active class
+                header.classList.toggle('active');
+                
+                // Toggle content visibility
+                if (header.classList.contains('active')) {
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                } else {
+                    accordionContent.style.maxHeight = 0;
+                }
+                
+                // Close other accordion items (optional)
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    if (item !== accordionItem) {
+                        item.querySelector('.accordion-header').classList.remove('active');
+                        item.querySelector('.accordion-content').style.maxHeight = 0;
+                    }
+                });
+            });
+        });
+        
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.highlight, .medical-note, .quote, .conclusion').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        
+        // Initialize first accordion as open
+        document.querySelector('.accordion-header').click();
+    </script>
+</body>
+</html>
