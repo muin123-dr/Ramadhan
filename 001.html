@@ -1,0 +1,872 @@
+[file content begin]
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persiapan Menyambut Bulan Ramadhan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4a69bd 0%, #1e3799 100%);
+            color: #2d3748;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .mosque-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">☪️</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 253, 248, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: none;
+            position: relative;
+            background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(95, 39, 205, 0.3);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">☪️</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        .moon-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #f7b731, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #f7b731;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #f7b731; }
+            to { text-shadow: 0 0 20px #f7b731, 0 0 30px #f7b731; }
+        }
+
+        h2 {
+            color: #341f97;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            border-left: none;
+            background: linear-gradient(to right, rgba(247, 183, 49, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #f7b731;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #5f27cd, #f7b731);
+        }
+
+        h3 {
+            color: #5f27cd;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #f7b731;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        .hadith-box {
+            background: linear-gradient(135deg, rgba(255, 234, 167, 0.9) 0%, rgba(253, 203, 110, 0.9) 100%);
+            border-left: 5px solid #f7b731;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(247, 183, 49, 0.3);
+            border-right: 1px solid rgba(247, 183, 49, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hadith-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(247, 183, 49, 0.4);
+        }
+
+        .hadith-box::before {
+            content: "﴾";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(95, 39, 205, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .hadith-box::after {
+            content: "﴿";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(95, 39, 205, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .hadith-box p {
+            color: #2d3748;
+            font-style: italic;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hadith-box small {
+            color: #555;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .source-link {
+            background: rgba(227, 242, 253, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #2196f3;
+            border-right: 1px solid rgba(33, 150, 243, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .source-link:hover {
+            background: rgba(227, 242, 253, 1);
+            transform: translateX(5px);
+        }
+
+        .source-link a {
+            color: #1976d2;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+            color: #0d47a1;
+        }
+
+        .dropdown {
+            margin: 20px 0;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown:hover {
+            border-color: #f7b731;
+            box-shadow: 0 8px 25px rgba(247, 183, 49, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .dropdown-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-header:hover {
+            background: linear-gradient(135deg, #5b6fd8 0%, #653a8b 100%);
+            padding-left: 30px;
+        }
+
+        .dropdown-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-header.active .icon {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f8fafc;
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .dropdown-content-inner {
+            padding: 25px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #4a5568;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #f7b731;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(95, 39, 205, 0.05) 0%, rgba(52, 31, 151, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #5f27cd, #f7b731, #5f27cd);
+        }
+
+        .ramadhan-decoration {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(247, 183, 49, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5em;
+            color: #5f27cd;
+            border: 2px dashed #f7b731;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #f7b731;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #f7b731;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .moon-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .ramadhan-decoration {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .dropdown-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="mosque-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="moon-icon">🌙</div>
+            <h1>PERSIAPAN MENYAMBUT BULAN RAMADHAN</h1>
+            <div class="header-subtitle">Panduan Menyiapkan Diri Menuju Bulan Penuh Berkah</div>
+            <div class="decorative-line">
+                <span>✨</span>
+            </div>
+        </div>
+
+        <p>Bulan Ramadhan adalah bulan yang sangat mulia dan penuh keberkahan. Ia bukan sekadar bulan menahan lapar dan dahaga, tetapi juga bulan pendidikan ruhani, penguatan iman, serta pembiasaan amal saleh. Karena itu, menyambut Ramadhan tidaklah cukup dengan menunggu datangnya hilal, tetapi perlu persiapan jasmani dan rohani.</p>
+
+        <h2>Teladan Rasulullah ﷺ dalam Menyambut Ramadhan</h2>
+
+        <div class="hadith-box">
+            <p>Dari 'Aisyah radhiyallahu 'anha, ia berkata:</p>
+            <p>"Rasulullah ﷺ berpuasa sampai kami mengatakan beliau tidak pernah berbuka. Dan (di waktu lain) beliau tidak berpuasa sampai kami mengatakan beliau tidak pernah berpuasa. Aku tidak pernah melihat Rasulullah ﷺ menyempurnakan puasa sebulan penuh selain di bulan Ramadhan, dan aku tidak melihat beliau lebih banyak berpuasa dibandingkan di bulan Sya'ban."</p>
+            <small>(HR. Bukhari no. 1868 dan Muslim no. 1156)</small>
+        </div>
+
+        <div class="hadith-box">
+            <p>Dalam hadits lain, dari Usamah bin Zaid radhiyallahu 'anhu, ia berkata:</p>
+            <p>"Aku bertanya: Wahai Rasulullah, aku tidak melihat engkau berpuasa di bulan-bulan lain sebagaimana engkau berpuasa di bulan Sya'ban?"</p>
+            <p>Beliau menjawab:</p>
+            <p>"Itu adalah bulan yang sering dilalaikan manusia, antara Rajab dan Ramadhan. Di bulan itu amalan diangkat kepada Rabb semesta alam, dan aku ingin saat amalanku diangkat aku dalam keadaan berpuasa."</p>
+            <small>(HR. An-Nasa'i no. 2357, dinyatakan hasan oleh Al-Albani)</small>
+        </div>
+
+        <p>Dari hadits-hadits ini, para ulama menjelaskan bahwa puasa di bulan Sya'ban merupakan bentuk persiapan menghadapi Ramadhan, sebagaimana shalat sunnah qabliyah menjadi persiapan sebelum shalat fardhu. Tujuannya agar jiwa siap, semangat meningkat, dan ibadah Ramadhan dapat dijalani dengan optimal.</p>
+
+        <div class="source-link">
+            👉 <strong>Sumber penjelasan:</strong><br>
+            <a href="https://islamqa.info/id/92748" target="_blank">https://islamqa.info/id/92748</a>
+        </div>
+
+        <h2>Pentingnya Persiapan Sebelum Ramadhan</h2>
+
+        <p>Memasuki bulan Ramadhan, kita akan mengalami perubahan besar dalam:</p>
+        <ul>
+            <li>Pola makan</li>
+            <li>Pola tidur</li>
+            <li>Pola kerja</li>
+            <li>dan aktivitas harian</li>
+        </ul>
+
+        <p>Tanpa persiapan, perubahan ini bisa menimbulkan <strong>kelelahan fisik dan stres</strong>. Karena itu, latihan sejak sebelum Ramadhan sangat dianjurkan, agar tubuh dan jiwa terbiasa, sehingga Ramadhan dapat dijalani dengan penuh semangat dan kekhusyukan.</p>
+
+        <div class="ramadhan-decoration">🕌 ✨ 🌙 ✨ 🕌</div>
+
+        <h2>A. Menjaga Diri Agar Tetap Sehat</h2>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🍽️</span> 1. Menjaga Pola Makan</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Membiasakan puasa sunnah sesering mungkin</li>
+                        <li>Mengonsumsi makanan halal dan thayyib (bergizi, menyehatkan, dan tidak membahayakan tubuh)</li>
+                        <li>Makan dengan porsi cukup, tidak berlebihan</li>
+                        <li>Menghindari makanan tidak sehat seperti:
+                            <ul>
+                                <li>Makanan instan dan fast food</li>
+                                <li>Terlalu banyak gorengan</li>
+                                <li>Makanan dengan bahan pengawet</li>
+                            </ul>
+                        </li>
+                        <li>Memperbanyak minum air putih (±8 gelas per hari)</li>
+                        <li>Menghindari minuman bersoda dan minuman dengan bahan pengawet</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🏃</span> 2. Menjaga Aktivitas Sehat</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Menghindari begadang yang tidak perlu</li>
+                        <li>Menghindari perjalanan jauh yang tidak penting</li>
+                        <li>Menghindari aktivitas yang berisiko terhadap keselamatan jiwa</li>
+                        <li>Mulai melatih bangun lebih awal (±1 jam sebelum subuh), bisa dengan:
+                            <ul>
+                                <li>Shalat tahajud</li>
+                                <li>Sahur untuk puasa sunnah</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🏠</span> 3. Manajemen Aktivitas dan Lingkungan</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Menyelesaikan tanggungan pekerjaan sebelum Ramadhan agar tidak menumpuk</li>
+                        <li>Mempersiapkan rumah agar nyaman untuk ibadah:
+                            <ul>
+                                <li>Membersihkan dan merapikan rumah</li>
+                                <li>Menyiapkan kebutuhan harian (beras, gula, minyak, sabun, odol, dll) agar tidak sering keluar rumah saat Ramadhan</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>B. Melatih Diri Agar Terbiasa</h2>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">💪</span> Pembiasaan dan Latihan</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Membiasakan puasa sunnah di bulan Sya'ban</li>
+                        <li>Melatih bangun lebih awal sebelum subuh</li>
+                        <li>Memperbanyak membaca Al-Qur'an, meski sedikit namun rutin</li>
+                        <li>Melatih konsistensi ibadah, bukan sekadar semangat sesaat</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>C. Menambah Bekal Ruhani</h2>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">📚</span> 1. Menuntut Ilmu</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Mempelajari fiqih dan adab Ramadhan</li>
+                        <li>Menghadiri majelis ta'lim</li>
+                        <li>Membaca buku atau artikel tentang Ramadhan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🤲</span> 2. Memperbanyak Doa</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Berdoa agar Allah mempertemukan kita dengan bulan Ramadhan</li>
+                        <li>Memohon kekuatan dan keistiqamahan dalam ibadah</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">💭</span> 3. Memperbarui Niat dan Motivasi</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p>Tanyakan pada diri sendiri:</p>
+                    <p style="font-style: italic; color: #5f27cd; font-weight: bold; text-align: center; padding: 15px; background: rgba(95, 39, 205, 0.05); border-radius: 10px; margin: 15px 0;">"Mengapa aku ingin berpuasa Ramadhan?"</p>
+                    <p>Niat yang ikhlas karena Allah adalah pondasi utama agar ibadah terasa ringan dan bermakna.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">💖</span> 4. Bertaubat dan Membersihkan Hati</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Memperbanyak istighfar</li>
+                        <li>Muhasabah diri</li>
+                        <li>Memperbaiki hubungan dengan Allah dan sesama manusia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🎯</span> 5. Menyusun Target Ibadah</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p>Membuat target yang realistis dan bermakna, misalnya:</p>
+                    <ul>
+                        <li>Target tilawah Al-Qur'an</li>
+                        <li>Target sedekah</li>
+                        <li>Target qiyamul lail atau i'tikaf</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">📱</span> 6. Mengurangi Distraksi Digital</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Membatasi media sosial</li>
+                        <li>Mengurangi konten yang tidak bermanfaat</li>
+                        <li>Mengganti dengan:
+                            <ul>
+                                <li>Kajian</li>
+                                <li>Dzikir</li>
+                                <li>Tilawah Al-Qur'an</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">📿</span> 7. Memperbanyak Dzikir dan Doa</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Membiasakan dzikir pagi dan petang</li>
+                        <li>Memperbanyak shalawat</li>
+                        <li>Melatih hati agar selalu terhubung dengan Allah</li>
+                        <li>Berdo'a agar kita diperkenankan sampai bulan Ramadhan dan bisa menjalani ibadah sebulan penuh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">❤️</span> 8. Menumbuhkan Rasa Rindu kepada Ramadhan</span>
+                <span class="icon">▼</span>
+            </div>
+            
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p>Renungkan bahwa:</p>
+                    <ul>
+                        <li>Banyak saudara kita yang tidak sempat bertemu Ramadhan tahun ini</li>
+                        <li>Ramadhan adalah kesempatan yang belum tentu terulang</li>
+                        <li>Jadikan rasa rindu ini sebagai motivasi untuk menyambutnya dengan syukur dan kesungguhan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="ramadhan-decoration">🌙 ⭐ 🕌 ⭐ 🌙</div>
+
+        <div class="footer">
+            <h2 style="text-align: center; border: none; padding: 0;">Penutup</h2>
+            <p style="text-align: center; margin-top: 20px;">Demikian beberapa persiapan yang dapat kita lakukan untuk menyambut datangnya bulan Ramadhan. <br>Semoga Allah memudahkan langkah kita, memberikan kesehatan jasmani dan rohani, serta mengaruniakan keberkahan dan keistiqamahan dalam menjalani ibadah di bulan yang mulia ini.</p>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+            <div class="ramadhan-decoration" style="margin-top: 30px; font-size: 1.8em;">☪️ ✨ 🌙</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Dropdown toggle function
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-header').forEach(dh => {
+                dh.classList.remove('active');
+            });
+            
+            // Open clicked dropdown if it was closed
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add click event to close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dc => {
+                    dc.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-header').forEach(dh => {
+                    dh.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+[file content end]
