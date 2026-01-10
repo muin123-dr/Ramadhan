@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengakhirkan Sahur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+            color: #2d3748;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .mosque-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">☪️</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 253, 248, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: none;
+            position: relative;
+            background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.3);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">☪️</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        .moon-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.4em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #FF8A80, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #FF8A80;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FF8A80; }
+            to { text-shadow: 0 0 20px #FF8A80, 0 0 30px #FF8A80; }
+        }
+
+        h2 {
+            color: #1B5E20;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            border-left: none;
+            background: linear-gradient(to right, rgba(255, 138, 128, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #C62828;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #C62828, #FF8A80);
+        }
+
+        h3 {
+            color: #C62828;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #FF8A80;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        .hadith-box {
+            background: linear-gradient(135deg, rgba(255, 204, 188, 0.9) 0%, rgba(255, 138, 128, 0.9) 100%);
+            border-left: 5px solid #C62828;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(198, 40, 40, 0.3);
+            border-right: 1px solid rgba(198, 40, 40, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hadith-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(198, 40, 40, 0.4);
+        }
+
+        .hadith-box::before {
+            content: "﴾";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(27, 94, 32, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .hadith-box::after {
+            content: "﴿";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(27, 94, 32, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .hadith-box p {
+            color: #2d3748;
+            font-style: italic;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hadith-box small {
+            color: #555;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .source-link {
+            background: rgba(255, 235, 238, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #C62828;
+            border-right: 1px solid rgba(198, 40, 40, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .source-link:hover {
+            background: rgba(255, 235, 238, 1);
+            transform: translateX(5px);
+        }
+
+        .source-link a {
+            color: #C62828;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+            color: #B71C1C;
+        }
+
+        .dropdown {
+            margin: 20px 0;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown:hover {
+            border-color: #FF8A80;
+            box-shadow: 0 8px 25px rgba(255, 138, 128, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .dropdown-header {
+            background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-header:hover {
+            background: linear-gradient(135deg, #D32F2F 0%, #C62828 100%);
+            padding-left: 30px;
+        }
+
+        .dropdown-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-header.active .icon {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f8fafc;
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .dropdown-content-inner {
+            padding: 25px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #4a5568;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #C62828;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.05) 0%, rgba(183, 28, 28, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #C62828, #FF8A80, #C62828);
+        }
+
+        .ramadhan-decoration {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 138, 128, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.0em;
+            color: #C62828;
+            border: 2px dashed #FF8A80;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #FF8A80;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #FF8A80;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(27, 94, 32, 0.05) 0%, rgba(46, 125, 50, 0.05) 100%);
+            border-left: 5px solid #2E7D32;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+            border-right: 1px solid rgba(46, 125, 50, 0.2);
+        }
+
+        .highlight-box h3 {
+            color: #1B5E20;
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.05) 0%, rgba(183, 28, 28, 0.05) 100%);
+            border: 2px dashed #C62828;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .moon-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .ramadhan-decoration {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .dropdown-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="mosque-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="moon-icon">🌙</div>
+            <h1>MENGAKHIRKAN SAHUR</h1>
+            <div class="header-subtitle">Sunnah, Sehat & Penuh Berkah</div>
+            <div class="decorative-line">
+                <span>🍽️</span>
+            </div>
+        </div>
+
+        <p>Nabi Shallallahu 'alaihi wa sallam telah bersabda:</p>
+
+        <div class="hadith-box">
+            <p>"تَسَحَّرُوْا! فَإِنَّ فِي السَّحُوْرِ بَرَكَةٌ."</p>
+            <p>"Bersahurlah kalian karena dalam bersahur tersebut terdapat keberkahan."</p>
+            <small>(Diriwayatkan oleh al-Bukhari dalam Shahihnya, II/232)</small>
+        </div>
+
+        <p>Sebagaimana telah kita sampaikan, bahwa setiap hadits yang shahih, maka isinya pasti benar. Karena hadits tersebut shahih, maka kebenaran merupakan kemestian.</p>
+
+        <p>Lalu bagaimana dari tinjauan medis? Banyak orang beranggapan sahur itu tidak penting, yang penting adalah pada malam harinya sudah makan banyak, maka hal tersebut sudah mencukupi. Bagaimana yang benar?</p>
+
+        <h2>A. Dampak Sahur Terlalu Malam</h2>
+        
+        <p>Bila sahur dilakukan terlalu malam maka:</p>
+        
+        <ul>
+            <li>Menyelisihi sunnah Nabi.</li>
+            <li>Mengakibatkan cadangan makanan akan habis sebelum berbuka sehingga tubuh akan menggunakan cadangan protein dan lemak. Hal ini tidak baik karena menyebabkan pelakunya akan kesulitan memperbaiki sel-sel yang rusak serta hal-hal lain yang terkait dengan kurangnya asupan gizi.</li>
+            <li>Bisa menyebabkan ketinggalan sholat subuh.</li>
+        </ul>
+
+        <h2>B. Mengakhirkan Sahur</h2>
+        
+        <p>Disunnahkan mengakhiri waktu makan sahur dengan waktu yang tak jauh dari saat terbit fajar. Telah diriwayatkan dari Anas dari Zaid bin Tsabit, bahwasanya dia pernah berkata:</p>
+        
+        <div class="hadith-box">
+            <p>"Kami bertanya kepada Anas, 'Berapa rentang waktu antara selesainya makan sahur hingga keduanya melaksanakan shalat?' Anas bin Malik menjawab, 'Kira-kira waktu seseorang membaca lima puluh ayat.'"</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>Hikmah Mengikuti Sunnah Nabi</h3>
+            <p>Mengikuti Sunnah Nabi dengan mengakhirkan sahur memang banyak manfaatnya bagi tubuh. Di antaranya:</p>
+            <ul>
+                <li>Mengikuti sunnah Rasul.</li>
+                <li>Memulai puasa dengan cadangan energi yang cukup. Hal ini karena kita makan menjelang waktu dimulainya puasa.</li>
+                <li>Menjaga pola makan yang teratur. Namun hal ini berkaitan dengan berbukanya nanti. Artinya bahwa bila kita sahur di akhir waktu dan berbuka di awal waktu, maka pengosongan dan pengisian lambung mempunyai interval waktu yang relatif sama. Hal ini sangat bermanfaat agar kenaikan asam lambung tidak melonjak drastis, pengosongan lambung akan teratur. Sehingga kesehatan organ pencernaan akan terjaga.</li>
+                <li>Bila sahur mendekati subuh, akan lebih mudah untuk tidak tidur lagi sehingga sholat subuh akan terjaga dan tidak ketiduran.</li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⚕️</span> Manfaat Medis dan Nutrisi</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p>Ditinjau dari aspek medis dan nutrisi, mengakhirkan sahur memberikan manfaat lebih:</p>
+                    <ul>
+                        <li><strong>Stabilitas Kadar Gula Darah:</strong> Mengakhirkan sahur membantu mencegah hipoglikemia (gula darah rendah) di pagi hari. Cadangan glikogen dari makanan yang dikonsumsi mendekati waktu puasa akan bertahan lebih lama untuk menyuplai energi, terutama ke otak.</li>
+                        <li><strong>Kualitas Hidrasi Lebih Baik:</strong> Minum yang cukup mendekati waktu imsak membantu tubuh menyimpan cairan lebih optimal, mengurangi risiko dehidrasi di siang hari.</li>
+                        <li><strong>Efek Psikologis dan Kognitif:</strong> Kecukupan nutrisi yang lebih dekat dengan waktu aktivitas siang hari membantu menjaga fokus, konsentrasi, dan mengurangi rasa lemas atau "brain fog".</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="source-link">
+            <span class="emoji">💡</span> <strong>Catatan Penting:</strong>
+            <p>Sahur Minimal Tetap Berkah: Rasulullah ﷺ bersabda: "Bersahurlah walaupun hanya dengan seteguk air." (HR. Ahmad). Sahur bukan tentang banyaknya makanan, tetapi tentang menghidupkan sunnah dan mempersiapkan tubuh untuk ibadah puasa.</p>
+        </div>
+
+        <h2>C. Tidur setelah Sahur</h2>
+        
+        <p>Tidur setelah sahur biasa terjadi karena sahurnya yang terlalu malam. Sehingga daripada menunggu sholat subuh terlalu lama, banyak yang berpikir mending tidur dulu saja.</p>
+        
+        <p>Tidur setelah sahur ini akan menimbulkan beberapa kerugian, di antaranya:</p>
+        
+        <ul>
+            <li>Bisa kehilangan waktu sholat subuh atau terlambat berjamaah sholat subuh.</li>
+            <li>Posisi berbaring menyebabkan penurunan makanan terganggu, ini akan menyebabkan beberapa masalah pencernaan.</li>
+            <li>Tidur ketika perut penuh, menyebabkan aliran darah banyak menuju ke perut, sehingga ketika bangun badan terasa lemas karena otak dan organ lain kekurangan pasokan darah.</li>
+        </ul>
+
+        <p>Dari semua masalah tersebut, jelas tidur setelah sahur akan menyebabkan ketidaknyamanan saat berpuasa. Setelah sholat subuh pun sebaiknya kita tidak tidur, menunggu sampai matahari terbit. Rasulullah shallallahu 'alaihi wa sallam berdoa,</p>
+
+        <div class="hadith-box">
+            <p>"Ya Allah, berkahilah umatku di waktu paginya."</p>
+            <small>(HR. Abu Daud no. 2606, dishahihkan oleh Syaikh Al-Albani)</small>
+        </div>
+
+        <h2>D. Kualitas dan Adab Sahur yang Dianjurkan</h2>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🥗</span> Pilihan Makanan</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Utamakan makanan bernutrisi seimbang seperti karbohidrat kompleks (nasi merah, gandum), protein (telur, tempe, ikan), serat (sayur & buah), serta kurma sebagai sunnah yang kaya serat dan energi tahan lama.</li>
+                        <li>Hindari makanan terlalu asin, pedas, atau berminyak yang memicu haus dan gangguan pencernaan.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">💧</span> Hidrasi Cukup</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Minum air putih secukupnya dan bertahap saat sahur untuk mencegah dehidrasi.</li>
+                        <li>Kurangi minuman berkafein (teh/kopi) karena bersifat diuretik (mempercepat pengeluaran cairan).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🦷</span> Kebersihan Mulut</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Karena sahur di akhir waktu, perhatikan kebersihan mulut dengan bersiwak atau menggosok gigi untuk mencegah bau mulut berlebihan dan masalah gigi selama puasa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🤲</span> Keberkahan Spiritual</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Sahur adalah waktu mustajab untuk berdoa, istighfar, dan menguatkan ikatan keluarga.</li>
+                        <li>Niatkan puasa di hati saat sahur untuk menyempurnakan ibadah.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⏰</span> Kehati-hatian Waktu</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Mengakhirkan sahur bukan berarti menunggu hingga detik-detik adzan Subuh.</li>
+                        <li>Akhiri beberapa saat sebelumnya agar terhindar dari keraguan dan bisa bersiap untuk shalat dengan tenang.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="ramadhan-decoration">🍽️ ⏰ 🤲</div>
+
+        <div class="conclusion-box">
+            <h2>Kesimpulan</h2>
+            <p>Mengakhirkan sahur adalah sunnah yang penuh hikmah, selaras dengan syariat, didukung oleh ilmu medis, dan mendatangkan keberkahan spiritual. Dengan memperhatikan waktu, kualitas makanan, hidrasi, serta adab-adabnya, kita dapat menjalani ibadah puasa dengan lebih optimal, sehat, dan penuh kekuatan.</p>
+            <p style="font-weight: bold; color: #C62828; margin-top: 20px;">Wallāhu a'lam bish-shawāb.</p>
+        </div>
+
+        <div class="footer">
+            <div class="ramadhan-decoration" style="margin-top: 10px; font-size: 1.8em;">☪️ 🍽️ 🌙</div>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Dropdown toggle function
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-header').forEach(dh => {
+                dh.classList.remove('active');
+            });
+            
+            // Open clicked dropdown if it was closed
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add click event to close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dc => {
+                    dc.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-header').forEach(dh => {
+                    dh.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
