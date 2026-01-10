@@ -3,636 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persiapan Menyambut Bulan Ramadhan</title>
+    <title>Ramadhan Sehat Cover</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #2d3748;
-            line-height: 1.8;
-            padding: 20px;
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a0033 50%, #330066 100%);
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
         }
-
-        .stars {
+        
+        /* Ramadhan background elements */
+        .ramadhan-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            z-index: 1;
+            opacity: 0.1;
         }
-
-        .star {
+        
+        .emoji {
             position: absolute;
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .emoji:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .emoji:nth-child(2) { top: 30%; right: 15%; animation-delay: 1s; }
+        .emoji:nth-child(3) { top: 70%; left: 20%; animation-delay: 2s; }
+        .emoji:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .emoji:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; font-size: 2rem; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Shooting Stars Effect */
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
             background: white;
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            opacity: 0;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
         }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        
+        .shooting-star:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, white, transparent);
         }
-
-        .mosque-pattern {
+        
+        .shooting-star:nth-child(1) {
+            animation: shootingStar1 8s linear infinite;
+        }
+        
+        .shooting-star:nth-child(2) {
+            animation: shootingStar2 10s linear infinite 3s;
+        }
+        
+        .shooting-star:nth-child(3) {
+            animation: shootingStar3 12s linear infinite 6s;
+        }
+        
+        @keyframes shootingStar1 {
+            0% {
+                opacity: 0;
+                top: 20%;
+                left: 100%;
+                transform: scale(0.5);
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: 40%;
+                left: -100px;
+                transform: scale(0.5);
+            }
+        }
+        
+        @keyframes shootingStar2 {
+            0% {
+                opacity: 0;
+                top: 60%;
+                left: 100%;
+                transform: scale(0.5);
+            }
+            15% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: 30%;
+                left: -100px;
+                transform: scale(0.5);
+            }
+        }
+        
+        @keyframes shootingStar3 {
+            0% {
+                opacity: 0;
+                top: 80%;
+                left: 100%;
+                transform: scale(0.5);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: 50%;
+                left: -100px;
+                transform: scale(0.5);
+            }
+        }
+        
+        /* Flash Light Rays - Slower */
+        .light-flash {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">☪️</text></svg>');
-            background-size: 100px 100px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
             z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
         }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 3px solid #f7b731;
+        
+        .flash-ray {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(255, 215, 0, 0.7) 30%,
+                rgba(255, 165, 0, 0.3) 60%,
+                transparent 80%
+            );
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(20px);
+            animation: flashEffect 6s ease-in-out infinite; /* Slower: 3s to 6s */
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes flashEffect {
+            0%, 100% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            5% {  /* Slower: from 10% to 5% */
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            10% {  /* Slower: from 20% to 10% */
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            15% {  /* Slower: from 30% to 15% */
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+        
+        /* Additional sparkle flashes - Slower */
+        .sparkle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(5px);
+            animation: sparkleFlash 4s ease-in-out infinite; /* Slower: 2s to 4s */
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes sparkleFlash {
+            0%, 100% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+            7.5% {  /* Slower: from 15% to 7.5% */
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            12.5% {  /* Slower: from 25% to 12.5% */
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+        
+        /* Logo section */
+        .logo-section {
+            z-index: 10;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo-container {
             position: relative;
-        }
-
-        .moon-icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        h1 {
-            color: #5f27cd;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .decorative-line {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 20px 0;
         }
-
-        .decorative-line::before,
-        .decorative-line::after {
-            content: '';
-            height: 2px;
-            background: linear-gradient(to right, transparent, #f7b731, transparent);
-            flex: 1;
-        }
-
-        .decorative-line span {
-            margin: 0 15px;
-            font-size: 24px;
-        }
-
-        h2 {
-            color: #341f97;
-            font-size: 1.8em;
-            margin: 30px 0 20px;
-            padding-left: 15px;
-            border-left: 5px solid #f7b731;
-        }
-
-        h3 {
-            color: #5f27cd;
-            font-size: 1.4em;
-            margin: 25px 0 15px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-            color: #4a5568;
-        }
-
-        .hadith-box {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-            border-left: 5px solid #f7b731;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 25px 0;
-            box-shadow: 0 4px 15px rgba(247, 183, 49, 0.3);
-        }
-
-        .hadith-box p {
-            color: #2d3748;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .hadith-box small {
-            color: #555;
-            font-weight: bold;
-        }
-
-        .source-link {
-            background: #e3f2fd;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            border-left: 4px solid #2196f3;
-        }
-
-        .source-link a {
-            color: #1976d2;
-            text-decoration: none;
-            word-break: break-all;
-        }
-
-        .source-link a:hover {
-            text-decoration: underline;
-        }
-
-        .dropdown {
-            margin: 20px 0;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown:hover {
-            border-color: #f7b731;
-            box-shadow: 0 4px 15px rgba(247, 183, 49, 0.2);
-        }
-
-        .dropdown-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 18px 20px;
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #FFD700;
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.6),
+                inset 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: spin 6s linear infinite;
             cursor: pointer;
-            user-select: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-header:hover {
-            background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
-        }
-
-        .dropdown-header .icon {
-            font-size: 1.2em;
             transition: transform 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
-
-        .dropdown-header.active .icon {
-            transform: rotate(180deg);
+        
+        .logo:hover {
+            transform: scale(1.1);
         }
-
-        .dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: #f8f9fa;
+        
+        @keyframes spin {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(180deg); }
+            50.1% { transform: rotateY(180deg); }
+            100% { transform: rotateY(360deg); }
         }
-
-        .dropdown-content.active {
-            max-height: 2000px;
+        
+        /* Content */
+        .content {
+            z-index: 10;
+            max-width: 90%;
         }
-
-        .dropdown-content-inner {
-            padding: 20px;
-        }
-
-        ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
+        
+        .title {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
-            color: #4a5568;
+            animation: glow 2s ease-in-out infinite alternate;
         }
-
-        .emoji {
-            font-size: 1.2em;
-            margin-right: 5px;
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+            100% { text-shadow: 0 0 20px rgba(255,165,0,0.8), 0 0 30px rgba(255,99,71,0.6); }
         }
-
+        
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .author {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+        
+        .cta {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #0f0f23;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.6);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 30px rgba(255,215,0,0.4); }
+            50% { box-shadow: 0 10px 30px rgba(255,215,0,0.6); }
+            100% { box-shadow: 0 10px 30px rgba(255,215,0,0.4); }
+        }
+        
         .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 3px solid #f7b731;
-            color: #666;
-            font-style: italic;
+            position: absolute;
+            bottom: 20px;
+            z-index: 10;
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
-
-        .ramadhan-decoration {
-            text-align: center;
-            font-size: 2em;
-            margin: 20px 0;
-            opacity: 0.7;
-	    animation: float 3s ease-in-out infinite;
+        
+        .footer span {
+            display: block;
+            margin-top: 5px;
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 25px;
-                border-radius: 15px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            h2 {
-                font-size: 1.4em;
-            }
-
-            h3 {
-                font-size: 1.2em;
-            }
-
-            .moon-icon {
-                font-size: 45px;
-            }
-        }
-
+        
+        /* Responsive */
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
             }
-
-            .container {
-                padding: 20px;
+            
+            .flash-ray {
+                width: 200px;
+                height: 200px;
             }
-
-            h1 {
-                font-size: 1.5em;
+            
+            .sparkle {
+                width: 70px;
+                height: 70px;
             }
-
-            .dropdown-header {
-                font-size: 1em;
-                padding: 15px;
+            
+            .shooting-star:before {
+                width: 70px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="mosque-pattern"></div>
-
-    <div class="container">
-        <div class="header">
-            <div class="moon-icon">🌙</div>
-            <h1>PERSIAPAN MENYAMBUT BULAN RAMADHAN</h1>
-            <div class="decorative-line">
-                <span>✨</span>
-            </div>
-        </div>
-
-        <p>Bulan Ramadhan adalah bulan yang sangat mulia dan penuh keberkahan. Ia bukan sekadar bulan menahan lapar dan dahaga, tetapi juga bulan pendidikan ruhani, penguatan iman, serta pembiasaan amal saleh. Karena itu, menyambut Ramadhan tidaklah cukup dengan menunggu datangnya hilal, tetapi perlu persiapan jasmani dan rohani.</p>
-
-        <h2>Teladan Rasulullah ﷺ dalam Menyambut Ramadhan</h2>
-
-        <div class="hadith-box">
-            <p>Dari 'Aisyah radhiyallahu 'anha, ia berkata:</p>
-            <p>"Rasulullah ﷺ berpuasa sampai kami mengatakan beliau tidak pernah berbuka. Dan (di waktu lain) beliau tidak berpuasa sampai kami mengatakan beliau tidak pernah berpuasa. Aku tidak pernah melihat Rasulullah ﷺ menyempurnakan puasa sebulan penuh selain di bulan Ramadhan, dan aku tidak melihat beliau lebih banyak berpuasa dibandingkan di bulan Sya'ban."</p>
-            <small>(HR. Bukhari no. 1868 dan Muslim no. 1156)</small>
-        </div>
-
-        <div class="hadith-box">
-            <p>Dalam hadits lain, dari Usamah bin Zaid radhiyallahu 'anhu, ia berkata:</p>
-            <p>"Aku bertanya: Wahai Rasulullah, aku tidak melihat engkau berpuasa di bulan-bulan lain sebagaimana engkau berpuasa di bulan Sya'ban?"</p>
-            <p>Beliau menjawab:</p>
-            <p>"Itu adalah bulan yang sering dilalaikan manusia, antara Rajab dan Ramadhan. Di bulan itu amalan diangkat kepada Rabb semesta alam, dan aku ingin saat amalanku diangkat aku dalam keadaan berpuasa."</p>
-            <small>(HR. An-Nasa'i no. 2357, dinyatakan hasan oleh Al-Albani)</small>
-        </div>
-
-        <p>Dari hadits-hadits ini, para ulama menjelaskan bahwa puasa di bulan Sya'ban merupakan bentuk persiapan menghadapi Ramadhan, sebagaimana shalat sunnah qabliyah menjadi persiapan sebelum shalat fardhu. Tujuannya agar jiwa siap, semangat meningkat, dan ibadah Ramadhan dapat dijalani dengan optimal.</p>
-
-        <div class="source-link">
-            👉 <strong>Sumber penjelasan:</strong><br>
-            <a href="https://islamqa.info/id/92748" target="_blank">https://islamqa.info/id/92748</a>
-        </div>
-
-        <h2>Pentingnya Persiapan Sebelum Ramadhan</h2>
-
-        <p>Memasuki bulan Ramadhan, kita akan mengalami perubahan besar dalam:</p>
-        <ul>
-            <li>Pola makan</li>
-            <li>Pola tidur</li>
-            <li>Pola kerja</li>
-            <li>dan aktivitas harian</li>
-        </ul>
-
-        <p>Tanpa persiapan, perubahan ini bisa menimbulkan <strong>kelelahan fisik dan stres</strong>. Karena itu, latihan sejak sebelum Ramadhan sangat dianjurkan, agar tubuh dan jiwa terbiasa, sehingga Ramadhan dapat dijalani dengan penuh semangat dan kekhusyukan.</p>
-
-        <div class="ramadhan-decoration">🕌 ✨ 🌙 ✨ 🕌</div>
-
-        <h2>A. Menjaga Diri Agar Tetap Sehat</h2>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🍽️</span> 1. Menjaga Pola Makan</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Membiasakan puasa sunnah sesering mungkin</li>
-                        <li>Mengonsumsi makanan halal dan thayyib (bergizi, menyehatkan, dan tidak membahayakan tubuh)</li>
-                        <li>Makan dengan porsi cukup, tidak berlebihan</li>
-                        <li>Menghindari makanan tidak sehat seperti:
-                            <ul>
-                                <li>Makanan instan dan fast food</li>
-                                <li>Terlalu banyak gorengan</li>
-                                <li>Makanan dengan bahan pengawet</li>
-                            </ul>
-                        </li>
-                        <li>Memperbanyak minum air putih (±8 gelas per hari)</li>
-                        <li>Menghindari minuman bersoda dan minuman dengan bahan pengawet</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🏃</span> 2. Menjaga Aktivitas Sehat</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Menghindari begadang yang tidak perlu</li>
-                        <li>Menghindari perjalanan jauh yang tidak penting</li>
-                        <li>Menghindari aktivitas yang berisiko terhadap keselamatan jiwa</li>
-                        <li>Mulai melatih bangun lebih awal (±1 jam sebelum subuh), bisa dengan:
-                            <ul>
-                                <li>Shalat tahajud</li>
-                                <li>Sahur untuk puasa sunnah</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🏠</span> 3. Manajemen Aktivitas dan Lingkungan</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Menyelesaikan tanggungan pekerjaan sebelum Ramadhan agar tidak menumpuk</li>
-                        <li>Mempersiapkan rumah agar nyaman untuk ibadah:
-                            <ul>
-                                <li>Membersihkan dan merapikan rumah</li>
-                                <li>Menyiapkan kebutuhan harian (beras, gula, minyak, sabun, odol, dll) agar tidak sering keluar rumah saat Ramadhan</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <h2>B. Melatih Diri Agar Terbiasa</h2>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">💪</span> Pembiasaan dan Latihan</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Membiasakan puasa sunnah di bulan Sya'ban</li>
-                        <li>Melatih bangun lebih awal sebelum subuh</li>
-                        <li>Memperbanyak membaca Al-Qur'an, meski sedikit namun rutin</li>
-                        <li>Melatih konsistensi ibadah, bukan sekadar semangat sesaat</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <h2>C. Menambah Bekal Ruhani</h2>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">📚</span> 1. Menuntut Ilmu</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Mempelajari fiqih dan adab Ramadhan</li>
-                        <li>Menghadiri majelis ta'lim</li>
-                        <li>Membaca buku atau artikel tentang Ramadhan</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🤲</span> 2. Memperbanyak Doa</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Berdoa agar Allah mempertemukan kita dengan bulan Ramadhan</li>
-                        <li>Memohon kekuatan dan keistiqamahan dalam ibadah</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">💭</span> 3. Memperbarui Niat dan Motivasi</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <p>Tanyakan pada diri sendiri:</p>
-                    <p style="font-style: italic; color: #5f27cd; font-weight: bold;">"Mengapa aku ingin berpuasa Ramadhan?"</p>
-                    <p>Niat yang ikhlas karena Allah adalah pondasi utama agar ibadah terasa ringan dan bermakna.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">💖</span> 4. Bertaubat dan Membersihkan Hati</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Memperbanyak istighfar</li>
-                        <li>Muhasabah diri</li>
-                        <li>Memperbaiki hubungan dengan Allah dan sesama manusia</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🎯</span> 5. Menyusun Target Ibadah</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <p>Membuat target yang realistis dan bermakna, misalnya:</p>
-                    <ul>
-                        <li>Target tilawah Al-Qur'an</li>
-                        <li>Target sedekah</li>
-                        <li>Target qiyamul lail atau i'tikaf</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">📱</span> 6. Mengurangi Distraksi Digital</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Membatasi media sosial</li>
-                        <li>Mengurangi konten yang tidak bermanfaat</li>
-                        <li>Mengganti dengan:
-                            <ul>
-                                <li>Kajian</li>
-                                <li>Dzikir</li>
-                                <li>Tilawah Al-Qur'an</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">📿</span> 7. Memperbanyak Dzikir dan Doa</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <ul>
-                        <li>Membiasakan dzikir pagi dan petang</li>
-                        <li>Memperbanyak shalawat</li>
-                        <li>Melatih hati agar selalu terhubung dengan Allah</li>
-                        <li>Berdo'a agar kita diperkenankan sampai bulan Ramadhan dan bisa menjalani ibadah sebulan penuh</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">❤️</span> 8. Menumbuhkan Rasa Rindu kepada Ramadhan</span>
-                <span class="icon">▼</span>
-            </div>
-            
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <p>Renungkan bahwa:</p>
-                    <ul>
-                        <li>Banyak saudara kita yang tidak sempat bertemu Ramadhan tahun ini</li>
-                        <li>Ramadhan adalah kesempatan yang belum tentu terulang</li>
-                        <li>Jadikan rasa rindu ini sebagai motivasi untuk menyambutnya dengan syukur dan kesungguhan</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="ramadhan-decoration">🌙 ⭐ 🕌 ⭐ 🌙</div>
-
-        <div class="footer">
-            <h2 style="text-align: center; border: none; padding: 0;">Penutup</h2>
-            <p style="text-align: center; margin-top: 20px;">Demikian beberapa persiapan yang dapat kita lakukan untuk menyambut datangnya bulan Ramadhan. <br>Semoga Allah memudahkan langkah kita, memberikan kesehatan jasmani dan rohani, serta mengaruniakan keberkahan dan keistiqamahan dalam menjalani ibadah di bulan yang mulia ini.</p>
-            <p style="text-align: center; font-weight: bold; color: #5f27cd; margin-top: 20px;">Wallaahu a'lam bish-shawab.<br>@Gen Zehat 2026 - dr. Muin</p>
-            <div class="ramadhan-decoration" style="margin-top: 30px;">☪️ ✨ 🌙</div>
+    <!-- Background Emojis -->
+    <div class="ramadhan-bg">
+        <div class="emoji">🕌</div>
+        <div class="emoji">⭐</div>
+        <div class="emoji">🌙</div>
+        <div class="emoji">✨</div>
+        <div class="emoji">🌟</div>
+    </div>
+    
+    <!-- Shooting Stars -->
+    <div class="shooting-stars">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+    </div>
+    
+    <!-- Flash Light Effects -->
+    <div class="light-flash">
+        <div class="flash-ray" id="main-flash"></div>
+        <div class="sparkle" id="sparkle1"></div>
+        <div class="sparkle" id="sparkle2"></div>
+        <div class="sparkle" id="sparkle3"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="logo-section">
+        <div class="logo-container">
+            <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Gen Zehat Logo" class="logo" onclick="this.style.animationPlayState='paused'">
         </div>
     </div>
-
+    
+    <div class="content">
+        <h1 class="title">RAMADHAN SEHAT</h1>
+        <p class="subtitle">Panduan Puasa Sehat & Berkualitas</p>
+        <div class="author">dr. Mochamad Syamsul Muin</div>
+        <a href="https://muin123-dr.github.io/Ramadhan/000.html" class="cta">
+  Mulai Baca
+</a>
+    </div>
+    
+    <div class="footer">
+        @Gen Zehat - 2026<br>
+        dr. Muin
+    </div>
+    
     <script>
-        // Generate stars
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
-
-        // Dropdown toggle function
-        function toggleDropdown(header) {
-            const content = header.nextElementSibling;
-            const isActive = content.classList.contains('active');
+        // Restart logo animation after pause
+        document.querySelector('.logo').addEventListener('animationend', function() {
+            this.style.animationPlayState = 'running';
+        });
+        
+        // Flash effect positioning with slower intervals
+        const mainFlash = document.getElementById('main-flash');
+        const sparkle1 = document.getElementById('sparkle1');
+        const sparkle2 = document.getElementById('sparkle2');
+        const sparkle3 = document.getElementById('sparkle3');
+        
+        const flashElements = [mainFlash, sparkle1, sparkle2, sparkle3];
+        
+        // Random positions for flashes
+        function setRandomPositions() {
+            // Main flash positions (larger area)
+            const mainPositions = [
+                {top: '30%', left: '30%'},
+                {top: '40%', left: '60%'},
+                {top: '60%', left: '40%'},
+                {top: '20%', left: '50%'},
+                {top: '70%', left: '30%'},
+                {top: '10%', left: '70%'},
+                {top: '80%', left: '20%'},
+                {top: '50%', left: '80%'}
+            ];
             
-            // Close all dropdowns
-            document.querySelectorAll('.dropdown-content').forEach(dc => {
-                dc.classList.remove('active');
-            });
-            document.querySelectorAll('.dropdown-header').forEach(dh => {
-                dh.classList.remove('active');
-            });
+            // Set random position for main flash
+            const mainPos = mainPositions[Math.floor(Math.random() * mainPositions.length)];
+            Object.assign(mainFlash.style, mainPos);
             
-            // Open clicked dropdown if it was closed
-            if (!isActive) {
-                content.classList.add('active');
-                header.classList.add('active');
-            }
-        }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            // Set random positions for sparkles (avoiding overlap with main flash)
+            flashElements.forEach((element, index) => {
+                if (element !== mainFlash) {
+                    const top = Math.random() * 80 + 10; // 10% to 90%
+                    const left = Math.random() * 80 + 10;
+                    
+                    // Ensure sparkles don't overlap too much with main flash
+                    const mainTop = parseInt(mainPos.top);
+                    const mainLeft = parseInt(mainPos.left);
+                    
+                    if (Math.abs(top - mainTop) < 20 && Math.abs(left - mainLeft) < 20) {
+                        // Too close to main flash, adjust position
+                        element.style.top = (top + 30) % 90 + '%';
+                        element.style.left = (left + 30) % 90 + '%';
+                    } else {
+                        element.style.top = top + '%';
+                        element.style.left = left + '%';
+                    }
+                    
+                    // Randomize animation delay for more natural effect
+                    element.style.animationDelay = Math.random() * 3 + 's'; // Increased delay range
                 }
             });
+        }
+        
+        // Initial positioning
+        setRandomPositions();
+        
+        // Change positions at slower intervals (3-7 seconds)
+        function scheduleNextFlash() {
+            const nextTime = Math.random() * 4000 + 3000; // 3 to 7 seconds (slower)
+            setTimeout(() => {
+                setRandomPositions();
+                scheduleNextFlash();
+            }, nextTime);
+        }
+        
+        // Start the flash cycle
+        scheduleNextFlash();
+        
+        // Randomize flash durations slightly for more natural effect
+        flashElements.forEach(element => {
+            const duration = Math.random() * 2 + 5; // 5 to 7 seconds (slower)
+            element.style.animationDuration = duration + 's';
+        });
+        
+        // Add more shooting stars dynamically
+        function createAdditionalShootingStars() {
+            const shootingStarsContainer = document.querySelector('.shooting-stars');
+            const starCount = 2; // Additional stars
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                
+                // Randomize animation properties
+                const duration = Math.random() * 5 + 8; // 8-13 seconds
+                const delay = Math.random() * 15; // 0-15 seconds
+                
+                // Create unique keyframes for each star
+                const startTop = Math.random() * 30 + 10; // 10-40%
+                const endTop = Math.random() * 40 + 30; // 30-70%
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes shootingStar${i+4} {
+                        0% {
+                            opacity: 0;
+                            top: ${startTop}%;
+                            left: 100%;
+                            transform: scale(0.5);
+                        }
+                        10% {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                        90% {
+                            opacity: 1;
+                        }
+                        100% {
+                            opacity: 0;
+                            top: ${endTop}%;
+                            left: -100px;
+                            transform: scale(0.5);
+                        }
+                    }
+                    
+                    .shooting-star:nth-child(${i+4}) {
+                        animation: shootingStar${i+4} ${duration}s linear infinite ${delay}s;
+                    }
+                `;
+                
+                document.head.appendChild(style);
+                shootingStarsContainer.appendChild(star);
+            }
+        }
+        
+        // Create additional shooting stars after page load
+        window.addEventListener('load', () => {
+            setTimeout(createAdditionalShootingStars, 2000);
         });
     </script>
 </body>
