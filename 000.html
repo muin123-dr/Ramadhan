@@ -66,9 +66,9 @@
             background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); border-radius: 50%; transition: var(--transition);
         }
         .menu-item:hover .menu-number { transform: scale(1.15) rotate(360deg); background: linear-gradient(135deg, var(--accent-gold), var(--secondary-green)); }
-        .menu-text { flex: 1; }
-        .menu-text h3 { font-size: 0.6rem; margin: 0; color: var(--dark-text); transition: var(--transition); }
-        .menu-item:hover .menu-text h3 { color: var(--primary-green); }
+        .menu-text-container { flex: 1; }
+        .menu-text-container h3 { font-size: 0.9rem; margin: 0; color: var(--dark-text); transition: var(--transition); font-weight: 600; }
+        .menu-item:hover .menu-text-container h3 { color: var(--primary-green); }
         .menu-emoji {
             font-size: 1.5rem; opacity: 0; transform: translateX(20px); transition: var(--transition);
         }
@@ -97,23 +97,22 @@
             <h2>Daftar Isi</h2>
         </div>
         <div class="menu-grid" id="menuGrid">
-            <!-- Menu items dengan emoji tambahan -->
-            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/001.html"><div class="menu-number">1</div><h3>Persiapan menyambut Ramadhan</h3><div class="menu-emoji">🕌</div></a></div>
-            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/002.html"><div class="menu-number">2</div><h3>Berpuasalah! Kamu akan Sehat</h3><div class="menu-emoji">✅</div></a></div>
-            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/003.html"><div class="menu-number">3</div><h3>Apapun makanannya, yg penting Sahur</h3><div class="menu-emoji">🍽️</div></a></div>
-            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/004.html"><div class="menu-number">4</div><h3>Mengahirkan Sahur</h3><div class="menu-emoji">⏰</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">5</div><h3>Mengatasi Dehidrasi</h3><div class="menu-emoji">💧</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">6</div><h3>Jangan Jadi Pemalas di Bulan Ramadhan</h3><div class="menu-emoji">😴</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">7</div><h3>Olahraga di Bulan Ramadhan</h3><div class="menu-emoji">🏃‍♂️</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">8</div><h3>Gosok Gigi di Bulan Ramadhan</h3><div class="menu-emoji">🦷</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">9</div><h3>Menahan Emosi</h3><div class="menu-emoji">😤</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">10</div><h3>Menyegerakan Berbuka</h3><div class="menu-emoji">🌅</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">11</div><h3>Menu Cerdas Buka Puasa</h3><div class="menu-emoji">🥗</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">12</div><h3>Bertahap dalam Berbuka</h3><div class="menu-emoji">📈</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">13</div><h3>Berbukalah dengan yang Manis</h3><div class="menu-emoji">🍯</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">14</div><h3>Jangan Balas Dendam</h3><div class="menu-emoji">⚖️</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">15</div><h3>Jima' di Malam Bulan Ramadhan</h3><div class="menu-emoji">❤️</div></a></div>
-            <div class="menu-item"><a href="#"><div class="menu-number">16</div><h3>Ketika sakit di bulan Ramadhan</h3><div class="menu-emoji">🏥</div></a></div>
+            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/001.html"><div class="menu-number">1</div><div class="menu-text-container"><h3>Persiapan menyambut Ramadhan</h3></div><div class="menu-emoji">🕌</div></a></div>
+            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/002.html"><div class="menu-number">2</div><div class="menu-text-container"><h3>Berpuasalah! Kamu akan Sehat</h3></div><div class="menu-emoji">✅</div></a></div>
+            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/003.html"><div class="menu-number">3</div><div class="menu-text-container"><h3>Apapun makanannya, yg penting Sahur</h3></div><div class="menu-emoji">🍽️</div></a></div>
+            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/004.html"><div class="menu-number">4</div><div class="menu-text-container"><h3>Mengahirkan Sahur</h3></div><div class="menu-emoji">⏰</div></a></div>
+            <div class="menu-item"><a href="https://muin123-dr.github.io/Ramadhan/005.html"><div class="menu-number">5</div><div class="menu-text-container"><h3>Mengatasi Dehidrasi</h3></div><div class="menu-emoji">💧</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">6</div><div class="menu-text-container"><h3>Jangan Jadi Pemalas di Bulan Ramadhan</h3></div><div class="menu-emoji">😴</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">7</div><div class="menu-text-container"><h3>Olahraga di Bulan Ramadhan</h3></div><div class="menu-emoji">🏃‍♂️</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">8</div><div class="menu-text-container"><h3>Gosok Gigi di Bulan Ramadhan</h3></div><div class="menu-emoji">🦷</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">9</div><div class="menu-text-container"><h3>Menahan Emosi</h3></div><div class="menu-emoji">😤</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">10</div><div class="menu-text-container"><h3>Menyegerakan Berbuka</h3></div><div class="menu-emoji">🌅</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">11</div><div class="menu-text-container"><h3>Menu Cerdas Buka Puasa</h3></div><div class="menu-emoji">🥗</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">12</div><div class="menu-text-container"><h3>Bertahap dalam Berbuka</h3></div><div class="menu-emoji">📈</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">13</div><div class="menu-text-container"><h3>Berbukalah dengan yang Manis</h3></div><div class="menu-emoji">🍯</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">14</div><div class="menu-text-container"><h3>Jangan Balas Dendam</h3></div><div class="menu-emoji">⚖️</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">15</div><div class="menu-text-container"><h3>Jima' di Malam Bulan Ramadhan</h3></div><div class="menu-emoji">❤️</div></a></div>
+            <div class="menu-item"><a href="#"><div class="menu-number">16</div><div class="menu-text-container"><h3>Ketika sakit di bulan Ramadhan</h3></div><div class="menu-emoji">🏥</div></a></div>
         </div>
     </main>
     <footer>
@@ -121,7 +120,7 @@
         <p>dr. Muin ✨</p>
     </footer>
     <script>
-        // Stars background
+        // Stars background logic
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 50; i++) {
             const star = document.createElement('div');
@@ -133,34 +132,44 @@
             star.style.animationDuration = (Math.random() * 10 + 10) + 's';
             starsContainer.appendChild(star);
         }
-        // Staggered animation
+
+        // Staggered animation for menu items
         const menuItems = document.querySelectorAll('.menu-item');
         menuItems.forEach((item, index) => {
             setTimeout(() => item.classList.add('animate'), index * 80);
         });
-        // Hover effects & click ripple
+
+        // Click effect and direct navigation
         menuItems.forEach(item => {
             item.addEventListener('click', function(e) {
-                const ripple = document.createElement('div');
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(212,175,55,0.5)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.width = ripple.style.height = '100px';
-                ripple.style.left = e.offsetX - 50 + 'px';
-                ripple.style.top = e.offsetY - 50 + 'px';
-                ripple.style.animation = 'ripple 0.6s linear';
-                this.style.transform = 'scale(0.95)';
-                this.appendChild(ripple);
-                setTimeout(() => {
-                    this.style.transform = '';
-                    ripple.remove();
-                    // Ganti alert dengan navigasi real
-                    const title = this.querySelector('h3').textContent;
-                    alert(`Navigasi ke: ${title} 🌟`);
-                }, 200);
+                const link = this.querySelector('a');
+                const href = link.getAttribute('href');
+
+                // Hanya jalankan jika href bukan '#'
+                if (href && href !== '#') {
+                    e.preventDefault(); // Mencegah pindah halaman instan agar animasi terlihat dulu
+
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(212,175,55,0.4)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.width = ripple.style.height = '100px';
+                    ripple.style.left = (e.clientX - this.getBoundingClientRect().left - 50) + 'px';
+                    ripple.style.top = (e.clientY - this.getBoundingClientRect().top - 50) + 'px';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    
+                    this.style.transform = 'scale(0.96)';
+                    this.appendChild(ripple);
+
+                    // Navigasi otomatis setelah animasi ripple singkat
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 200);
+                }
             });
         });
+
         // Add ripple keyframes
         const style = document.createElement('style');
         style.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
