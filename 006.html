@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jangan Jadi Pemalas di Bulan Ramadhan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #c62828 100%);
+            color: #3e2723;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .mosque-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">☪️</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 253, 248, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: none;
+            position: relative;
+            background: linear-gradient(135deg, #1a237e 0%, #2e7d32 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.3);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">📖</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        .book-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #c62828, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #2e7d32;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #2e7d32; }
+            to { text-shadow: 0 0 20px #2e7d32, 0 0 30px #2e7d32; }
+        }
+
+        h2 {
+            color: #3e2723;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            border-left: none;
+            background: linear-gradient(to right, rgba(198, 40, 40, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #c62828;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a237e, #c62828);
+        }
+
+        h3 {
+            color: #3e2723;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #c62828;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #3e2723;
+            font-size: 1.05em;
+        }
+
+        .hadith-box {
+            background: linear-gradient(135deg, rgba(232, 234, 246, 0.9) 0%, rgba(200, 230, 201, 0.9) 100%);
+            border-left: 5px solid #c62828;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(198, 40, 40, 0.3);
+            border-right: 1px solid rgba(198, 40, 40, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hadith-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(198, 40, 40, 0.4);
+        }
+
+        .hadith-box::before {
+            content: "﴾";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(26, 35, 126, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .hadith-box::after {
+            content: "﴿";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(26, 35, 126, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        /* Gaya khusus untuk teks Arab */
+        .arabic-text {
+            text-align: center;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 2.2em;
+            font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade', serif;
+            margin: 20px 0;
+            line-height: 1.6;
+            direction: rtl;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .hadith-box p {
+            color: #3e2723;
+            font-style: normal;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hadith-box small {
+            color: #555;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .source-link {
+            background: rgba(232, 234, 246, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #2e7d32;
+            border-right: 1px solid rgba(46, 125, 50, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .source-link:hover {
+            background: rgba(232, 234, 246, 1);
+            transform: translateX(5px);
+        }
+
+        .source-link a {
+            color: #1b5e20;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+            color: #0d3010;
+        }
+
+        .dropdown {
+            margin: 20px 0;
+            border: 2px solid #bbdefb;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown:hover {
+            border-color: #c62828;
+            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .dropdown-header {
+            background: linear-gradient(135deg, #1a237e 0%, #2e7d32 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-header:hover {
+            background: linear-gradient(135deg, #0d47a1 0%, #1b5e20 100%);
+            padding-left: 30px;
+        }
+
+        .dropdown-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-header.active .icon {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f9f9f9;
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .dropdown-content-inner {
+            padding: 25px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #3e2723;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #c62828;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.05) 0%, rgba(46, 125, 50, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #1a237e, #c62828, #1a237e);
+        }
+
+        .decorative-symbols {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(198, 40, 40, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.0em;
+            color: #3e2723;
+            border: 2px dashed #c62828;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #c62828;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #c62828;
+        }
+
+        .highlight-box {
+            background: rgba(232, 234, 246, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #1a237e;
+            border-right: 1px solid rgba(26, 35, 126, 0.3);
+        }
+
+        .warning-box {
+            background: rgba(255, 243, 224, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ff9800;
+            border-right: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .success-box {
+            background: rgba(232, 245, 233, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #2e7d32;
+            border-right: 1px solid rgba(46, 125, 50, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .book-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .decorative-symbols {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+            
+            /* Ukuran font Arab untuk mobile */
+            .arabic-text {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .dropdown-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+            
+            /* Ukuran font Arab untuk layar sangat kecil */
+            .arabic-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="mosque-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="book-icon">📖</div>
+            <h1>Jangan Jadi Pemalas di Bulan Ramadhan</h1>
+            <div class="header-subtitle">Menjaga Produktivitas dan Spirit Ibadah</div>
+            <div class="decorative-line">
+                <span>☪️</span>
+            </div>
+        </div>
+
+        <p>Ramadhan adalah bulan yang penuh berkah, rahmat, dan ampunan dari Allah SWT. Namun, seringkali kita terjebak dalam pemahaman yang keliru bahwa puasa adalah alasan untuk bermalas-malasan dan mengurangi produktivitas.</p>
+
+        <h2>Mengkaji Ulang Hadits tentang Tidurnya Orang Berpuasa</h2>
+
+        <div class="hadith-box">
+            <p>Dalam sebuah hadits sering kita dengar:</p>
+            <p class="arabic-text">نَوْمُ الصَّائِمِ عِبَادَةٌ</p>
+            <p>(Tidurnya orang yang berpuasa adalah ibadah.)</p>
+            <small>https://goo.gl/RdYt42</small>
+        </div>
+
+        <p>➡️ Hadits ini sering disalahpahami. Banyak yang menjadikannya alasan untuk bermalas-malasan dan menghabiskan siang Ramadhan dengan tidur berlebihan, sehingga justru tidak produktif.</p>
+        
+        <div class="warning-box">
+            <p><strong>Perlu diketahui:</strong> Hadits ini tidak bisa dijadikan sandaran karena statusnya lemah (dha'if). Oleh karena itu, kita tidak boleh menjadikannya dalih untuk meninggalkan aktivitas dan kewajiban sehari-hari.</p>
+        </div>
+
+        <p>➡️ Di sisi lain ada kekhawatiran: <br><em>"Apakah bekerja akan membuat kita tidak kuat berpuasa?"</em></p>
+
+        <h2>Aktivitas dan Bekerja Saat Puasa: <br><em>Bolehkah dan Bagaimana?<em></h2>
+
+        <div class="success-box">
+            <p><strong>✅ Aktivitas Tetap Diperlukan Saat Puasa</strong></p>
+            <p>Bekerja dan beraktivitas justru memiliki manfaat penting secara fisiologis dan psikologis:</p>
+            <ul>
+                <li>Memperlancar peredaran darah melalui pergerakan otot.</li>
+                <li>Mengurangi rasa lapar. Aktivitas merangsang hormon yang mengubah cadangan energi menjadi gula darah, sehingga kadar gula tetap stabil dan rasa lapar tidak berlebihan.</li>
+                <li>Mengurangi kejenuhan. Aktivitas mengalihkan pikiran dari fokus menunggu waktu berbuka, sehingga puasa terasa lebih ringan.</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>⚠️ Batasan Aktivitas yang Dianjurkan</strong></p>
+            <p>Boleh beraktivitas, tetapi perlu bijak dengan membatasi atau menghindari:</p>
+            <ul>
+                <li>Aktivitas yang menyebabkan dehidrasi berat (terpapar panas matahari atau ruang AC terlalu kering dalam waktu lama).</li>
+                <li>Aktivitas yang menggunakan tenaga fisik berlebihan (disesuaikan dengan kondisi individu).</li>
+                <li>Aktivitas fisik yang dilakukan terlalu lama tanpa jeda.</li>
+                <li>Kurang istirahat (tidur malam).</li>
+            </ul>
+        </div>
+
+        <div class="decorative-symbols">📖 ☪️ 🌙 ☪️ 📖</div>
+
+        <h2>Panduan Lengkap: <br>Tetap Produktif dan Khusyuk di Ramadhan</h2>
+
+        <p>Berikut adalah panduan praktis untuk menjaga keseimbangan antara produktivitas dan kekhusyukan ibadah di bulan Ramadhan:</p>
+
+        <h3>1. Niat dan Motivasi Spiritual sebagai Pondasi</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🤲</span> Niatkan Semua Aktivitas karena Allah</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Niatkan semua aktivitas—bekerja, belajar, membantu orang lain—karena Allah dan untuk kemaslahatan.</li>
+                        <li>Dengan niat yang ikhlas, kerja mencari nafkah yang halal pun menjadi ibadah.</li>
+                        <li>Jaga kesadaran spiritual selama beraktivitas agar tidak lalai dari dzikir, shalat tepat waktu, dan tilawah.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>2. Kelola Pola dan Jenis Aktivitas</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">📊</span> Pilih Aktivitas Produktif yang Sesuai</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Pilih aktivitas produktif yang ringan di siang hari: mengatur administrasi, membaca, menulis, perencanaan, atau silaturahmi.</li>
+                        <li>Manfaatkan waktu pagi (ba'da Subuh hingga Dhuha) untuk fokus pada pekerjaan utama, karena waktu ini penuh berkah.</li>
+                        <li>Selingi dengan aktivitas sosial bernilai ibadah: berbagi takjil, membantu tetangga, atau mengajar ngaji.</li>
+                        <li>Hindari aktivitas yang memicu stres berlebihan dan ciptakan lingkungan kerja yang tenang.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>3. Atur Waktu dengan Bijak (Time Management)</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⏰</span> Buat Jadwal Harian yang Seimbang</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Buat jadwal harian seimbang yang membagi waktu untuk ibadah khusus (shalat, tarawih, tadarus), bekerja, istirahat, dan interaksi sosial.</li>
+                        <li>Hindari begadang tidak bermanfaat agar energi di siang hari dan kekhusyukan ibadah malam tetap terjaga.</li>
+                        <li>Lakukan istirahat singkat (qailulah) untuk mengembalikan energi tanpa berlebihan.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>4. Jaga Kondisi Fisik dan Nutrisi</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🍎</span> Penuhi Asupan Gizi Seimbang</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Penuhi asupan sahur dan berbuka dengan gizi seimbang: karbohidrat kompleks, protein, serat, dan cukup cairan untuk menjaga stamina.</li>
+                        <li>Dengarkan sinyal tubuh. Jika lelah, istirahatlah sejenak, tetapi jangan jadikan itu alasan untuk bermalas-malasan sepanjang hari.</li>
+                        <li>Kelompok rentan (lanjut usia, punya kondisi kesehatan tertentu, pekerja berat) perlu menyesuaikan aktivitas dan dapat memanfaatkan keringanan (rukhsah) dalam Islam.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>5. Jaga Keseimbangan Ibadah Khusus dan Umum</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🕌</span> Utamakan Ibadah Wajib dan Tambahan</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Utamakan ibadah khusus seperti shalat wajib tepat waktu, shalat malam, sedekah, dan memperbanyak membaca Al-Qur'an.</li>
+                        <li>Integrasikan ibadah dalam aktivitas: sisipkan dzikir, doa pendek, atau mendengarkan murottal saat bekerja agar hati tetap terhubung dengan Allah.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>6. Evaluasi Diri dan Tingkatkan Kualitas</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">📈</span> Gunakan Ramadhan untuk Introspeksi</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Gunakan Ramadhan sebagai momentum introspeksi dan peningkatan disiplin diri.</li>
+                        <li>Perbaiki kebiasaan buruk, seperti menunda-nunda pekerjaan, karena justru dapat meningkatkan stres.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="decorative-symbols">🌙 📖 🕌 📖 🌙</div>
+
+        <div class="footer">
+            <h2 style="text-align: center; border: none; padding: 0; color: #3e2723;">Kesimpulan</h2>
+            <div class="highlight-box">
+                <p p style="text-align: left;"><strong>Ringkasan Panduan:</strong></p>
+                <ul>
+                    <li style="text-align: left;">Aktivitas fisik dan bekerja itu perlu selama puasa untuk menjaga kesehatan dan produktivitas.</li>
+                    <li style="text-align: left;">Aktivitas harus disesuaikan dengan kemampuan agar tidak memberatkan puasa dan mengurangi kekuatan untuk ibadah malam.</li>
+                    <li style="text-align: left;">Istirahat (termasuk tidur siang singkat) itu penting dan bisa bernilai ibadah jika diniatkan untuk mengumpulkan tenaga demi menunjang ibadah di malam hari (seperti tarawih dan tadarus).</li>
+                </ul>
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #3e2723;">Ramadhan bukan bulan untuk bermalas-malasan, melainkan bulan untuk meningkatkan semangat beramal dengan penuh kesadaran, produktivitas, dan keseimbangan antara urusan dunia dan akhirat.</p>
+            
+            <p style="text-align: center; font-weight: bold; color: #c62828; margin-top: 20px;">Wallāhu a'lam bish-shawāb.</p>
+            
+            <div class="decorative-symbols" style="margin-top: 30px; font-size: 1.8em;">🌙 📖 ☪️</div>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Dropdown toggle function
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-header').forEach(dh => {
+                dh.classList.remove('active');
+            });
+            
+            // Open clicked dropdown if it was closed
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add click event to close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dc => {
+                    dc.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-header').forEach(dh => {
+                    dh.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

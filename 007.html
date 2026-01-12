@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olahraga di Bulan Ramadhan - Tetap Sehat & Bugar Saat Puasa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF8F00 0%, #D32F2F 100%);
+            color: #5D4037;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .mosque-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">🏃</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 253, 248, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: none;
+            position: relative;
+            background: linear-gradient(135deg, #FF8F00 0%, #388E3C 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 143, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">🏃</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        .sport-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #388E3C, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #D32F2F;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #D32F2F; }
+            to { text-shadow: 0 0 20px #D32F2F, 0 0 30px #D32F2F; }
+        }
+
+        h2 {
+            color: #D32F2F;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            border-left: none;
+            background: linear-gradient(to right, rgba(255, 143, 0, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #FF8F00;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FF8F00, #D32F2F);
+        }
+
+        h3 {
+            color: #D32F2F;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #FF8F00;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #5D4037;
+            font-size: 1.05em;
+        }
+
+        .qa-box {
+            background: linear-gradient(135deg, rgba(255, 248, 225, 0.9) 0%, rgba(232, 245, 233, 0.9) 100%);
+            border-left: 5px solid #FF8F00;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(255, 143, 0, 0.3);
+            border-right: 1px solid rgba(255, 143, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qa-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 143, 0, 0.4);
+        }
+
+        .qa-box::before {
+            content: "❓";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(255, 143, 0, 0.2);
+        }
+
+        .qa-box::after {
+            content: "💡";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(56, 142, 60, 0.2);
+        }
+
+        .qa-box p {
+            color: #5D4037;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .qa-box small {
+            color: #555;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .source-link {
+            background: rgba(255, 248, 225, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #388E3C;
+            border-right: 1px solid rgba(56, 142, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .source-link:hover {
+            background: rgba(255, 248, 225, 1);
+            transform: translateX(5px);
+        }
+
+        .source-link a {
+            color: #1b5e20;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+            color: #0d3010;
+        }
+
+        .dropdown {
+            margin: 20px 0;
+            border: 2px solid #FFECB3;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown:hover {
+            border-color: #FF8F00;
+            box-shadow: 0 8px 25px rgba(255, 143, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .dropdown-header {
+            background: linear-gradient(135deg, #FF8F00 0%, #388E3C 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-header:hover {
+            background: linear-gradient(135deg, #F57C00 0%, #2E7D32 100%);
+            padding-left: 30px;
+        }
+
+        .dropdown-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-header.active .icon {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f9f9f9;
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .dropdown-content-inner {
+            padding: 25px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #5D4037;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #FF8F00;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(255, 143, 0, 0.05) 0%, rgba(56, 142, 60, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #FF8F00, #D32F2F, #FF8F00);
+        }
+
+        .decorative-symbols {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 143, 0, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.0em;
+            color: #D32F2F;
+            border: 2px dashed #FF8F00;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #FF8F00;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #FF8F00;
+        }
+
+        .highlight-box {
+            background: rgba(255, 248, 225, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #D32F2F;
+            border-right: 1px solid rgba(211, 47, 47, 0.3);
+        }
+
+        .info-box {
+            background: rgba(232, 245, 233, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #388E3C;
+            border-right: 1px solid rgba(56, 142, 60, 0.3);
+        }
+
+        .warning-box {
+            background: rgba(255, 243, 224, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #FF8F00;
+            border-right: 1px solid rgba(255, 143, 0, 0.3);
+        }
+
+        .arabic-text {
+            text-align: center;
+            color: #388E3C;
+            font-weight: bold;
+            font-size: 1.8em;
+            font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade', serif;
+            margin: 20px 0;
+            line-height: 1.6;
+            direction: rtl;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .sport-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .decorative-symbols {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+            
+            .arabic-text {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .dropdown-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .arabic-text {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="mosque-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="sport-icon">🏃</div>
+            <h1>OLAHRAGA DI BULAN RAMADHAN</h1>
+            <div class="header-subtitle">Tetap Sehat & Bugar Saat Puasa</div>
+            <div class="decorative-line">
+                <span>🌿</span>
+            </div>
+        </div>
+
+        <div class="qa-box">
+            <p><span class="emoji">🏃</span> <strong>Apakah masih boleh berolahraga saat puasa?</strong></p>
+            <p><strong>Jawab:</strong></p>
+            <p>Secara medis, kondisi puasa memiliki kesamaan dengan olahraga, yaitu menciptakan stres metabolik yang memicu pemecahan lemak untuk memenuhi kebutuhan energi. Para ahli kedokteran olahraga menyatakan bahwa berolahraga saat puasa tetap diperbolehkan, dengan syarat:</p>
+            <ul>
+                <li>Melakukan olahraga aerobik intensitas moderat (sedang).</li>
+                <li>Dalam kondisi jasmani yang sehat (tidak sakit).</li>
+                <li>Bukan olahraga yang bersifat prestasi/pertandingan atau target performa tinggi.</li>
+            </ul>
+        </div>
+
+        <div class="qa-box">
+            <p><span class="emoji">🕓</span> <strong>Kapan waktu yang tepat untuk olahraga saat puasa?</strong></p>
+            <p><strong>Jawab:</strong></p>
+            <p>Waktu terbaik adalah menjelang waktu berbuka puasa. Waktu ini memiliki beberapa keuntungan:</p>
+            <ul>
+                <li>Anda dapat menilai kondisi tubuh saat itu (apakah kuat atau tidak).</li>
+                <li>Jika merasa haus atau lelah, waktu berbuka sudah dekat sehingga pemulihan cairan dan energi dapat segera dilakukan.</li>
+            </ul>
+            <p class="arabic-text">وَاللَّهُ أَعْلَمُ</p>
+            <small>Walloohu a'lam.</small>
+        </div>
+
+        <div class="decorative-symbols">🏃 🌿 💧 🌿 🏃</div>
+
+        <h2>PANDUAN LENGKAP OLAHRAGA SAAT PUASA RAMADHAN</h2>
+        
+        <p>Untuk memastikan olahraga Anda aman, nyaman, dan bermanfaat selama puasa, perhatikan hal-hal berikut:</p>
+
+        <h3>1. Durasi, Intensitas, dan Jenis Olahraga</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⏱️</span> Durasi: Singkat, sekitar 20–45 menit.</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p><strong>Intensitas:</strong> Ringan hingga sedang (moderat). Dengarkan sinyal tubuh. Hindari intensitas tinggi yang memicu dehidrasi berlebihan dan penurunan gula darah drastis.</p>
+                    <p><strong>Jenis yang Dianjurkan (Aerobik Moderat):</strong></p>
+                    <ul>
+                        <li>Jalan cepat atau jalan kaki</li>
+                        <li>Bersepeda santai</li>
+                        <li>Jogging ringan</li>
+                        <li>Senam ringan / low-impact aerobic</li>
+                        <li>Yoga dan stretching</li>
+                        <li>Latihan beban ringan dengan repetisi tinggi (bukan angkatan berat)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>2. Waktu Alternatif Berolahraga</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🕒</span> Waktu Alternatif Berolahraga</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p>Selain menjelang berbuka, Anda dapat mempertimbangkan waktu lain:</p>
+                    <ul>
+                        <li><strong>Setelah Berbuka:</strong> Beri jeda 1–2 jam setelah makan besar untuk memungkinkan pencernaan awal.</li>
+                        <li><strong>Setelah Shalat Tarawih:</strong> Cocok untuk olahraga ringan-sedang tanpa risiko dehidrasi.</li>
+                        <li><strong>Setelah Sahur (sebelum Subuh):</strong> Olah raga ringan saja.</li>
+                    </ul>
+                    <div class="warning-box">
+                        <p><strong>Catatan:</strong> Hindari olahraga di siang hari terik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>3. Nutrisi dan Hidrasi yang Mendukung</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🍎</span> Nutrisi dan Hidrasi yang Mendukung</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p><strong>Sahur:</strong> Konsumsi makanan dengan:</p>
+                    <ul>
+                        <li>Karbohidrat kompleks (nasi merah, oat, gandum utuh) untuk energi tahan lama.</li>
+                        <li>Protein dan serat.</li>
+                        <li>Cairan yang cukup.</li>
+                    </ul>
+                    <p><strong>Berbuka:</strong> Utamakan mengembalikan cairan tubuh dengan minum air putih secara bertahap dan cukup. Lanjutkan dengan karbohidrat kompleks dan protein. Hindari berbuka berlebihan agar tubuh siap untuk pemulihan pasca-olahraga.</p>
+                    <p><strong>Prioritas Hidrasi:</strong> Penuhi kebutuhan cairan secara maksimal di waktu antara berbuka hingga sahur.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>4. Teknis dan Keselamatan</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🛡️</span> Teknis dan Keselamatan</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li><strong>Pemanasan & Pendinginan:</strong> Tetap lakukan pemanasan ringan sebelum olahraga dan pendinginan setelahnya untuk mencegah cedera.</li>
+                        <li><strong>Kenali Tanda Bahaya:</strong> Segera hentikan olahraga jika mengalami pusing, mual, lemas berlebihan, jantung berdebar tidak normal, atau pandangan berkunang-kunang. Ini tanda tubuh tidak sanggup melanjutkan.</li>
+                        <li><strong>Pemantauan:</strong> Perhatikan detak jantung dan tingkat napas. Jika denyut nadi terlalu tinggi atau napas tersengal-sengal, kurangi intensitasnya.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>5. Tujuan dan Adaptasi</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🎯</span> Tujuan dan Adaptasi</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li><strong>Tujuan Utama:</strong> Fokus pada menjaga kebugaran, kesehatan, dan mobilitas tubuh, bukan meningkatkan performa maksimal, massa otot, atau menurunkan berat badan secara drastis.</li>
+                        <li><strong>Masa Adaptasi:</strong> Di awal Ramadhan, beri waktu tubuh beradaptasi. Mulailah dengan intensitas lebih ringan, lalu tingkatkan perlahan jika tubuh sudah terbiasa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>6. Kondisi Khusus</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⚠️</span> Kondisi Khusus</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p>Bagi lansia, individu dengan penyakit tertentu (seperti diabetes, hipertensi, jantung), atau yang baru pulih dari sakit, sangat disarankan untuk berkonsultasi dengan dokter terlebih dahulu sebelum memutuskan berolahraga saat puasa.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="decorative-symbols">🌿 🏃 💧 🏃 🌿</div>
+
+        <div class="footer">
+            <h2 style="text-align: center; border: none; padding: 0; color: #D32F2F;">Kesimpulan</h2>
+            <div class="highlight-box">
+                <p>Olahraga saat puasa Ramadhan sangat mungkin dilakukan asalkan bijak dalam memilih jenis, waktu, dan intensitas.</p>
+                <p>Utamakan tujuan untuk kebugaran, keselamatan, cukupi kebutuhan cairan dan nutrisi, serta dengarkan sinyal dari tubuh Anda.</p>
+            </div>
+            
+            <p class="arabic-text">وَاللَّهُ أَعْلَمُ بِالصَّوَابِ</p>
+            <p style="text-align: center; font-weight: bold; color: #D32F2F; margin-top: 20px;">Walloohu a'lam bish-shawab.</p>
+            
+            <div class="decorative-symbols" style="margin-top: 30px; font-size: 1.8em;">🏃 🌿 💧</div>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Dropdown toggle function
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-header').forEach(dh => {
+                dh.classList.remove('active');
+            });
+            
+            // Open clicked dropdown if it was closed
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add click event to close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dc => {
+                    dc.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-header').forEach(dh => {
+                    dh.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
