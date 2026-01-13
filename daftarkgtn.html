@@ -212,7 +212,7 @@
           <span id="dateText"></span>
         </div>
       </div>
-      <p class="section-desc">Pilih waktu di bawah untuk melihat kegiatan. Checklist akan disimpan otomatis!</p>
+      <p class="section-desc">Pilih salah satu waktu di bawah. Checklist akan disimpan otomatis!</p>
       <div class="stats">
         <div class="stat-card">
           <div class="stat-value" id="totalTasks">0</div>
@@ -249,8 +249,8 @@
 
     <div class="card fade" style="display:flex;flex-direction:column;gap:12px">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong>✨ Tips Ramadhan Gen Z</strong>
-        <small class="small">🚀</small>
+        <strong>✨ Tips Ramadhan Gen Z 🚀</strong>
+        
       </div>
       <div class="small">
         • Gunakan checklist untuk bangun habit baru<br>
@@ -274,7 +274,7 @@
   </footer>
 
   <script>
-    // Data kegiatan tetap sama
+    // Data kegiatan dengan penambahan emoji
     const data = {
       sahur: {
         title: "🌙 Waktu Sahur",
@@ -354,14 +354,16 @@
     const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     dateText.textContent = today.toLocaleDateString('id-ID', options);
 
-    // Load theme
+    // Load theme from localStorage
     const savedTheme = localStorage.getItem('ramadhan_theme') || 'light';
     if(savedTheme === 'dark'){
       document.documentElement.setAttribute('data-theme','dark');
       themeBtn.textContent = '☀️';
+    } else {
+      themeBtn.textContent = '🌙';
     }
 
-    // Theme toggle
+    // Theme toggle with icon
     themeBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       if(isDark){
@@ -373,42 +375,53 @@
         localStorage.setItem('ramadhan_theme','dark');
         themeBtn.textContent = '☀️';
       }
+      // Add animation
+      themeBtn.style.transform = 'rotate(360deg)';
+      setTimeout(() => { themeBtn.style.transform = ''; }, 300);
     });
 
-    // Share function
+    // Share function with WhatsApp
     shareBtn.addEventListener('click', () => {
-      const message = encodeURIComponent("Assalamu'alaikum! 🌙✨ Yuk ikutan *Ramadhan Challenge* dengan panduan harian yang keren dan interaktif ini! 🚀\n\n" + location.href);
+      const message = encodeURIComponent("Assalamu'alaikum! 🌙✨ Yuk ikutan *Ramadhan Challenge* dengan panduan harian yang keren dan interaktif ini! Ada checklist, progress tracker, dan fitur lengkap buat puasa makin bermakna 🚀\n\n" + location.href + "\n\n#RamadhanBerkah #ChallengeRamadhan");
       const waUrl = `https://wa.me/?text=${message}`;
       window.open(waUrl, '_blank');
+      
+      // Confetti effect
       createConfetti();
     });
 
+    // Confetti effect
     function createConfetti() {
-      const colors = ['#2f9e44', '#3b82f6', '#f59e0b'];
+      const colors = ['#2f9e44', '#3b82f6', '#f59e0b', '#8b5cf6', '#10b981'];
       for(let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.left = Math.random() * 100 + 'vw';
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = Math.random() * 10 + 5 + 'px';
+        confetti.style.height = Math.random() * 10 + 5 + 'px';
+        confetti.style.animationDelay = Math.random() * 2 + 's';
         document.body.appendChild(confetti);
         setTimeout(() => confetti.remove(), 3000);
       }
     }
 
+    // Render section dengan animasi dan highlight
     function renderSection(key){
       const obj = data[key];
       const saved = JSON.parse(localStorage.getItem('ramadhan_check')) || {};
       const checked = saved[key] || [];
       
+      // Update nav buttons active state
       navButtons.forEach(btn => {
         btn.classList.remove('active');
         if(btn.dataset.target === key) btn.classList.add('active');
       });
 
       let html = `
-        <div class="card fade">
+        <div class="card fade" role="region" aria-labelledby="${key}-title">
           <div class="section-title">
-            <div class="icon moon">${obj.icon}</div>
+            <div class="icon moon" aria-hidden="true">${obj.icon}</div>
             <div>
               <h2 id="${key}-title">${obj.title}</h2>
               <div class="time-badge">${obj.desc}</div>
@@ -417,53 +430,249 @@
           <ul class="checklist" id="list-${key}">
             ${obj.items.map((it, idx) => `
               <li data-idx="${idx}" class="${checked.includes(idx) ? 'checked' : ''}">
-                <div class="icon pray">${checked.includes(idx) ? '✓' : '✦'}</div>
+                <div class="icon pray" aria-hidden="true">${checked.includes(idx) ? '✓' : '✦'}</div>
                 <div class="text">
                   <div style="display:flex;justify-content:space-between;align-items:center">
                     <div>${it}</div>
-                    <input type="checkbox" ${checked.includes(idx) ? 'checked' : ''} data-key="${key}" data-idx="${idx}" />
+                    <div style="display:flex;gap:8px;align-items:center">
+                      <label class="small" style="margin-right:8px">✅ Selesai</label>
+                      <input type="checkbox" ${checked.includes(idx) ? 'checked' : ''} data-key="${key}" data-idx="${idx}" />
+                    </div>
                   </div>
                 </div>
               </li>
             `).join('')}
           </ul>
+          <div class="actions">
+            <button class="btn" id="reset-${key}" style="background:transparent;border:1px solid var(--muted);color:var(--muted);padding:10px 16px;border-radius:10px;cursor:pointer;">🔄 Reset</button>
+            <div style="flex:1"></div>
+            <button class="btn" id="copy-${key}" style="background:var(--accent);color:white;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;">📋 Salin List</button>
+          </div>
         </div>
       `;
       
-      contentArea.innerHTML = html;
-      document.querySelectorAll(`#list-${key} input`).forEach(cb => {
-        cb.addEventListener('change', (e) => toggleCheck(e.target.dataset.key, Number(e.target.dataset.idx), e.target.checked));
-      });
-      updateProgress();
+      // Add animation
+      contentArea.style.opacity = '0';
+      setTimeout(() => {
+        contentArea.innerHTML = html;
+        contentArea.style.opacity = '1';
+        
+        // attach listeners
+        document.querySelectorAll(`#list-${key} input[type="checkbox"]`).forEach(cb => {
+          cb.addEventListener('change', (e) => {
+            const k = e.target.dataset.key;
+            const i = Number(e.target.dataset.idx);
+            const li = e.target.closest('li');
+            const icon = li.querySelector('.icon');
+            
+            if(e.target.checked){
+              li.classList.add('checked');
+              icon.textContent = '✓';
+              icon.style.background = 'linear-gradient(135deg, #d1fae5, #bbf7d0)';
+              icon.style.color = '#059669';
+              // Add bounce effect
+              icon.style.transform = 'scale(1.2)';
+              setTimeout(() => { icon.style.transform = 'scale(1)'; }, 300);
+            } else {
+              li.classList.remove('checked');
+              icon.textContent = '✦';
+              icon.style.background = 'linear-gradient(135deg,#fff,#fff7f1)';
+              icon.style.color = '#f59e0b';
+            }
+            toggleCheck(k,i,e.target.checked);
+          });
+        });
+        
+        document.getElementById(`reset-${key}`).addEventListener('click', () => {
+          if(confirm('Yakin mau reset checklist untuk bagian ini?')){
+            resetSection(key);
+          }
+        });
+        
+        document.getElementById(`copy-${key}`).addEventListener('click', () => {
+          copyList(key);
+        });
+        
+        updateProgress();
+      }, 200);
     }
 
+    // Toggle check dengan sound effect (simulasi)
     function toggleCheck(key, idx, state){
       const saved = JSON.parse(localStorage.getItem('ramadhan_check')) || {};
       saved[key] = saved[key] || [];
-      if(state) saved[key].push(idx);
-      else saved[key] = saved[key].filter(n => n !== idx);
+      if(state){
+        if(!saved[key].includes(idx)) saved[key].push(idx);
+        // Play sound (simulated)
+        if(typeof Audio !== 'undefined'){
+          const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAZGF0YQ');
+          audio.play().catch(() => {});
+        }
+      } else {
+        saved[key] = saved[key].filter(n => n !== idx);
+      }
+      localStorage.setItem('ramadhan_check', JSON.stringify(saved));
+      updateProgress();
+    }
+
+    function resetSection(key){
+      const saved = JSON.parse(localStorage.getItem('ramadhan_check')) || {};
+      delete saved[key];
       localStorage.setItem('ramadhan_check', JSON.stringify(saved));
       renderSection(key);
     }
 
+    function copyList(key){
+      const obj = data[key];
+      const text = `*${obj.title}*\n\n${obj.items.map((it,i)=>`${i+1}. ${it}`).join('\n')}\n\n#RamadhanChallenge`;
+      navigator.clipboard?.writeText(text).then(()=> {
+        alert('✅ Daftar berhasil disalin! Bisa share ke WhatsApp ya!');
+      }, ()=> alert('❌ Gagal menyalin'));
+    }
+
+    // Update progress bar dengan statistik
     function updateProgress(){
       const saved = JSON.parse(localStorage.getItem('ramadhan_check')) || {};
       let total = 0, done = 0;
       Object.keys(data).forEach(k => {
         total += data[k].items.length;
-        done += (saved[k] || []).length;
+        const arr = saved[k] || [];
+        done += arr.length;
       });
-      const pct = Math.round((done/total)*100);
+      
+      const pct = total ? Math.round((done/total)*100) : 0;
       progressBar.style.width = pct + '%';
+      progressBar.setAttribute('aria-valuenow', pct);
+      
+      // Update stats
       totalTasksEl.textContent = total;
       completedTasksEl.textContent = done;
       progressPercentEl.textContent = pct + '%';
+      
+      // Progress celebration
+      if(pct === 100){
+        createConfetti();
+        setTimeout(() => {
+          alert('🎉 SELAMAT! Kamu telah menyelesaikan semua checklist hari ini! Terus pertahankan ya!');
+        }, 500);
+      }
     }
 
-    navButtons.forEach(btn => btn.addEventListener('click', (e) => renderSection(e.target.dataset.target)));
+    // Nav click dengan efek
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const key = e.target.dataset.target;
+        renderSection(key);
+        // Smooth scroll dengan offset
+        setTimeout(() => {
+          contentArea.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 100);
+      });
+    });
+
+    // Default open dengan pesan menarik
+    contentArea.innerHTML = `
+      <div class="card fade" style="text-align:center; padding:40px 20px;">
+        <div style="font-size:48px; margin-bottom:16px;">🌙✨</div>
+        <h2 style="color:var(--accent); margin-bottom:12px;">Selamat Datang di Ramadhan Challenge!</h2>
+        <p class="section-desc">Pilih salah satu waktu di atas untuk mulai checklist kegiatan harianmu.</p>
+        <p class="small" style="margin-top:16px;">🔥 <strong>Challenge:</strong> Coba selesaikan semua checklist hari ini!</p>
+        <div style="display:flex; justify-content:center; gap:10px; margin-top:20px;">
+          <span class="chip">📊 Progress Tracker</span>
+          <span class="chip">✅ Auto Save</span>
+          <span class="chip">🌙 Mode Gelap</span>
+        </div>
+      </div>
+    `;
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+        const keys = Array.from(navButtons).map(b => b.dataset.target);
+        const current = contentArea.querySelector('h2')?.id?.replace('-title','') || 'sahur';
+        let idx = keys.indexOf(current);
+        if(e.key === 'ArrowRight') idx = (idx + 1) % keys.length;
+        else idx = (idx - 1 + keys.length) % keys.length;
+        renderSection(keys[idx]);
+      }
+      // Space to toggle check
+      if(e.key === ' ' && e.target.type === 'checkbox'){
+        e.target.click();
+      }
+    });
+
+    // Initialize
+    window.addEventListener('load', () => {
+      updateProgress();
+      // Add hover effects to cards
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+    });
+
+    // Export/Import feature dengan UI lebih menarik
+    document.querySelector('header').addEventListener('dblclick', () => {
+      const action = confirm('🎯 Fitur Admin:\nKlik OK untuk export data, Cancel untuk import?');
+      if(action === true){
+        exportData();
+      } else {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        input.onchange = e => {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = () => {
+            try{
+              const obj = JSON.parse(reader.result);
+              localStorage.setItem('ramadhan_check', JSON.stringify(obj));
+              alert('✅ Data berhasil diimpor!');
+              const current = contentArea.querySelector('h2')?.id?.replace('-title','') || 'sahur';
+              renderSection(current);
+            }catch(err){ alert('❌ File tidak valid'); }
+          };
+          reader.readAsText(file);
+        };
+        input.click();
+      }
+    });
+
+    function exportData(){
+      const payload = localStorage.getItem('ramadhan_check') || '{}';
+      const blob = new Blob([payload], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ramadhan-progress-' + new Date().toISOString().split('T')[0] + '.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      alert('✅ Data berhasil diexport!');
+    }
+
+    // Daily motivation quotes
+    const quotes = [
+      "Ramadhan bukan alasan untuk bermalas-malasan! 💪",
+      "Setiap detik di Ramadhan adalah emas. Jangan disia-siakan! ⏳",
+      "Puasa bukan hanya menahan lapar, tapi juga meningkatkan kualitas diri! 🌟",
+      "Checklist selesai semua? Kamu hebat! 🎯",
+      "Jangan lupa bahagia, Ramadhan cuma setahun sekali! 😊"
+    ];
     
-    // Welcome Screen
-    contentArea.innerHTML = `<div class="card fade" style="text-align:center; padding:40px;"><h2>🌙 Selamat Datang!</h2><p>Pilih waktu di atas untuk mulai.</p></div>`;
+    // Show random quote every 30 seconds
+    setInterval(() => {
+      if(document.querySelector('.card:last-child .small')){
+        const quote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.querySelector('.card:last-child .small').innerHTML = 
+          `✨ <strong>Motivasi:</strong> ${quote}`;
+      }
+    }, 30000);
   </script>
 </body>
 </html>
