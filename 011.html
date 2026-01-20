@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Cerdas Buka Puasa Ala Rasulullah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a2a5c 0%, #1a73e8 100%);
+            color: #0d1b2a;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .islamic-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="%23FFD700">🌙</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 
+                0 25px 70px rgba(10, 42, 92, 0.4),
+                0 0 0 1px rgba(255, 215, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            position: relative;
+            background: linear-gradient(135deg, #0a2a5c 0%, #1a73e8 100%);
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(10, 42, 92, 0.3),
+                inset 0 0 0 1px rgba(255, 215, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="%23FFD700" opacity="0.1">🕌</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.6),
+                inset 0 0 20px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 
+                0 0 40px rgba(255, 215, 0, 0.8),
+                inset 0 0 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .moon-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            color: #FFD700;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 
+                3px 3px 6px rgba(10, 42, 92, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 42, 92, 0.6);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #FFD700;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FFD700; }
+            to { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFA500; }
+        }
+
+        h2 {
+            color: #0a2a5c;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            background: linear-gradient(to right, rgba(26, 115, 232, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #1a73e8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a2a5c, #1a73e8);
+        }
+
+        h3 {
+            color: #0a2a5c;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #1a73e8;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #0d1b2a;
+            font-size: 1.05em;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.9) 0%, rgba(230, 240, 255, 0.9) 100%);
+            border-left: 5px solid #1a73e8;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(26, 115, 232, 0.2);
+            border-right: 1px solid rgba(26, 115, 232, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(26, 115, 232, 0.3);
+        }
+
+        .intro-box::before {
+            content: "✨";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(10, 42, 92, 0.1);
+        }
+
+        .intro-box::after {
+            content: "✨";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(10, 42, 92, 0.1);
+        }
+
+        .hadith-box {
+            background: linear-gradient(135deg, rgba(255, 250, 230, 0.9) 0%, rgba(255, 245, 215, 0.9) 100%);
+            border-left: 5px solid #FFD700;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            border-right: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hadith-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .hadith-box::before {
+            content: "﴾";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(10, 42, 92, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .hadith-box::after {
+            content: "﴿";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(10, 42, 92, 0.1);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        /* Gaya khusus untuk teks Arab */
+        .arabic-text {
+            text-align: center;
+            color: #0a2a5c;
+            font-weight: regular;
+            font-size: 2em;
+            font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade', serif;
+            margin: 20px 0;
+            line-height: 1.6;
+            direction: rtl;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .hadith-box p {
+            color: #0d1b2a;
+            font-style: normal;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hadith-box small {
+            color: #0a2a5c;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .source-link {
+            background: rgba(240, 248, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #1a73e8;
+            border-right: 1px solid rgba(26, 115, 232, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .source-link:hover {
+            background: rgba(240, 248, 255, 1);
+            transform: translateX(5px);
+        }
+
+        .source-link a {
+            color: #0a2a5c;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+            color: #1a73e8;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #0d1b2a;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #1a73e8;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            color: #0a2a5c;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(10, 42, 92, 0.05) 0%, rgba(26, 115, 232, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #0a2a5c, #FFD700, #0a2a5c);
+        }
+
+        .decorative-symbols {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+            color: #0a2a5c;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(26, 115, 232, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.2em;
+            color: #0a2a5c;
+            border: 2px dashed #1a73e8;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #1a73e8;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #1a73e8;
+        }
+
+        /* Kotak dengan warna berbeda untuk berbagai bagian */
+        .secrets-box {
+            background: rgba(240, 248, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #1a73e8;
+            border-right: 1px solid rgba(26, 115, 232, 0.3);
+        }
+
+        .warning-box {
+            background: rgba(255, 243, 224, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #FF8F00;
+            border-right: 1px solid rgba(255, 143, 0, 0.3);
+        }
+
+        .success-box {
+            background: rgba(232, 245, 233, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #689F38;
+            border-right: 1px solid rgba(104, 159, 56, 0.3);
+        }
+
+        .tips-box {
+            background: rgba(255, 253, 235, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #FFD700;
+            border-right: 1px solid rgba(255, 179, 0, 0.3);
+        }
+
+        .science-box {
+            background: rgba(225, 245, 254, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #0288D1;
+            border-right: 1px solid rgba(2, 136, 209, 0.3);
+        }
+
+        .fact-box {
+            background: rgba(255, 248, 225, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #FFA000;
+            border-right: 1px solid rgba(255, 160, 0, 0.3);
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.9) 0%, rgba(255, 250, 230, 0.9) 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #0a2a5c;
+            border-right: 1px solid rgba(10, 42, 92, 0.3);
+            box-shadow: 0 8px 20px rgba(10, 42, 92, 0.2);
+        }
+
+        blockquote {
+            font-style: italic;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(240, 248, 255, 0.5);
+            border-left: 5px solid #0a2a5c;
+            border-radius: 10px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .section-icon {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .moon-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .decorative-symbols {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+            
+            /* Ukuran font Arab untuk mobile */
+            .arabic-text {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+            
+            /* Ukuran font Arab untuk layar sangat kecil */
+            .arabic-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="islamic-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="moon-icon">🌙</div>
+            <h1>Menu Cerdas Buka Puasa Ala Rasulullah ﷺ</h1>
+            <div class="header-subtitle">Simpel, Sehat, dan Penuh Hikmah</div>
+            <div class="decorative-line">
+                <span>🕌</span>
+            </div>
+        </div>
+
+        <div class="intro-box">
+            <p>Mau buka puasa yang bikin tubuh segar dan ibadah tetap semangat? <br>Yuk, tiru Menu buka puasa ala Rasulullah ﷺ. Tidak hanya sunnah yang mendatangkan pahala, tetapi juga mukjizat kesehatan yang terbukti di jaman modern.</p>
+        </div>
+
+        <h2><span class="section-icon">📖</span> Dalil dari Hadits</h2>
+
+        <div class="hadith-box">
+            <p>Dari Anas bin Malik, ia berkata:</p>
+            <p class="arabic-text">عَنْ أَنَسِ بْنِ مَالِكٍ قَالَ: كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يُفْطِرُ قَبْلَ أَنْ يُصَلِّيَ عَلَى رُطَبَاتٍ، فَإِنْ لَمْ تَكُنْ رُطَبَاتٌ فَتُمَيْرَاتٌ، فَإِنْ لَمْ تَكُنْ تُمَيْرَاتٌ حَسَا حَسَوَاتٍ مِنْ مَاءٍ</p>
+            <p>"Nabi ﷺ biasa berbuka puasa sebelum shalat dengan <b>ruthab (kurma basah)</b>, jika tidak ada ruthab, maka beliau berbuka dengan <b>tamr (kurma kering)</b>, dan jika tidak ada tamr, beliau meminum <b>seteguk air</b>."</p>
+            <small>HR Abu Dawud (no. 2356), Ad-Daruquthni (no. 240) dan Al-Hakim (I/432 no. 1576). <br>Dihasankan oleh Imam Al-Albani dalam Irwa-ul Ghalil fi Takhrij Ahaadits Manaaris Sabiil IV/45 no. 922</small>
+        </div>
+
+        <div class="decorative-symbols">🌙 🍯 💧 🕋 ✨</div>
+
+        <h2><span class="section-icon">🔍</span> Rahasia di Balik Sunnah Ini</h2>
+
+        <div class="secrets-box">
+            <p><span class="emoji">⚡</span> <strong class="highlight">Energi Instan Tanpa "Kaget"</strong></p>
+            <p>Kurma punya gula alami (glukosa & fruktosa) yang langsung diserap tubuh tanpa proses pencernaan kompleks. Jadi energi cepat pulih tanpa bikin lambung "shock" setelah seharian kosong.</p>
+            <p><em>Fakta Ilmiah:</em> Glukosa dan fruktosa dalam kurma diserap langsung oleh usus halus dalam waktu 15-20 menit, memberikan energi instan yang dibutuhkan tubuh.</p>
+            
+            <p><span class="emoji">💧</span> <strong class="highlight">Lawan Dehidrasi dengan Cara Tepat</strong></p>
+            <p>Air putih mengembalikan cairan tubuh yang hilang seharian. Simpel, murah, dan ada di mana-mana.</p>
+            <p><em>Tips Penting:</em> Minum air dalam 3 tegukan (seperti sunnah) lebih efektif daripada langsung sekaligus. Metode ini mengoptimalkan penyerapan cairan oleh sel-sel tubuh dan mencegah hiponatremia (kadar natrium rendah).</p>
+            
+            <p><span class="emoji">🛡️</span> <strong class="highlight">Aman untuk Lambung Kosong</strong></p>
+            <p>Keduanya ringan, nggak memberatkan pencernaan yang baru "bangun" setelah seharian kosong. Kurma juga mengandung serat larut (6-8%) yang membentuk gel dalam lambung, memperlambat penyerapan gula dan mencegah lonjakan gula darah drastis.</p>
+        </div>
+
+        <div class="decorative-symbols">✨ 🍇 🕋 🍯 ✨</div>
+
+        <h2><span class="section-icon">🧠</span> Hikmah & Tips Praktis</h2>
+
+        <div class="tips-box">
+            <p><span class="emoji">⏳</span> <strong class="highlight">Jangan Langsung "Balas Dendam"!</strong></p>
+            <p>Lambung butuh penyesuaian. Langsung makan berat bikin:</p>
+            <ul>
+                <li> Perut begah<span class="emoji"> ❌</span></li>
+                <li> Ngantuk berat<span class="emoji"> ❌</span></li>
+                <li> Ganggu konsentrasi shalat Maghrib & Tarawih<span class="emoji"> ❌</span></li>
+            </ul>
+            <p><em>Studi Ilmiah:</em> <br>University of Illinois (2019) menunjukkan konsumsi 3-5 butir kurma sebelum makan utama meningkatkan kepuasan lambung hingga 30% dan mencegah overeating.</p>
+            
+            <p><span class="emoji">🕒</span> <strong class="highlight">Urutan yang Tepat</strong></p>
+            <ol>
+                <li>Buka dengan kurma/air (3 butir kurma atau segelas air cukup)</li>
+                <li>Shalat Maghrib dulu</li>
+                <li>Makan besar setelahnya</li>
+            </ol>
+            <p>Ini bikin shalat lebih khusyuk dan badan nggak keliyengan. Praktek ini menciptakan "ritual transisi" yang mempersiapkan tubuh secara fisik sebelum shalat, sekaligus memfasilitasi konsentrasi spiritual.</p>
+            
+            <p><span class="emoji">🥗</span> <strong class="highlight">Pilihan Lain Kalau Nggak Ada Kurma</strong></p>
+            <p>Buah lokal dengan indeks glikemik (GI) rendah:</p>
+            <ul>
+                <li><span class="emoji">🍌</span> Pisang ambon (GI 51)</li>
+                <li><span class="emoji">🍈</span> Pepaya (GI 59)</li>
+                <li><span class="emoji">🍉</span> Semangka/Melon</li>
+                <li><span class="emoji">🍇</span> Anggur</li>
+            </ul>
+            
+            <p><strong class="highlight">Hindari sebagai pembuka:</strong></p>
+            <ul>
+                <li> Makanan berminyak/gorengan<span class="emoji"> ❌</span></li>
+                <li> Minuman terlalu dingin/es<span class="emoji"> ❌</span></li>
+                <li> Minuman manis berlebihan<span class="emoji"> ❌</span></li>
+            </ul>
+        </div>
+
+        <div class="decorative-symbols">🌟 ⚖️ 🌍 🔬 🎯</div>
+
+        <h2><span class="section-icon">💡</span> Fakta Keren</h2>
+
+        <div class="fact-box">
+            <p><span class="emoji">🌟</span> <strong class="highlight">Kurma itu Superfood!</strong></p>
+            <p>Selain gula alami, kurma juga kaya:</p>
+            <ul>
+                <li><strong>Serat</strong> → Baik untuk pencernaan</li>
+                <li><strong>Kalium (320-400mg/100g)</strong> → Jaga keseimbangan cairan dan tekanan darah</li>
+                <li><strong>Antioksidan</strong> → Melawan radikal bebas</li>
+                <li><strong>Xylitol alami</strong> → Menghambat bakteri penyebab gigi berlubang (Streptococcus mutans)</li>
+            </ul>
+            
+            <p><span class="emoji">⚖️</span> <strong class="highlight">Bertahap itu Kunci</strong></p>
+            <p>Makan sedikit dulu memberikan manfaat:</p>
+            <ul>
+                <li><span class="emoji">✅</span> Lambung siap menerima makanan</li>
+                <li><span class="emoji">✅</span> Mencegah lonjakan gula darah drastis</li>
+                <li><span class="emoji">✅</span> Sistem pencernaan aktif perlahan</li>
+                <li><span class="emoji">✅</span> Mencegah dispepsia dan kelelahan pasca-makan</li>
+            </ul>
+            
+            <p><span class="emoji">🌍</span> <strong class="highlight">Sunnah itu Sehat & Adil</strong></p>
+            <p>🔘 Kurma dan air mudah didapat, nggak harus mahal. <br>🔘 Sunnah ini bisa dilakukan semua orang, dari yang kaya sampai yang pas-pasan. <br>🔘 Kurma adalah sumber energi padat yang tidak memerlukan penyimpanan khusus atau persiapan rumit—sejalan dengan prinsip keadilan dalam syariat.</p>
+        </div>
+
+        <h2><span class="section-icon">🔬</span> Bukti Sains Modern</h2>
+
+        <div class="science-box">
+            <p><span class="emoji">⚖️</span> <strong class="highlight">Keseimbangan Elektrolit</strong></p>
+            <p>Setelah berpuasa, tubuh kehilangan elektrolit penting. Kalium dalam kurma membantu mengatur:</p>
+            <ul>
+                <li>Tekanan darah</li>
+                <li>Keseimbangan cairan tubuh</li>
+                <li>Fungsi otot dan saraf</li>
+            </ul>
+            
+            <p><span class="emoji">🛡️</span> <strong class="highlight">Pencegahan "Shock" Metabolik</strong></p>
+            <p>Konsumsi kurma mencegah lonjakan insulin yang terlalu cepat karena:</p>
+            <ul>
+                <li>Serat larut memperlambat penyerapan gula</li>
+                <li>Kombinasi glukosa dan fruktosa memberikan energi bertahap</li>
+                <li>Tidak membebani pankreas yang "istirahat" seharian</li>
+            </ul>
+            
+            <p><span class="emoji">😁</span> <strong class="highlight">Kesehatan Mulut</strong></p>
+            <p>Air putih setelah kurma membantu:</p>
+            <ul>
+                <li>Membersihkan plak gigi</li>
+                <li>Menstimulasi produksi air liur</li>
+                <li>Melindungi email gigi</li>
+            </ul>
+        </div>
+
+        <div class="decorative-symbols">🎯 ✨ 🕌 🌙 🍯</div>
+
+        <div class="footer">
+            <h2 style="text-align: center; border: none; padding: 0; color: #0a2a5c;">Kesimpulan:</h2>
+            
+            <div class="conclusion-box">
+                <p><span class="emoji">🎯</span> <strong class="highlight">Intinya...</strong></p>
+                <p>Menu buka puasa ala Rasulullah ﷺ itu:
+                    <br>🔸 <strong>Sunnah</strong> – dapat pahala<span class="emoji"> ✅</span>
+                    <br>🔸 <strong>Sehat</strong> – sesuai ilmu gizi modern<span class="emoji"> ✅</span>
+                    <br>🔸 <strong>Praktis</strong> – mudah dilakukan<span class="emoji"> ✅</span></li>
+                    <br>🔸 <strong>Cerdas</strong> – bikin ibadah tetap optimal<span class="emoji"> ✅</span>
+                    <br>🔸 <strong>Universal</strong> – bisa diakses semua kalangan<span class="emoji"> ✅</span>
+                </p>
+                
+                <p><span class="emoji">📌</span> <strong class="highlight">Praktek berbuka puasa ala Rasulullah SAW</strong> bukan sekadar ritual, tapi sistem holistik yang menggabungkan:
+                    <br>🔸Kebutuhan biologis manusia
+                    <br>🔸Prinsip-prinsip spiritual Islam
+                    <br>🔸Ilmu gizi modern
+                </p>
+                <p>Semua ini membentuk pola makan yang melindungi kesehatan mental dan fisik sekaligus meningkatkan kualitas ibadah.</p>
+                
+                <blockquote>
+                    <p>"Makan untuk hidup, bukan hidup untuk makan."</p>
+                </blockquote>
+                
+                <p>Dengan berbuka sederhana, energi pulih, ibadah lancar, puasa besok semangat lagi!</p>
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; color: #1a73e8; margin-top: 20px; font-size: 1.2em;">Wallahu a'lam bishawab. Semoga puasa kita makin berkualitas! 🌙✨</p>
+            
+            <div class="decorative-symbols" style="margin-top: 30px; font-size: 1.8em; color: #0a2a5c;">🌙 🕌 ✨</div>
+            <div class="author-signature">Gen Zehat - Menu Buka Puasa Cerdas</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle animation to boxes on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all boxes
+        document.querySelectorAll('.hadith-box, .secrets-box, .tips-box, .fact-box, .science-box, .conclusion-box').forEach(box => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateY(20px)';
+            box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(box);
+        });
+    </script>
+</body>
+</html>
