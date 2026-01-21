@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bertahap dalam Berbuka Puasa</title>
+    <title>Jangan Balas Dendam: Mengendalikan Diri Saat Berbuka Puasa</title>
     <style>
         * {
             margin: 0;
@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e63946 0%, #f4a261 50%, #2a9d8f 100%);
-            color: #2d3748;
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: #333;
             line-height: 1.8;
             padding: 20px;
             min-height: 100vh;
@@ -42,17 +42,17 @@
             50% { opacity: 1; }
         }
 
-        .date-pattern {
+        .mosque-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.05;
+            opacity: 0.03;
             pointer-events: none;
             z-index: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="60" font-size="50" fill="white">🍇</text></svg>');
-            background-size: 80px 80px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">🌙</text></svg>');
+            background-size: 100px 100px;
         }
 
         .container {
@@ -64,7 +64,7 @@
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
             position: relative;
             z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(139, 69, 19, 0.3);
             backdrop-filter: blur(10px);
         }
 
@@ -74,9 +74,9 @@
             padding: 30px 20px;
             border-bottom: none;
             position: relative;
-            background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+            background: linear-gradient(135deg, #388e3c 0%, #8b4513 100%);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
             overflow: hidden;
         }
 
@@ -87,7 +87,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">🍇</text></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">🌙</text></svg>');
             background-size: 80px 80px;
             opacity: 0.3;
         }
@@ -113,7 +113,7 @@
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
         }
 
-        .date-icon {
+        .moon-icon {
             font-size: 70px;
             margin-bottom: 15px;
             animation: float 3s ease-in-out infinite;
@@ -138,7 +138,7 @@
         }
 
         .header-subtitle {
-            color: rgba(255, 255, 255, 0.95);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.2em;
             font-style: italic;
             margin-top: 10px;
@@ -159,31 +159,31 @@
         .decorative-line::after {
             content: '';
             height: 2px;
-            background: linear-gradient(to right, transparent, #f4a261, transparent);
+            background: linear-gradient(to right, transparent, #d32f2f, transparent);
             flex: 1;
         }
 
         .decorative-line span {
             margin: 0 15px;
             font-size: 28px;
-            color: #f4a261;
+            color: #d32f2f;
             animation: glow 2s infinite alternate;
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 10px #f4a261; }
-            to { text-shadow: 0 0 20px #f4a261, 0 0 30px #f4a261; }
+            from { text-shadow: 0 0 10px #d32f2f; }
+            to { text-shadow: 0 0 20px #d32f2f, 0 0 30px #d32f2f; }
         }
 
         h2 {
-            color: #2a9d8f;
+            color: #388e3c;
             font-size: 1.9em;
             margin: 30px 0 20px;
             padding: 15px 20px;
             border-left: none;
-            background: linear-gradient(to right, rgba(244, 162, 97, 0.1), transparent);
+            background: linear-gradient(to right, rgba(211, 47, 47, 0.1), transparent);
             border-radius: 10px;
-            border-bottom: 3px solid #f4a261;
+            border-bottom: 3px solid #d32f2f;
             position: relative;
             overflow: hidden;
         }
@@ -195,63 +195,63 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: linear-gradient(to bottom, #e63946, #f4a261);
+            background: linear-gradient(to bottom, #388e3c, #d32f2f);
         }
 
         h3 {
-            color: #e63946;
+            color: #5d4037;
             font-size: 1.5em;
             margin: 25px 0 15px;
             padding-left: 15px;
-            border-left: 4px solid #f4a261;
+            border-left: 4px solid #d32f2f;
         }
 
         p {
             margin-bottom: 15px;
             text-align: justify;
-            color: #4a5568;
+            color: #5d4037;
             font-size: 1.05em;
         }
 
-        .hadith-box {
-            background: linear-gradient(135deg, rgba(255, 237, 204, 0.95) 0%, rgba(253, 203, 110, 0.95) 100%);
-            border-left: 5px solid #e63946;
+        .verse-box {
+            background: linear-gradient(135deg, rgba(139, 195, 74, 0.9) 0%, rgba(104, 159, 56, 0.9) 100%);
+            border-left: 5px solid #d32f2f;
             border-radius: 15px;
             padding: 25px;
             margin: 25px 0;
-            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.2);
-            border-right: 1px solid rgba(230, 57, 70, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+            border-right: 1px solid rgba(139, 69, 19, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .hadith-box:hover {
+        .verse-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(230, 57, 70, 0.3);
+            box-shadow: 0 12px 25px rgba(139, 69, 19, 0.4);
         }
 
-        .hadith-box::before {
+        .verse-box::before {
             content: "﴾";
             position: absolute;
             top: 10px;
             left: 10px;
             font-size: 2em;
-            color: rgba(230, 57, 70, 0.1);
+            color: rgba(255, 255, 255, 0.3);
             font-family: 'Traditional Arabic', serif;
         }
 
-        .hadith-box::after {
+        .verse-box::after {
             content: "﴿";
             position: absolute;
             bottom: 10px;
             right: 10px;
             font-size: 2em;
-            color: rgba(230, 57, 70, 0.1);
+            color: rgba(255, 255, 255, 0.3);
             font-family: 'Traditional Arabic', serif;
         }
 
-        .hadith-box p {
+        .verse-box p {
             color: #2d3748;
             font-style: italic;
             margin-bottom: 10px;
@@ -259,8 +259,8 @@
             z-index: 1;
         }
 
-        .hadith-box small {
-            color: #555;
+        .verse-box small {
+            color: #444;
             font-weight: bold;
             display: block;
             text-align: right;
@@ -268,31 +268,28 @@
             font-style: normal;
         }
 
-        .important-note {
-            background: rgba(42, 157, 143, 0.1);
+        .highlight-box {
+            background: rgba(255, 241, 224, 0.9);
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
-            border-left: 5px solid #2a9d8f;
-            border-right: 1px solid rgba(42, 157, 143, 0.3);
+            border-left: 5px solid #8b4513;
+            border-right: 1px solid rgba(139, 69, 19, 0.3);
             transition: all 0.3s ease;
-            animation: pulse 3s infinite;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(42, 157, 143, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(42, 157, 143, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(42, 157, 143, 0); }
-        }
-
-        .important-note:hover {
-            background: rgba(42, 157, 143, 0.15);
+        .highlight-box:hover {
+            background: rgba(255, 241, 224, 1);
             transform: translateX(5px);
+        }
+
+        .highlight-box strong {
+            color: #d32f2f;
         }
 
         .dropdown {
             margin: 20px 0;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #d7ccc8;
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -301,13 +298,13 @@
         }
 
         .dropdown:hover {
-            border-color: #f4a261;
-            box-shadow: 0 8px 25px rgba(244, 162, 97, 0.2);
+            border-color: #d32f2f;
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.2);
             transform: translateY(-3px);
         }
 
         .dropdown-header {
-            background: linear-gradient(135deg, #2a9d8f 0%, #1d6f65 100%);
+            background: linear-gradient(135deg, #388e3c 0%, #5d4037 100%);
             color: white;
             padding: 20px 25px;
             cursor: pointer;
@@ -322,7 +319,7 @@
         }
 
         .dropdown-header:hover {
-            background: linear-gradient(135deg, #258579 0%, #155952 100%);
+            background: linear-gradient(135deg, #2e7d32 0%, #4e342e 100%);
             padding-left: 30px;
         }
 
@@ -347,7 +344,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
-            background: #f8fafc;
+            background: #f5f5f5;
         }
 
         .dropdown-content.active {
@@ -365,14 +362,14 @@
 
         li {
             margin-bottom: 10px;
-            color: #4a5568;
+            color: #5d4037;
             padding-left: 10px;
             position: relative;
         }
 
         li::before {
             content: "•";
-            color: #e63946;
+            color: #d32f2f;
             font-weight: bold;
             display: inline-block;
             width: 1em;
@@ -386,15 +383,6 @@
             vertical-align: middle;
         }
 
-        .footnote {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-            margin-top: 5px;
-            padding-left: 10px;
-            border-left: 2px solid #f4a261;
-        }
-
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -402,7 +390,7 @@
             border-top: none;
             color: #666;
             font-style: italic;
-            background: linear-gradient(135deg, rgba(230, 57, 70, 0.05) 0%, rgba(244, 162, 97, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(56, 142, 60, 0.05) 0%, rgba(139, 69, 19, 0.05) 100%);
             border-radius: 15px;
             position: relative;
             overflow: hidden;
@@ -415,7 +403,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(to right, #e63946, #f4a261, #2a9d8f);
+            background: linear-gradient(to right, #388e3c, #d32f2f, #8b4513);
         }
 
         .ramadhan-decoration {
@@ -431,12 +419,12 @@
             text-align: center;
             margin-top: 30px;
             padding: 20px;
-            background: rgba(244, 162, 97, 0.1);
+            background: rgba(211, 47, 47, 0.1);
             border-radius: 15px;
             font-family: 'Brush Script MT', cursive;
             font-size: 1.0em;
-            color: #e63946;
-            border: 2px dashed #f4a261;
+            color: #5d4037;
+            border: 2px dashed #d32f2f;
             position: relative;
         }
 
@@ -447,7 +435,7 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 2em;
-            color: #f4a261;
+            color: #d32f2f;
         }
 
         .author-signature::after {
@@ -457,31 +445,16 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 2em;
-            color: #f4a261;
+            color: #d32f2f;
         }
 
-        .benefit-box {
-            background: rgba(42, 157, 143, 0.05);
+        .important-note {
+            background: linear-gradient(135deg, rgba(255, 235, 238, 0.9) 0%, rgba(255, 205, 210, 0.9) 100%);
             border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 2px dashed #2a9d8f;
-            transition: all 0.3s ease;
-        }
-
-        .benefit-box:hover {
-            background: rgba(42, 157, 143, 0.1);
-            transform: scale(1.01);
-        }
-
-        .step-animation {
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #d32f2f;
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -503,7 +476,7 @@
                 font-size: 1.3em;
             }
 
-            .date-icon {
+            .moon-icon {
                 font-size: 50px;
             }
 
@@ -544,142 +517,229 @@
 </head>
 <body>
     <div class="stars" id="stars"></div>
-    <div class="date-pattern"></div>
+    <div class="mosque-pattern"></div>
 
     <div class="container">
         <div class="header">
             <div class="logo-container">
                 <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
             </div>
-            <div class="date-icon">🌙</div>
-            <h1>BERTAHAP DALAM BERBUKA PUASA</h1>
-            <div class="header-subtitle">Mengikuti Sunnah Nabi ﷺ untuk Kesehatan dan Kekhusyukan Ibadah</div>
+            <div class="moon-icon">🌙</div>
+            <h1>JANGAN BALAS DENDAM</h1>
+            <div class="header-subtitle">Mengendalikan Diri Saat Berbuka Puasa untuk Kesehatan Jasmani dan Rohani</div>
             <div class="decorative-line">
-                <span>🍇</span>
+                <span>✨</span>
             </div>
         </div>
 
-        <p>Salah satu sunnah Nabi Muhammad ﷺ yang penuh hikmah adalah <strong>menyegerakan berbuka puasa</strong> dengan makanan ringan sebelum shalat Maghrib, kemudian melanjutkan dengan makanan utama setelah shalat. <br>Praktik ini tidak hanya bernilai ibadah, tetapi juga sangat menyehatkan secara medis.</p>
+        <p>Ramadhan adalah bulan pendidikan ruhani dan pengendalian diri. Salah satu ujian terbesar adalah menghadapi godaan makan dan minum saat berbuka puasa. Seringkali kita merasa "dendam" terhadap makanan yang telah kita lihat sepanjang hari, dan ingin melampiaskannya saat waktu berbuka tiba. Namun, apakah ini esensi dari puasa?</p>
 
-        <h2>Sunnah Nabi ﷺ dalam Berbuka Puasa</h2>
-
-        <div class="hadith-box">
-            <p>Dari Anas bin Malik, ia berkata :</p>
-            <p>"Nabi ﷺ biasa berbuka puasa sebelum shalat dengan ruthab (kurma basah), jika tidak ada ruthab, maka beliau berbuka dengan tamr (kurma kering), dan jika tidak ada tamr, beliau meminum seteguk air."</p>
-            <small>HR Abu Dawud (no. 2356), Ad-Daruquthni (no. 240) dan Al-Hakim (I/432 no. 1576). Dihasankan oleh Imam Al-Albani dalam Irwa-ul Ghalil fi Takhrij Ahaadits Manaaris Sabiil IV/45 no. 922</small>
+        <div class="verse-box">
+            <p>وَكُلُوا۟ وَٱشْرَبُوا۟ وَلَا تُسْرِفُوٓا۟ ۚ</p>
+            <p>"… makan dan minumlah, dan janganlah berlebih-lebihan."</p>
+            <small>(QS. Al-A'raf: 31)</small>
         </div>
 
-        <div class="important-note">
-            <p>📌 <strong>Perhatikan kata yang dicetak tebal:</strong> "sebelum shalat" mengandung pengertian bahwa Nabi berbuka puasa dengan kurma dan/atau air putih adalah <strong>sebelum shalat Maghrib</strong>.</p>
+        <h2>Jangan Kau Lampiaskan!</h2>
+        <p>Pelampiasan makan saat berbuka puasa akan mengurangi esensi puasa itu sendiri, yaitu melatih pengendalian diri, termasuk mengendalikan makan dan minum.</p>
+        
+        <div class="highlight-box">
+            <p><strong>Risiko makan berlebihan saat berbuka:</strong></p>
+            <ul>
+                <li>Sangat rentan terjadi gangguan pencernaan</li>
+                <li>Tidak nyaman saat sholat maghrib dan aktivitas lainnya</li>
+                <li>Mengurangi kekhusyukan dalam ibadah</li>
+            </ul>
         </div>
 
-        <div class="hadith-box">
-            <p>Dari Anas bin Malik, Nabi ﷺ bersabda:</p>
-            <p>"Apabila makan malam sudah tersaji, maka dahulukanlah makan malam tersebut dari shalat maghrib. Dan janganlah kalian tergesa-gesa dari makan kalian."</p>
-            <small>(HR. Bukhari no. 672 dan Muslim no. 557)</small>
-        </div>
-
-        <p><span class="step-animation">🏾</span> Dari dua hadits tersebut dapat kita simpulkan bahwa Nabi ﷺ mencontohkan <strong>menyegerakan berbuka puasa</strong>, bahkan beliau mendahulukannya dari sholat Maghrib. Namun beliau hanya makan kurma beberapa biji dan/atau air putih, kemudian baru menunaikan sholat Maghrib.</p>
-
-        <div class="ramadhan-decoration">🕌 🍇 💧 🕋</div>
-
-        <h2>Pelajaran yang Bisa Diambil</h2>
-
+        <h2>Sunnah Berbuka Secara Bertahap</h2>
+        <p>Rasulullah ﷺ tidak langsung makan berat saat berbuka. Beliau berbuka dengan kurma atau air, lalu sholat Maghrib, baru kemudian makan. Ini menunjukkan:</p>
+        
         <div class="dropdown">
             <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🍇</span> 1. Mengawali dengan Makanan Ringan yang Tepat</span>
+                <span><span class="emoji">📋</span> Hikmah Berbuka Bertahap</span>
                 <span class="icon">▼</span>
             </div>
             <div class="dropdown-content">
                 <div class="dropdown-content-inner">
-                    <p>Mengawali berbuka puasa hanya dengan makanan yang ringan (kurma) dan air putih. Hal ini penting karena perut yang kosong dalam jangka lama sangat riskan (beresiko) jika langsung diberikan masukan makanan yang banyak, apalagi yang sifatnya merangsang lambung. Bahkan kadangkala bisa memunculkan gangguan pencernaan, seperti mules, perut terasa perih, mual dan mutah, bahkan ada yang sampai menimbulkan kolik (kram usus). Maka berbuka puasa secara bertahap ini adalah contoh yang bagus dari Nabi shollalloohu'alaihi wasallam.</p>
-                    
-                    <h3>Kandungan Gizi Kurma sebagai Pilihan Utama</h3>
-                    <p>Kurma (baik basah/ruthab maupun kering/tamr) mengandung gula alami (glukosa, fruktosa) yang cepat diserap, serat yang mendukung pencernaan, serta mineral (kalium, magnesium) yang membantu mengembalikan cairan tubuh setelah dehidrasi. Hal ini menjelaskan mengapa Nabi ﷺ memilih kurma sebagai makanan pertama—karena efektif mengatasi kelemahan akibat puasa tanpa memberatkan lambung.</p>
-                    <p class="footnote">Sunnah lainnya untuk berbuka ringan adalah dengan susu segar atau air zamzam jika tersedia, seperti dalam riwayat dari Ibnu Abbas RA (HR Muslim no. 1095). Ini menekankan prioritas makanan mudah dicerna.</p>
-                    
-                    <h3>Dasar Ilmiah Kesehatan Modern</h3>
-                    <p>Secara medis, berbuka bertahap mencegah "refeeding syndrome" di mana asupan makanan berat tiba-tiba bisa mengganggu elektrolit dan gula darah. Kurma kaya kalium, serat, dan glukosa alami yang stabilkan gula darah secara cepat, sementara air menghidrasi selaput lendir lambung—mengurangi risiko gastritis atau refluks yang sering dialami di awal puasa.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🧘</span> 2. Menjaga Ketenangan dan Tidak Tergesa-gesa</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <p>Sunnah "Tidak Mengejar-Ngejar Makanan" terlihat dari hadits yang memerintahkan untuk tidak tergesa-gesa dari makan malam. Ini mengajarkan bahwa berbuka bukan tentang mengejar kelaparan seketika, tetapi tentang menikmati makanan ringan dengan tenang dan syukur—sesuai dengan etos puasa sebagai ibadah kesabaran.</p>
-                    <div class="benefit-box">
-                        <p>💡 <strong>Tips praktis:</strong> Ambil waktu 5-10 menit untuk duduk tenang saat berbuka, minum air dan makan kurma dengan perlahan, sambil mengucap syukur kepada Allah.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🕌</span> 3. Makan Utama Setelah Shalat</span>
-                <span class="icon">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <div class="dropdown-content-inner">
-                    <p>Setelah sholat maghrib atau selanjutnya baru kita makan makanan utama dimana perut kita sudah siap menerimanya. Hal ini berdasarkan ayat berikut:</p>
-                    <div class="hadith-box">
-                        <p>"... dan makan minumlah hingga terang bagimu benang putih dari benang hitam, yaitu fajar."</p>
-                        <small>(QS Al Baqarah: 187)</small>
-                    </div>
-                    <p>Prinsip "bertahap" ini sejalan dengan ayat lainnya yang mengajarkan keseimbangan dan kesabaran. Setelah shalat Maghrib, sunnah melanjutkan dengan makan utama yang seimbang, menghindari gorengan atau pedas berlebih agar pencernaan siap untuk ibadah lanjutan seperti Tarawih atau Tahajud.</p>
                     <ul>
-                        <li>Mulailah dengan sup atau makanan berkuah</li>
-                        <li>Konsumsi karbohidrat kompleks (nasi merah, roti gandum)</li>
-                        <li>Perbanyak sayuran dan protein</li>
-                        <li>Hindari makan berlebihan</li>
+                        <li>Tubuh diberi sinyal awal terlebih dahulu</li>
+                        <li>Perut tidak "kaget" setelah kosong seharian</li>
+                        <li>Nafsu makan lebih terkendali setelah sholat</li>
+                        <li>Sangat selaras dengan prinsip medis modern</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <h2>Pemilihan Makanan Berbasis Sunnah & Kesehatan</h2>
+        
         <div class="dropdown">
             <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span><span class="emoji">🤲</span> 4. Mendukung Kekhusyukan Ibadah</span>
+                <span><span class="emoji">🍴</span> Panduan Memilih Makanan Berbuka</span>
                 <span class="icon">▼</span>
             </div>
             <div class="dropdown-content">
                 <div class="dropdown-content-inner">
-                    <p>Buka puasa secara bertahap akan membuat ibadah kita lebih nyaman. Dengan perut yang tidak terlalu kenyang akan tetapi masukan energi sudah ada, maka ibadah kita akan nyaman. Berbeda halnya jika kita sholat dalam kondisi belum makan dan minum, maka kita kurang khusyu' karena lemas dan menahan lapar. Demikian halnya jika kita sholat dalam kondisi kekenyangan, tentu ibadah kita kurang khusyu'.</p>
-                    
-                    <h3>Tujuan Spiritual dan Kesehatan Ganda</h3>
-                    <p>Bertahap dalam berbuka bukan hanya untuk kesehatan fisik, tetapi juga untuk menjaga kualitas ibadah. Puasa yang utuh (dari fajar hingga maghrib) ditutup dengan perut yang ringan agar shalat Maghrib, Isya, dan tarawih dapat dikerjakan dengan khusyuk. Perut ringan pasca-berbuka membuat bacaan Al-Qur'an lebih lancar dan khusyuk, karena energi stabil tanpa lemas atau kembung.</p>
-                    
-                    <h3>Hubungan dengan Konsep "Tadabbur" (Renungan)</h3>
-                    <p>Bertahap dalam berbuka juga memberikan ruang untuk tadabbur—merenungkan nikmat Allah yang datang melalui rasa lapar, kemudian rasa kenyang, serta kesempatan untuk beribadah dengan tubuh yang segar. Ini memperkuat makna puasa sebagai latihan spiritual yang menyeluruh bagi jasmani dan rohani.</p>
+                    <ul>
+                        <li>Awali dengan kurma dan air putih sesuai sunnah</li>
+                        <li>Kurma mengandung gula alami yang cepat menyegarkan tubuh</li>
+                        <li>Air membantu menghidrasi secara optimal</li>
+                        <li>Hindari makanan berlemak berlebih (gorengan, santan kental)</li>
+                        <li>Pilih makanan kaya serat (buah, sayur, biji-bijian)</li>
+                        <li>Penuhi kebutuhan gizi dengan porsi kecil-kecil namun berkualitas</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <div class="ramadhan-decoration">🍇 🕋 💧 🤲</div>
-
-        <div class="benefit-box">
-            <h3>✨ Manfaat Berbuka Secara Bertahap ✨</h3>
+        <div class="important-note">
+            <h3>⚠️ Jangan Menjadikan Berbuka Sebagai Ajang "Balas Kekurangan"</h3>
+            <p>Kesalahan yang sering terjadi adalah anggapan: <em>"Siang tidak makan, jadi malam boleh bebas"</em>. Padahal:</p>
             <ul>
-                <li><span class="emoji">❤️</span> Menjaga kesehatan lambung dan pencernaan</li>
-                <li><span class="emoji">⚡</span> Mengembalikan energi dengan cepat tapi stabil</li>
-                <li><span class="emoji">🧠</span> Meningkatkan kekhusyukan dalam shalat</li>
-                <li><span class="emoji">🕋</span> Memperkuat hubungan spiritual dengan Allah</li>
-                <li><span class="emoji">🏃</span> Membuat tubuh lebih siap untuk ibadah malam (Tarawih/Tahajud)</li>
-                <li><span class="emoji">🍽️</span> Mencegah makan berlebihan (overeating)</li>
+                <li>Puasa bukan mengganti makan siang ke malam</li>
+                <li>Puasa bukan menabung nafsu makan</li>
+                <li>Puasa adalah ibadah pengendalian, bukan kompensasi</li>
             </ul>
+            <p>Jika pola pikir ini tidak diperbaiki, maka puasa hanya menyisakan lapar tanpa hikmah.</p>
         </div>
+
+        <h2>Kapan dan Bagaimana Sebaiknya Kita Makan?</h2>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⏰</span> Waktu Makan yang Tepat</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p><strong>Setelah sholat Maghrib:</strong></p>
+                    <ul>
+                        <li>Jika belum makan sebelumnya, boleh makan secukupnya</li>
+                        <li>Jangan sampai kekenyangan</li>
+                        <li>Makan dengan tenang, kunyah perlahan</li>
+                    </ul>
+                    
+                    <p><strong>Setelah sholat Tarawih:</strong></p>
+                    <ul>
+                        <li>Jika sudah makan setelah Maghrib, batasi asupan</li>
+                        <li>Ini sama dengan memindahkan makan siang ke malam</li>
+                        <li>Kurang aktivitas di malam hari berisiko penimbunan lemak</li>
+                        <li>Terutama jika langsung tidur setelah makan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Bahaya Makan Terburu-buru Saat Berbuka</h2>
+        <p>Selain jumlah, cara makan juga penting untuk diperhatikan:</p>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">⚠️</span> Risiko Makan Terlalu Cepat</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Makan terlalu cepat → sinyal kenyang terlambat sampai ke otak</li>
+                        <li>Akibatnya makan berlebihan tanpa sadar</li>
+                        <li>Risiko begah, mual, dan mengantuk meningkat</li>
+                        <li>Makan dengan tenang dan membaca doa membantu menahan laju nafsu</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Kekenyangan Mengganggu Kualitas Ibadah</h2>
+        <p>Dampak makan berlebihan bukan hanya fisik, tetapi juga ruhani:</p>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🕌</span> Pengaruh pada Ibadah</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Sholat menjadi berat dan malas</li>
+                        <li>Sulit khusyu' dalam Tarawih dan tilawah</li>
+                        <li>Hati cenderung lalai dan mengantuk</li>
+                        <li>Padahal Ramadhan adalah bulan qiyam, bukan bulan rebahan karena kenyang</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="ramadhan-decoration">🕌 ✨ 🌙 ✨ 🕌</div>
+
+        <h2>Kesehatan Mental & Spiritual</h2>
+        <p>Puasa mengajarkan kesabaran terhadap hawa nafsu. Jika muncul keinginan untuk makan berlebih, ingatlah tujuan spiritual:</p>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">💖</span> Tujuan Spiritual Puasa</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Merasakan penderitaan orang lapar</li>
+                        <li>Mengasah empati terhadap sesama</li>
+                        <li>Mengurangi sifat tamak dan rakus</li>
+                        <li>Meningkatkan rasa syukur atas nikmat Allah</li>
+                    </ul>
+                    <p><strong>Praktikkan mindfulness saat makan:</strong> kunyah perlahan, nikmati setiap suap, dan ucapkan syukur agar proses makan menjadi meditasi kesadaran.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Manajemen Waktu Sahur</h2>
+        <p>Perhatian khusus juga perlu diberikan pada makan sahur:</p>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🌅</span> Tips Sahur Sehat</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li>Sahur harus diisi dengan makanan berkualitas</li>
+                        <li>Karbohidrat kompleks (oatmeal, roti gandum)</li>
+                        <li>Protein (telur, yogurt, kacang-kacangan)</li>
+                        <li>Lemak sehat (almond, avokad)</li>
+                        <li>Hindari makanan tinggi garam (jeroan, makanan olahan)</li>
+                        <li>Minum air putih cukup (1-2 gelas)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="important-note">
+            <h3>🌱 Nilai Sosial & Kemanusiaan</h3>
+            <p>Gunakan momentum Ramadan untuk berbagi makanan dengan yang membutuhkan melalui program buka puasa bersama atau sedekah. Tindakan ini menguatkan nilai solidaritas dan mengingatkan bahwa tujuan utama puasa adalah meningkatkan kepedulian sosial, bukan hanya pengendalian diri pribadi.</p>
+        </div>
+
+        <div class="ramadhan-decoration">🌙 ⭐ 🕌 ⭐ 🌙</div>
 
         <div class="footer">
             <h2 style="text-align: center; border: none; padding: 0;">Kesimpulan</h2>
-            <p style="text-align: center; margin-top: 20px;">Dengan demikian, praktik berbuka secara bertahap yang dicontohkan Nabi ﷺ adalah kombinasi sempurna antara <strong>ilmu (sains kesehatan)</strong>, <strong>adab (etika)</strong>, dan <strong>ibadah (spiritualitas)</strong>—yang membuat puasa menjadi ibadah yang menyeluruh bagi jasmani dan rohani.</p>
-            <p style="text-align: center; font-weight: bold; color: #e63946; margin-top: 20px;">"Sunnah Nabi ﷺ selalu membawa kebaikan, baik untuk dunia maupun akhirat kita."</p>
+            <p style="text-align: center; margin-top: 20px;">Tetaplah mengendalikan diri dalam makan dan minum. Puasa Ramadhan adalah tempat kita berlatih untuk mengendalikan diri. Sehingga kita tetap sehat, terhindar dari berbagai penyakit akibat banyak makan.</p>
+            <p style="text-align: center;">Puasa juga tempat kita belajar, bagaimana merasakan susahnya orang kelaparan. Sehingga kita menjadi orang yang suka memberi, sekaligus membimbing kita menjauhi sifat tamak (rakus).</p>
             
-            <p style="text-align: center; font-weight: bold; color: #8B5A2B; margin-top: 20px;">Wallaahu a'lam bish-shawab.</p>
+            <div class="highlight-box">
+                <p><strong>Puasa Ramadhan mengajarkan kita:</strong></p>
+                <ul>
+                    <li>Mengalahkan keinginan, bukan menuruti semuanya</li>
+                    <li>Menghormati nikmat, bukan menumpuknya</li>
+                    <li>Menjadi hamba yang cukup, bukan yang selalu ingin lebih</li>
+                </ul>
+                <p>Barang siapa mampu mengendalikan perutnya, insyaAlloh ia lebih mudah mengendalikan lisan, emosi, pandangan, dan hawa nafsu lainnya.</p>
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; color: #388e3c; margin-top: 20px;">Semoga Allah menjadikan puasa kita menyehatkan jasad, menjernihkan jiwa, dan meninggikan derajat.</p>
+            <p style="text-align: center; font-weight: bold; color: #8b4513; margin-top: 10px;">Walloohu a'lam bish-shawab.</p>
             
             <div class="ramadhan-decoration" style="margin-top: 30px; font-size: 1.8em;">☪️ ✨ 🌙</div>
             <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
@@ -745,28 +805,6 @@
                     });
                 }
             });
-        });
-
-        // Add animation to benefit boxes on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.benefit-box, .important-note').forEach(el => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(20px)";
-            el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-            observer.observe(el);
         });
     </script>
 </body>
