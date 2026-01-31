@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jima' di Malam Bulan Ramadhan - Panduan Syar'i dan Kesehatan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8E24AA 0%, #D32F2F 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .mosque-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">🌙</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 253, 248, 0.97);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(142, 36, 170, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: none;
+            position: relative;
+            background: linear-gradient(135deg, #8E24AA 0%, #FFD600 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(142, 36, 170, 0.4);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">❤️</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        .heart-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #D32F2F, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #FFD600;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FFD600; }
+            to { text-shadow: 0 0 20px #FFD600, 0 0 30px #FFD600; }
+        }
+
+        h2 {
+            color: #8E24AA;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            border-left: none;
+            background: linear-gradient(to right, rgba(255, 214, 0, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #FFD600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8E24AA, #D32F2F);
+        }
+
+        h3 {
+            color: #8E24AA;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #D32F2F;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #5D4037;
+            font-size: 1.05em;
+        }
+
+        .verse-box {
+            background: linear-gradient(135deg, rgba(142, 36, 170, 0.1) 0%, rgba(255, 214, 0, 0.1) 100%);
+            border-left: 5px solid #D32F2F;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(142, 36, 170, 0.3);
+            border-right: 1px solid rgba(142, 36, 170, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verse-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(142, 36, 170, 0.4);
+        }
+
+        .verse-box::before {
+            content: "﴾";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(142, 36, 170, 0.2);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .verse-box::after {
+            content: "﴿";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(142, 36, 170, 0.2);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .arabic-text {
+            text-align: center;
+            color: #8E24AA;
+            font-weight: bold;
+            font-size: 2.2em;
+            font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade', serif;
+            margin: 20px 0;
+            line-height: 1.6;
+            direction: rtl;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .verse-box p {
+            color: #5D4037;
+            font-style: italic;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verse-box small {
+            color: #666;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .highlight-box {
+            background: rgba(255, 245, 248, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #8E24AA;
+            border-right: 1px solid rgba(142, 36, 170, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            background: rgba(255, 245, 248, 1);
+            transform: translateX(5px);
+        }
+
+        .highlight-box strong {
+            color: #D32F2F;
+        }
+
+        .dropdown {
+            margin: 20px 0;
+            border: 2px solid #E1BEE7;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown:hover {
+            border-color: #8E24AA;
+            box-shadow: 0 8px 25px rgba(142, 36, 170, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .dropdown-header {
+            background: linear-gradient(135deg, #8E24AA 0%, #D32F2F 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-header:hover {
+            background: linear-gradient(135deg, #7B1FA2 0%, #C2185B 100%);
+            padding-left: 30px;
+        }
+
+        .dropdown-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-header.active .icon {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f9f9f9;
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .dropdown-content-inner {
+            padding: 25px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #5D4037;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #8E24AA;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(142, 36, 170, 0.05) 0%, rgba(255, 214, 0, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #8E24AA, #D32F2F, #FFD600);
+        }
+
+        .ramadhan-decoration {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(142, 36, 170, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.0em;
+            color: #8E24AA;
+            border: 2px dashed #D32F2F;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #D32F2F;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #D32F2F;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, rgba(255, 243, 224, 0.9) 0%, rgba(255, 224, 178, 0.9) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #FFD600;
+            box-shadow: 0 8px 25px rgba(255, 214, 0, 0.2);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(248, 187, 208, 0.9) 0%, rgba(255, 224, 178, 0.9) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #D32F2F;
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .heart-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .ramadhan-decoration {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+            
+            .arabic-text {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .dropdown-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .arabic-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="mosque-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="heart-icon">❤️</div>
+            <h1>JIMA' DI MALAM BULAN RAMADHAN</h1>
+            <div class="header-subtitle">Panduan Syar'i dan Kesehatan untuk Pasangan Suami-Istri</div>
+            <div class="decorative-line">
+                <span>🌙</span>
+            </div>
+        </div>
+
+        <p>Kebutuhan dasar manusia meliputi kebutuhan fisik dan psikis/biologis. Apabila sebelumnya kita banyak membicarakan kebutuhan fisik terkait puasa di bulan yang mulia, maka seyogyanya kita tidak melupakan kebutuhan psikis/biologis di bulan Ramadhan, yaitu kebutuhan bersama antara suami-istri.</p>
+
+        <p>Sebagaimana halnya kebutuhan yang lain, semuanya perlu aturan yang benar agar manfaatnya dapat diraih secara optimal dan terhindar dari efek buruk sebisa mungkin.</p>
+
+        <div class="verse-box">
+            <p class="arabic-text">أُحِلَّ لَكُمْ لَيْلَةَ ٱلصِّيَامِ ٱلرَّفَثُ إِلَىٰ نِسَآئِكُمْ ۚ هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ ۗ عَلِمَ ٱللَّهُ أَنَّكُمْ كُنتُمْ تَخْتَانُونَ أَنفُسَكُمْ فَتَابَ عَلَيْكُمْ وَعَفَا عَنكُمْ ۖ فَٱلْـَٰٔنَ بَٰشِرُوهُنَّ وَٱبْتَغُوا۟ مَا كَتَبَ ٱللَّهُ لَكُمْ ۚ</p>
+            <p>"Dihalalkan bagi kamu pada malam hari bulan puasa bercampur dengan isteri-isteri kamu; mereka adalah pakaian bagimu, dan kamupun adalah pakaian bagi mereka. Allah mengetahui bahwasanya kamu tidak dapat menahan nafsumu, karena itu Allah mengampuni kamu dan memberi maaf kepadamu. Maka sekarang campurilah mereka dan ikutilah apa yang telah ditetapkan Allah untukmu."</p>
+            <small>(QS. Al Baqarah: 187)</small>
+        </div>
+
+        <h2>Apa yang Terjadi Saat Jima'?</h2>
+
+        <div class="info-box">
+            <ul>
+                <li>Energi yang digunakan hampir setara dengan olahraga bersepeda.</li>
+                <li>Terjadi peningkatan denyut nadi dan tekanan darah, mirip dengan saat berolahraga.</li>
+            </ul>
+        </div>
+
+        <div class="ramadhan-decoration">❤️ 🌙 💫 🌙 ❤️</div>
+
+        <h2>RAMBU-RAMBU JIMA' DI BULAN RAMADHAN</h2>
+
+        <h3>1. Dari Aspek Kesehatan:</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🏥</span> Kesehatan dan Kondisi Fisik</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li><strong>Pastikan kondisi sehat:</strong> Jika memiliki riwayat sakit jantung, konsultasikan ke dokter. Umumnya, jika mampu berolahraga tanpa keluhan, biasanya aman untuk berhubungan.</li>
+                        <li><strong>Waktu yang tepat:</strong> Lakukan di malam hari, dengan pasangan sah, dalam kondisi aman (misal, di rumah sendiri). Hindari konsumsi obat penguat, posisi yang berisiko, atau saat sedang memiliki masalah emosional.</li>
+                        <li><strong>Jarak dengan makan:</strong> Beri jarak antara makan dan hubungan badan: sekitar 2 jam untuk makanan rendah kalori, minimal 5 jam untuk makanan berat. Makanan rendah kalori saat berbuka dapat memudahkan rencana berhubungan di malam hari.</li>
+                        <li><strong>Hindari makanan tertentu:</strong> Hindari makanan yang lama tinggal di perut atau penghasil gas (seperti kol) agar tidak menimbulkan rasa tidak nyaman.</li>
+                        <li><strong>Jangan menahan kencing.</strong></li>
+                        <li><strong>Pemulihan energi:</strong> Setelah berhubungan, konsumsi sahur yang bergizi untuk mengembalikan cadangan energi.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>2. Dari Aspek Syar'i dan Adab:</h3>
+
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">🕌</span> Aturan Syar'i dan Etika</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <ul>
+                        <li><strong>Waktu yang dibolehkan:</strong> Hanya di malam hari, setelah maghrib hingga sebelum terbit fajar (imsak). Hentikan sebelum waktu Subuh tiba agar tidak membatalkan puasa.</li>
+                        <li><strong>Niat dan nilai ibadah:</strong> Niatkan untuk menjaga kehormatan, menenangkan jiwa, dan menguatkan ikatan rumah tangga. Awali dengan doa, misalnya: <em>"Bismillah, Allahumma jannibnasy syaithan wa jannibis syaithana ma razaqtana."</em></li>
+                        <li><strong>Keseimbangan dengan ibadah malam:</strong> Jangan sampai mengabaikan shalat Isya, Tarawih, Witir, atau waktu sahur dan ibadah malam lainnya.</li>
+                        <li><strong>Perhatikan kondisi pasangan:</strong> Lakukan dengan komunikasi dan kerelaan kedua pihak. Hindari paksaan, terutama jika pasangan kelelahan atau tidak fit.</li>
+                        <li><strong>Khusus wanita haid/nifas:</strong> Haram berpuasa dan melakukan jima'. Tunggu hingga suci kemudian qadha puasa.</li>
+                        <li><strong>Menjaga kebersihan dan kesucian:</strong> Selain mandi wajib, menjaga kebersihan tubuh adalah bagian dari kesempurnaan ibadah.</li>
+                        <li><strong>Tidak berlebihan:</strong> Ramadhan adalah bulan ibadah utama. Jangan berlebihan dalam hubungan intim hingga melalaikan ibadah atau membuat tubuh terlalu lelah untuk berpuasa keesokan harinya.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="important-note">
+            <h3><span class="emoji">💡</span> Catatan Penting</h3>
+            <p>Dengan memperhatikan rambu-rambu kesehatan, syar'i, dan adab ini, jima' di malam Ramadhan dapat menjadi sarana mempererat rumah tangga, memenuhi kebutuhan biologis secara halal, sekaligus menjaga kesucian dan kekhusyukan ibadah di bulan yang penuh berkah.</p>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>Ringkasan Keutamaan:</strong></p>
+            <ul>
+                <li>Mempererat ikatan rumah tangga yang halal</li>
+                <li>Memenuhi kebutuhan biologis sesuai syariat</li>
+                <li>Menjaga kesucian dari perbuatan zina</li>
+                <li>Meningkatkan rasa syukur atas nikmat pasangan</li>
+                <li>Mengikuti sunnah Nabi dalam menjaga kesehatan keluarga</li>
+            </ul>
+        </div>
+
+        <div class="ramadhan-decoration">🌙 ❤️ 🕌 ❤️ 🌙</div>
+
+        <div class="footer">
+            <h2 style="text-align: center; border: none; padding: 0; color: #8E24AA;">Kesimpulan</h2>
+            
+            <div class="info-box">
+                <p>Jima' di malam Ramadhan merupakan hak dan kebutuhan suami-istri yang dihalalkan oleh Allah SWT. Dengan memperhatikan aturan syar'i, kesehatan, dan adab yang baik, hubungan suami-istri di bulan Ramadhan dapat menjadi ibadah yang mendatangkan pahala dan keberkahan.</p>
+                <p>Ingatlah bahwa Ramadhan adalah bulan untuk meningkatkan kualitas ibadah, termasuk dalam menjaga hubungan keluarga yang harmonis dan sesuai dengan syariat Islam.</p>
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; color: #D32F2F; margin-top: 20px;">Dengan mengikuti panduan ini, insya Allah kita dapat menjalankan ibadah puasa dengan sempurna sambil menjaga hak dan kewajiban dalam rumah tangga.</p>
+            
+            <p class="arabic-text">وَاللَّهُ أَعْلَمُ بِالصَّوَابِ</p>
+            <p style="text-align: center; font-weight: bold; color: #8E24AA; margin-top: 10px;">Walloohu a'lam bish-shawab.</p>
+            
+            <div class="ramadhan-decoration" style="margin-top: 30px; font-size: 1.8em;">❤️ 🌙 🕌</div>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Dropdown toggle function
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-header').forEach(dh => {
+                dh.classList.remove('active');
+            });
+            
+            // Open clicked dropdown if it was closed
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add click event to close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dc => {
+                    dc.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-header').forEach(dh => {
+                    dh.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
