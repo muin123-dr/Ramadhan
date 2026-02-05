@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yang Dimaksud "Sakit" dalam Konteks Puasa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .health-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white">❤️</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 253, 248, 0.97);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: none;
+            position: relative;
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(13, 71, 161, 0.4);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="white" opacity="0.1">➕</text></svg>');
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: white;
+            padding: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        .health-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: pulse 3s ease-in-out infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-line::before,
+        .decorative-line::after {
+            content: '';
+            height: 2px;
+            background: linear-gradient(to right, transparent, #4caf50, transparent);
+            flex: 1;
+        }
+
+        .decorative-line span {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #4caf50;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #4caf50; }
+            to { text-shadow: 0 0 20px #4caf50, 0 0 30px #4caf50; }
+        }
+
+        h2 {
+            color: #1565c0;
+            font-size: 1.9em;
+            margin: 30px 0 20px;
+            padding: 15px 20px;
+            border-left: none;
+            background: linear-gradient(to right, rgba(76, 175, 80, 0.1), transparent);
+            border-radius: 10px;
+            border-bottom: 3px solid #4caf50;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #1565c0, #4caf50);
+        }
+
+        h3 {
+            color: #37474f;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid #4caf50;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #37474f;
+            font-size: 1.05em;
+        }
+
+        .verse-box {
+            background: linear-gradient(135deg, rgba(144, 202, 249, 0.9) 0%, rgba(66, 165, 245, 0.9) 100%);
+            border-left: 5px solid #4caf50;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.3);
+            border-right: 1px solid rgba(76, 175, 80, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verse-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(13, 71, 161, 0.4);
+        }
+
+        .verse-box::before {
+            content: "﴾";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .verse-box::after {
+            content: "﴿";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: 'Traditional Arabic', serif;
+        }
+
+        .verse-box p {
+            color: #1a237e;
+            font-style: italic;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verse-box small {
+            color: #0d47a1;
+            font-weight: bold;
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .highlight-box {
+            background: rgba(232, 245, 233, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #4caf50;
+            border-right: 1px solid rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            background: rgba(232, 245, 233, 1);
+            transform: translateX(5px);
+        }
+
+        .highlight-box strong {
+            color: #1565c0;
+        }
+
+        .dropdown {
+            margin: 20px 0;
+            border: 2px solid #bbdefb;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown:hover {
+            border-color: #4caf50;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .dropdown-header {
+            background: linear-gradient(135deg, #1565c0 0%, #37474f 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-header:hover {
+            background: linear-gradient(135deg, #0d47a1 0%, #263238 100%);
+            padding-left: 30px;
+        }
+
+        .dropdown-header .icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-header.active .icon {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f5f5f5;
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .dropdown-content-inner {
+            padding: 25px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #37474f;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #4caf50;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: none;
+            color: #666;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(21, 101, 192, 0.05) 0%, rgba(76, 175, 80, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #1565c0, #4caf50, #0d47a1);
+        }
+
+        .ramadhan-decoration {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0;
+            opacity: 0.8;
+            animation: pulse 3s ease-in-out infinite;
+            letter-spacing: 10px;
+        }
+
+        .author-signature {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 15px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.0em;
+            color: #37474f;
+            border: 2px dashed #4caf50;
+            position: relative;
+        }
+
+        .author-signature::before {
+            content: "—";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #4caf50;
+        }
+
+        .author-signature::after {
+            content: "—";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #4caf50;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, rgba(227, 242, 253, 0.9) 0%, rgba(187, 222, 251, 0.9) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #4caf50;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                padding: 12px 15px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            .health-icon {
+                font-size: 50px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .ramadhan-decoration {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .dropdown-header {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="health-pattern"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo Gen Zehat" class="logo">
+            </div>
+            <div class="health-icon">❤️</div>
+            <h1>YANG DIMAKSUD "SAKIT" DALAM KONTEKS PUASA</h1>
+            <div class="header-subtitle">Memahami Keringanan dalam Ibadah Puasa Berdasarkan Kondisi Kesehatan</div>
+            <div class="decorative-line">
+                <span>✨</span>
+            </div>
+        </div>
+
+        <p>Barangkali kita pernah punya teman yang tidak puasa, ketika kita tanya alasannya, dia bilang sedang sakit. Tapi kita melihatnya masih bisa beraktivitas di kantor atau di pekerjaannya seperti biasa, tidak ada tanda-tanda seperti orang sakit.</p>
+        <p>Perhatikanlah firman Allah Ta'ala:</p>
+
+        <div class="verse-box">
+            <p>وَمَنْ كَانَ مَرِيضًا أَوْ عَلَى سَفَرٍ فَعِدَّةٌ مِنْ أَيَّامٍ أُخَرَ</p>
+            <p>"Dan barang siapa sakit atau dalam perjalanan (lalu ia berbuka), maka (wajiblah baginya berpuasa), sebanyak hari yang ditinggalkannya itu, pada hari-hari yang lain."</p>
+            <small>(QS. Al Baqarah: 185)</small>
+        </div>
+
+        <p>Setelah kita melihat kasus di atas dan juga firman Allah ini, maka perlu dijelaskan apa makna sakit dalam ayat tersebut. Sehingga dengan demikian kita tidak salah dalam menyikapi teman kita yang tidak berpuasa dengan alasan sakit.</p>
+        <p>Berikut penjelasan ringkas dan lengkap untuk memahaminya.</p>
+
+        <h2>1. Tiga Kondisi Orang Sakit</h2>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">📋</span> Kondisi Sakit dalam Konteks Puasa</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p><strong>Kondisi Pertama:</strong> Sakit ringan yang tidak berpengaruh jika berpuasa. Contoh: pegal, pilek ringan, pusing ringan, atau sakit kulit seperti panu. Untuk kondisi ini, puasa tetap wajib.</p>
+                    
+                    <p><strong>Kondisi Kedua:</strong> Sakit yang bisa bertambah parah atau lama sembuhnya jika berpuasa, namun belum membahayakan jiwa. Untuk kondisi ini, lebih baik (dianjurkan) tidak berpuasa, dan makruh jika memaksakan puasa.</p>
+                    
+                    <p><strong>Kondisi Ketiga:</strong> Sakit di mana jika berpuasa akan memberatkan, menyulitkan, atau bahkan membahayakan jiwa (bisa mengantarkan pada kematian). Untuk kondisi ini, haram berpuasa dan wajib berbuka.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. Ukuran "Sakit" Bukan Hanya yang Tampak</h2>
+        <p>Sakit yang membolehkan berbuka tidak selalu terlihat secara fisik. Beberapa penyakit "tidak kelihatan" tetapi berisiko jika berpuasa, seperti:</p>
+        
+        <div class="highlight-box">
+            <ul>
+                <li>Maag atau GERD akut</li>
+                <li>Diabetes yang perlu pengaturan ketat</li>
+                <li>Gangguan ginjal atau jantung tertentu</li>
+                <li>Penyakit yang mengharuskan minum obat rutin di siang hari</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Karena itu, kita tidak boleh menilai orang lain hanya dari penampilan luarnya.</strong></p>
+        </div>
+
+        <h2>3. Prinsip Utama: Menghindari Masyaqqah (Kesulitan Berat) dan Bahaya</h2>
+        <p>Keringanan diberikan jika puasa menimbulkan:</p>
+        <ul>
+            <li>Kesulitan yang nyata dan di luar batas wajar. (Lapar dan haus biasa adalah hal normal dalam puasa, bukan alasan untuk berbuka).</li>
+            <li>Bahaya bagi tubuh atau dapat memperparah penyakit.</li>
+        </ul>
+        <p>Keringanan bukan untuk yang sekadar merasa tidak kuat, malas, atau ingin tetap nyaman beraktivitas.</p>
+
+        <h2>4. Apakah Orang Sehat Boleh Tidak Puasa Jika Khawatir Sakit?</h2>
+        <p>Boleh, dengan syarat ketat. Misalnya, seseorang dengan kondisi medis khusus (misalnya riwayat dehidrasi berat atau hipoglikemia) yang menurut dua dokter muslim yang terpercaya sangat mungkin jatuh sakit jika berpuasa. Atau, berdasarkan pengalaman nyata berkali-kali, ia selalu sakit saat dipaksakan puasa.</p>
+        
+        <div class="verse-box">
+            <p>وَلَا تُلْقُوا بِأَيْدِيكُمْ إِلَى التَّهْلُكَةِ</p>
+            <p>"Dan janganlah kamu menjerumuskan dirimu sendiri ke dalam kebinasaan."</p>
+            <small>(QS. Al-Baqarah: 195)</small>
+        </div>
+
+        <div class="important-note">
+            <h3>⚠️ Catatan Penting</h3>
+            <p>Keputusan ini tidak boleh subjektif. Harus didasarkan rekomendasi medis yang jelas dan/atau pengalaman nyata yang berulang, bukan sekadar perasaan atau keinginan.</p>
+            <p>Dalilnya adalah prinsip Islam yang menghindari kemudaratan:</p>
+            <ul>
+                <li>"Dan janganlah kamu membunuh dirimu." (QS. An Nisa': 29)</li>
+                <li>"Allah menghendaki kemudahan bagimu, dan tidak menghendaki kesukaran bagimu." (QS. Al Baqarah: 185)</li>
+            </ul>
+        </div>
+
+        <h2>5. Kondisi-Kondisi Khusus Lainnya</h2>
+        
+        <div class="dropdown">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="emoji">👥</span> Kelompok dengan Kondisi Khusus</span>
+                <span class="icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="dropdown-content-inner">
+                    <p><strong>Ibu Hamil & Menyusui:</strong> Jika khawatir pada diri sendiri atau bayinya, boleh berbuka.</p>
+                    
+                    <p><strong>Lansia & Lemah Fisik Permanen:</strong> Bagi yang benar-benar tidak mampu lagi berpuasa, boleh berbuka dengan kewajiban membayar fidyah (memberi makan satu orang miskin untuk setiap hari yang ditinggalkan).</p>
+                    
+                    <p><strong>Kesehatan Mental:</strong> Gangguan seperti depresi berat, kecemasan parah, atau gangguan makan yang bisa memburuk karena puasa, memerlukan konsultasi dengan profesional kesehatan mental dan ulama untuk menentukan kebolehannya.</p>
+                    
+                    <p><strong>Cedera/Kecelakaan Serius:</strong> Yang membutuhkan perawatan intensif (seperti infus) boleh tidak berpuasa.</p>
+                    
+                    <p><strong>Penyakit Kronis (Seperti Diabetes/Ginjal):</strong> Boleh berbuka jika puasa mengganggu pengobatan atau membahayakan. Konsultasi dengan dokter dan pantauan ketat sangat penting.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>6. Kewajiban Jika Tidak Puasa Karena Sakit</h2>
+        <ul>
+            <li><strong>Sakit Sementara:</strong> Wajib mengqadha (mengganti) puasa sebanyak hari yang ditinggalkan setelah sehat.</li>
+            <li><strong>Sakit Permanen/Tidak Mampu Sama Sekali:</strong> Wajib membayar fidyah, tidak perlu qadha.</li>
+        </ul>
+
+        <h2>7. Niat, Kejujuran, dan Menghindari Penyalahgunaan</h2>
+        <p>Keringanan (rukhsah) adalah rahmat Allah, bukan celah untuk mengikuti hawa nafsu. Setiap Muslim harus jujur pada diri sendiri dan takut kepada Allah yang Maha Mengetahui isi hati. Penggunaan alasan sakit harus didasari niat yang tulus (ikhlas). Jika memungkinkan, ada baiknya memiliki dokumentasi atau surat keterangan dokter sebagai bentuk kehati-hatian.</p>
+
+        <div class="ramadhan-decoration">🕌 ✨ 💉 ✨ 🕌</div>
+
+        <h2>8. Adab Kita Menyikapi Orang yang Tidak Berpuasa</h2>
+        <p>Sikap terbaik kita adalah:</p>
+        
+        <div class="highlight-box">
+            <ul>
+                <li>Tidak menghakimi atau berprasangka buruk.</li>
+                <li>Menjaga prasangka baik (husnuzhan).</li>
+                <li>Tidak mencari-cari aib orang lain.</li>
+                <li>Edukasi dengan cara yang baik jika ada yang perlu diluruskan.</li>
+            </ul>
+            <p style="margin-top: 15px;">Urusan akhirat dia dengan Allah, urusan kita adalah memperbaiki diri dan saling mengingatkan dengan santun.</p>
+        </div>
+
+        <div class="important-note">
+            <h3>🌱 Kesimpulan Penting</h3>
+            <ul>
+                <li>Tidak semua sakit membolehkan berbuka (hanya yang menimbulkan kesulitan berat/ bahaya).</li>
+                <li>Tidak semua yang terlihat sehat berarti wajib puasa (bisa jadi ada penyakit tidak terlihat).</li>
+                <li>Penentu utamanya adalah adanya bahaya/kesulitan nyata dan rekomendasi medis yang amanah.</li>
+                <li>Prinsip dasar syariat adalah kemudahan, menjaga jiwa, dan tidak memberatkan.</li>
+                <li>Semua kembali pada ketakwaan dan kejujuran masing-masing individu di hadapan Allah.</li>
+            </ul>
+        </div>
+
+        <div class="ramadhan-decoration">🌙 ⭐ 💉 ⭐ 🌙</div>
+
+        <div class="footer">
+            <h2 style="text-align: center; border: none; padding: 0;">Ringkasan</h2>
+            <p style="text-align: center; margin-top: 20px;">Semoga penjelasan ini memberikan kejelasan dan kita semua dapat menjalankan ibadah puasa dengan penuh kemudahan dan keikhlasan, sesuai dengan kemampuan dan kondisi kesehatan masing-masing.</p>
+            
+            <div class="highlight-box">
+                <p><strong>Prinsip dalam Islam adalah:</strong></p>
+                <ul>
+                    <li>Menjaga kesehatan dan keselamatan jiwa lebih diutamakan</li>
+                    <li>Allah memberikan keringanan bagi yang berhak</li>
+                    <li>Kewajiban mengganti di hari lain bagi yang mampu</li>
+                    <li>Kejujuran dalam memanfaatkan keringanan</li>
+                </ul>
+                <p>Semoga Allah memberikan kesehatan kepada kita semua sehingga dapat beribadah dengan sempurna.</p>
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; color: #1565c0; margin-top: 20px;">Semoga Allah memberikan kita pemahaman yang benar, kesehatan yang baik, dan keikhlasan dalam beribadah.</p>
+            <p style="text-align: center; font-weight: bold; color: #0d47a1; margin-top: 10px;">Wallāhu a'lam bish-shawāb.</p>
+            
+            <div class="ramadhan-decoration" style="margin-top: 30px; font-size: 1.8em;">☪️ ✨ 💉</div>
+            <div class="author-signature">@Gen Zehat 2026 - dr. Muin</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = Math.random() * 2 + 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Dropdown toggle function
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dc => {
+                dc.classList.remove('active');
+            });
+            document.querySelectorAll('.dropdown-header').forEach(dh => {
+                dh.classList.remove('active');
+            });
+            
+            // Open clicked dropdown if it was closed
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add click event to close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dc => {
+                    dc.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-header').forEach(dh => {
+                    dh.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
