@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Ramadhan Berhadiah</title>
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #FF9800;
+            --accent-color: #2196F3;
+            --success-color: #4caf50;
+            --bg-color: #f0f2f5;
+            --ramadan-green: #1B5E20;
+            --ramadan-gold: #FFD700;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0D5E0D 0%, #1B5E20 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Icons */
+        .bg-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .bg-icon {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        .container {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(46, 125, 50, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            border: 3px solid var(--primary-color);
+            z-index: 1;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--ramadan-green), var(--secondary-color), var(--accent-color));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(15px);
+        }
+
+        .logo {
+            width: 180px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .hidden { display: none; }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.3);
+            transform: translateY(-2px);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--ramadan-green), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            margin-top: 25px;
+            box-shadow: 
+                0 8px 20px rgba(46, 125, 50, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        button:hover { 
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 
+                0 12px 25px rgba(46, 125, 50, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.98) translateY(0);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+
+        button:hover::after {
+            left: 120%;
+        }
+
+        #timer-box {
+            background: linear-gradient(45deg, #1B5E20, #2E7D32);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: inline-block;
+            min-width: 100px;
+            box-shadow: 0 8px 15px rgba(27, 94, 32, 0.4);
+            border: 3px solid white;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .option-btn {
+            background: linear-gradient(to right, #f8f9fa, #ffffff);
+            border: 3px solid #e0e0e0;
+            color: #333;
+            padding: 18px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn:hover { 
+            background: linear-gradient(to right, var(--primary-color), #4CAF50);
+            border-color: var(--ramadan-green);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--ramadan-gold);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .option-btn:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* Flash Feedback Animation */
+        #feedback-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes flashAnim {
+            0% { 
+                background: radial-gradient(circle, rgba(46,125,50,0.9) 0%, rgba(255,152,0,0.9) 100%);
+                opacity: 1; 
+            }
+            50% { 
+                background: radial-gradient(circle, rgba(255,152,0,0.9) 0%, rgba(33,150,243,0.9) 100%);
+            }
+            100% { 
+                background: transparent;
+                opacity: 0; 
+            }
+        }
+
+        .flash-active {
+            display: flex !important;
+            animation: flashAnim 0.8s ease-out forwards;
+        }
+
+        .feedback-text {
+            font-size: 5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 
+                3px 3px 0 rgba(0,0,0,0.3),
+                0 0 20px rgba(255,255,255,0.8);
+            animation: celebrate 0.5s infinite alternate;
+        }
+
+        /* Celebration Animation */
+        .winner-anim {
+            animation: celebrate 0.5s infinite alternate;
+            font-size: 5rem;
+            display: block;
+            filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.5));
+        }
+
+        @keyframes celebrate {
+            from { 
+                transform: scale(1) rotate(-10deg); 
+            }
+            to { 
+                transform: scale(1.3) rotate(10deg); 
+            }
+        }
+
+        /* Success Page Styling */
+        #success-page {
+            background: linear-gradient(145deg, #ffffff, #f0ffed);
+            border-color: var(--success-color);
+        }
+
+        #fail-page {
+            background: linear-gradient(145deg, #ffffff, #fff0f0);
+            border-color: #d32f2f;
+        }
+
+        /* Icon Styling */
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .icon-item {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            animation: bounce 2s infinite;
+        }
+
+        .icon-item:nth-child(2) { animation-delay: 0.2s; }
+        .icon-item:nth-child(3) { animation-delay: 0.4s; }
+        .icon-item:nth-child(4) { animation-delay: 0.6s; }
+        .icon-item:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .icon-item:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+        }
+
+        .glow-text {
+            background: linear-gradient(45deg, var(--ramadan-green), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin: 15px 0;
+            line-height: 1.6;
+            background: rgba(46, 125, 50, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 5px solid var(--ramadan-green);
+        }
+        
+        .arabic-text {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8rem;
+            color: var(--ramadan-green);
+            margin: 15px 0;
+            direction: rtl;
+        }
+        
+        .ramadan-title {
+            background: linear-gradient(45deg, var(--ramadan-green), var(--ramadan-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-icons" id="bg-icons"></div>
+
+    <div id="feedback-overlay">
+        <div id="feedback-content" class="feedback-text"></div>
+    </div>
+
+    <div id="start-page" class="container">
+        <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo" class="logo">
+        <h2 class="ramadan-title">📖 QUIZ RAMADHAN 📖<br> BERHADIAH SPESIAL</h2>
+        <div class="arabic-text">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+        <div class="icon-row">
+            <div class="icon-item">🌙</div>
+            <div class="icon-item">🕌</div>
+            <div class="icon-item">📿</div>
+        </div>
+        <p class="subtitle">Isi data diri untuk mengikuti quiz pengetahuan seputar Ramadhan dan kesehatan!</p>
+        <input type="text" id="nama" placeholder="✏️ Nama Lengkap" required>
+        <input type="text" id="kelas" placeholder="🏫 Kelas" required>
+        <input type="text" id="alamat" placeholder="📍 Alamat Lengkap" required>
+        <button onclick="startQuiz()">🌙 MULAI QUIZ RAMADHAN! 🌙</button>
+    </div>
+
+    <div id="quiz-page" class="container hidden">
+        <img src="https://muin123-dr.github.io/Website/gen%20zehat.png" alt="Logo" class="logo" style="width: 100px;">
+        <br>
+        <div id="timer-box">180</div>
+        <div id="question-container">
+            <h3 id="question-text" class="glow-text"></h3>
+            <div id="options" class="options-container"></div>
+        </div>
+        <div class="icon-row" style="margin-top: 30px;">
+            <div class="icon-item">⏳</div>
+            <div class="icon-item">❓</div>
+            <div class="icon-item">📖</div>
+            <div class="icon-item">🎯</div>
+        </div>
+    </div>
+
+    <div id="success-page" class="container hidden">
+        <span class="winner-anim">🏆🌙</span>
+        <h2 class="ramadan-title">SELAMAT! 🎊</h2>
+        <h3 id="text-status" style="color: #4caf50;">ANDA BERKESEMPATAN DAPAT HADIAH RAMADHAN!</h3>
+        <div class="icon-row">
+            <div class="icon-item">💰</div>
+            <div class="icon-item">🎁</div>
+            <div class="icon-item">🕌</div>
+        </div>
+        <button id="wa-btn">📱 KLAIM HADIAH SEKARANG!</button>
+        <p class="subtitle">
+            ⚡ <strong>BURUAN!</strong> Jika kamu termasuk 3 orang pertama yang mengirim WA "KLAIM HADIAH RAMADHAN", kamu berhak mendapatkan <strong>Rp 50.000</strong>!
+        </p>
+    </div>
+
+    <div id="fail-page" class="container hidden">
+        <div style="font-size: 5rem; animation: celebrate 1s infinite alternate;">📖</div>
+        <h2 class="ramadan-title">JANGAN MENYERAH!</h2>
+        <h3 style="color: #d32f2f;">AYO COBA LAGI DAN RAIH KEMENANGAN! 💪</h3>
+        <div class="icon-row">
+            <div class="icon-item">🔄</div>
+            <div class="icon-item">🤲</div>
+            <div class="icon-item">🌅</div>
+        </div>
+        <button onclick="location.reload()">🔄 ULANGI QUIZ</button>
+        <p class="subtitle">Setiap kesalahan adalah langkah menuju kesuksesan. Pelajari lagi dan coba sekali lagi!</p>
+    </div>
+
+    <script>
+        // --- KONFIGURASI SINKRONISASI ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBacE9ADi7OdUi9EVqu_a-rI2AOiPTGRXzDiXr6pg-9xSN_uArgMLDgaVi9PXlHyotIg/exec';
+        const WA_ADMIN = '+6285942970745';
+
+        const questions = [
+            { q: "Seseorang yang jika berpuasa penyakitnya bisa bertambah parah, namun belum sampai membahayakan jiwa, maka hukum berpuasanya adalah…", a: ["Wajib tetap berpuasa", "Sunnah berpuasa", "Dianjurkan tidak berpuasa dan makruh jika memaksakan", "Haram berpuasa"], correct: 2 },
+            { q: "Istilah 'balas dendam' saat berbuka dalam artikel merujuk pada…", a: ["Membalas orang yang mengganggu saat puasa", "Keinginan makan berlebihan setelah seharian menahan lapar", "Menunda berbuka sampai larut malam", "Mengganti makanan siang dengan sahur"], correct: 1 },
+            { q: "Salah satu dampak konsumsi pemanis buatan saat berbuka puasa adalah…", a: ["Menstabilkan metabolisme tubuh secara alami", "Mengurangi rasa lapar berlebihan", "Memicu respon insulin tanpa disertai energi yang cukup", "Mempercepat penyerapan nutrisi tubuh"], correct: 2 },
+            { q: "Alasan utama kurma dianjurkan sebagai menu berbuka dari sisi medis adalah…", a: ["Mengandung lemak tinggi", "Memiliki rasa paling manis", "Mengandung glukosa dan fruktosa yang cepat menjadi energi", "Mengenyangkan lebih lama daripada nasi"], correct: 2 },
+            { q: "Salah satu pelajaran adab dari hadits tentang makan malam sebelum sholat Maghrib adalah…", a: ["Wajib makan besar sebelum shalat", "Berbuka harus tergesa-gesa", "Tidak tergesa-gesa dan tenang saat makan", "Menunda berbuka sampai larut"], correct: 2 },
+            { q: "Kandungan kalium dalam kurma berperan penting dalam…", a: ["Meningkatkan kadar lemak darah", "Mengatur keseimbangan cairan dan fungsi saraf", "Mengurangi produksi air liur", "Menyebabkan lonjakan gula darah"], correct: 1 },
+            { q: "Hikmah berbuka dengan kurma atau air putih terlebih dahulu adalah…", a: ["Agar cepat kenyang total", "Mengganti fungsi makanan utama", "Memulihkan energi dan hidrasi secara cepat", "Menghindari kewajiban makan berat"], correct: 2 },
+            { q: "Berdasarkan hadits Anas bin Malik, urutan praktik berbuka Nabi ﷺ yang benar adalah…", a: ["Shalat Maghrib → Kurma → Makan besar", "Kurma/air → Shalat Maghrib → Makan utama", "Makan besar → Shalat → Minum", "Air → Makan besar → Shalat"], correct: 1 },
+            { q: "Mengucapkan 'Inni sha'im' saat diprovokasi memiliki hikmah utama yaitu…", a: ["Agar orang lain takut", "Menunjukkan kehebatan diri", "Mengingatkan diri untuk taat dan menahan emosi", "Menghentikan puasa sementara"], correct: 2 },
+            { q: "Makna 'bau mulut orang berpuasa lebih harum di sisi Allah' dalam hadits adalah…", a: ["Bau mulut karena tidak menjaga kebersihan", "Bau akibat makanan yang tersisa", "Bau dari lambung kosong karena puasa", "Bau dari pasta gigi"], correct: 2 },
+            { q: "Makna 'senantiasa berada dalam kebaikan' pada hadits tentang menyegerakan berbuka adalah…", a: ["Hanya mendapat kesehatan jasmani", "Mendapat kebaikan lahir dan batin", "Terhindar dari rasa lapar saja", "Mendapatkan makanan yang lezat"], correct: 1 },
+            { q: "Salah satu tanda bahaya yang mengharuskan seseorang menghentikan olahraga saat puasa adalah…", a: ["Berkeringat ringan", "Napas stabil", "Pusing dan pandangan berkunang-kunang", "Denyut nadi normal"], correct: 2 },
+            { q: "Salah satu manfaat bekerja atau beraktivitas saat puasa secara fisiologis adalah…", a: ["Mempercepat dehidrasi", "Menurunkan kadar gula darah drastis", "Memperlancar peredaran darah", "Menghilangkan kebutuhan istirahat"], correct: 2 },
+            { q: "Pola minum yang dianjurkan untuk mencegah dehidrasi adalah…", a: ["Minum banyak sekaligus saat sahur", "Tidak minum saat berbuka", "Minum bertahap dari berbuka hingga sahur", "Hanya minum sebelum tidur"], correct: 2 },
+            { q: "Sunnah yang dicontohkan Nabi ﷺ untuk mengurangi rasa panas saat berpuasa adalah…", a: ["Meminum air sedikit demi sedikit", "Menyiramkan air ke kepala saat puasa", "Membatalkan puasa ketika haus", "Mengurangi waktu puasa"], correct: 1 },
+            { q: "Hikmah puasa sunnah di bulan Sya'ban yang paling tepat adalah…", a: ["Menggantikan puasa Ramadhan", "Persiapan ruhani dan jasmani sebelum Ramadhan", "Agar terbebas dari kewajiban lain", "Supaya tidak perlu sahur saat Ramadhan"], correct: 1 },
+            { q: "Berikut yang termasuk kondisi penyakit yang dapat diperberat oleh puasa adalah…", a: ["Dispepsia fungsional", "Gangguan metabolik ringan", "Tukak lambung aktif", "Kolesterol tinggi"], correct: 2 },
+            { q: "Alasan mendahulukan makanan yang cepat diserap saat sahur adalah…", a: ["Agar rasa lapar cepat datang", "Supaya makanan lambat cerna tidak terhalang dan mencegah gas berlebih", "Agar makan lebih banyak", "Supaya tubuh langsung lemas"], correct: 1 },
+            { q: "Dari tinjauan medis, mengakhirkan sahur membantu mencegah…", a: ["Hipertensi", "Hipoglikemia di pagi hari", "Alergi makanan", "Infeksi lambung"], correct: 1 },
+            { q: "Dalil yang menunjukkan Nabi ﷺ tetap menjaga kebersihan mulut saat puasa adalah…", a: ["Larangan berbicara saat puasa", "Anjuran berbuka dengan kurma", "Nabi bersiwak berkali-kali saat puasa", "Perintah tidur siang"], correct: 2 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let timeLeft = 180;
+        let timerId;
+        let userData = {};
+        let shuffledQuestions = [];
+        let wrongAnswers = 0;
+
+        function createBackgroundIcons() {
+            const bgIcons = document.getElementById('bg-icons');
+            const icons = ['🌙', '🕌', '🌟', '📿', '☪️', '🤲', '🕋', '📖', '🕌', '🌠', '🕯️', '🙏', '🍇', '🥛', '🌅', '🌃', '🕋', '🕌', '🌟', '🌙', '📿', '🤲', '☪️', '📖'];
+            for (let i = 0; i < 25; i++) {
+                const icon = document.createElement('div');
+                icon.className = 'bg-icon';
+                icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+                icon.style.left = Math.random() * 100 + '%';
+                icon.style.top = Math.random() * 100 + '%';
+                icon.style.fontSize = (0.5 + Math.random() * 2.5) + 'rem';
+                icon.style.animationDuration = (10 + Math.random() * 20) + 's';
+                icon.style.animationDelay = (Math.random() * 5) + 's';
+                bgIcons.appendChild(icon);
+            }
+        }
+
+        function startQuiz() {
+            // Tampilkan notifikasi sebelum memulai
+            alert("Bacalah بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ");
+            
+            userData.nama = document.getElementById('nama').value;
+            userData.kelas = document.getElementById('kelas').value;
+            userData.alamat = document.getElementById('alamat').value;
+            if(!userData.nama || !userData.kelas || !userData.alamat) {
+                alert("Mohon isi semua data terlebih dahulu! ✏️");
+                return;
+            }
+            document.getElementById('start-page').classList.add('hidden');
+            document.getElementById('quiz-page').classList.remove('hidden');
+            shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            timerId = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer-box').innerText = timeLeft;
+                if (timeLeft <= 0) { clearInterval(timerId); showFail(); }
+            }, 1000);
+        }
+
+        function showQuestion() {
+            const q = shuffledQuestions[currentQuestionIndex];
+            document.getElementById('question-text').innerText = `${currentQuestionIndex + 1}. ${q.q}`;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            q.a.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span style="margin-right: 10px;">${String.fromCharCode(65 + index)}.</span> ${opt}`;
+                btn.onclick = () => processAnswer(index);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function processAnswer(selectedIndex) {
+            const isCorrect = selectedIndex === shuffledQuestions[currentQuestionIndex].correct;
+            const overlay = document.getElementById('feedback-overlay');
+            const content = document.getElementById('feedback-content');
+            if (!isCorrect) {
+                wrongAnswers++;
+                content.innerHTML = "❌ SALAH";
+                content.style.color = "#ff4444";
+            } else {
+                content.innerHTML = "✅ BENAR";
+                content.style.color = "#4CAF50";
+            }
+            overlay.classList.remove('flash-active');
+            void overlay.offsetWidth;
+            overlay.classList.add('flash-active');
+            setTimeout(() => {
+                overlay.classList.remove('flash-active');
+                currentQuestionIndex++;
+                if (currentQuestionIndex < shuffledQuestions.length) { showQuestion(); } 
+                else { finishQuiz(); }
+            }, 800);
+        }
+
+        function finishQuiz() {
+            clearInterval(timerId);
+            if (wrongAnswers === 0) { showSuccess(); } 
+            else { showFail(); }
+        }
+
+        async function showSuccess() {
+            document.getElementById('quiz-page').classList.add('hidden');
+            document.getElementById('success-page').classList.remove('hidden');
+            
+            const btnWa = document.getElementById('wa-btn');
+            const statusLabel = document.getElementById('text-status');
+            
+            btnWa.disabled = true;
+            btnWa.innerText = "⏳ MENGHITUNG URUTAN ANDA...";
+
+            const sekarang = new Date();
+            const waktuString = sekarang.toLocaleString('id-ID', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+
+            let nomorUrut = "(Cek Database)";
+
+            try {
+                // Proses pengiriman ke Google Sheets
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    body: JSON.stringify({
+                        nama: userData.nama,
+                        kelas: userData.kelas,
+                        alamat: userData.alamat,
+                        waktu: waktuString
+                    })
+                });
+                // Karena no-cors, kita tidak bisa baca response body secara langsung, 
+                // namun data sudah terkirim ke server Google.
+            } catch (error) {
+                console.error("Gagal sinkronisasi data:", error);
+            }
+
+            // Konstruksi pesan WhatsApp sesuai request
+            const waMsg = `🌙 *ALHAMDULILLAH! Saya berhasil menyelesaikan Quiz Ramadhan Berhadiah* 🌙\n\n` +
+                          `📝 *Data Diri:*\n` +
+                          `• Nama : ${userData.nama}\n` +
+                          `• Kelas : ${userData.kelas}\n` +
+                          `• Alamat : ${userData.alamat}\n\n` +
+                          `🏆 *Tunggu Pengumuman Juara 1, 2 & 3*\n` +
+                          `--------------\n` +
+                          `⏰ *Waktu Selesai:* ${waktuString}`;
+
+            const waUrl = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(waMsg)}`;
+            
+            btnWa.disabled = false;
+            btnWa.innerText = "📱 KLAIM HADIAH SEKARANG!";
+            btnWa.onclick = () => window.open(waUrl, '_blank');
+        }
+
+        function showFail() {
+            clearInterval(timerId);
+            document.getElementById('quiz-page').classList.add('hidden');
+            document.getElementById('fail-page').classList.remove('hidden');
+        }
+
+        window.addEventListener('DOMContentLoaded', createBackgroundIcons);
+    </script>
+</body>
+</html>

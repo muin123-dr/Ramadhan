@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Persiapan Ramadhan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #66BB6A 0%, #388E3C 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: #FFF8E1;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        h1 {
+            color: #2a7c6f;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        /* Start Screen */
+        .start-text {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        /* Score Board */
+        .score-board {
+            background: linear-gradient(135deg, #2a7c6f 0%, #1a4d42 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .question-container {
+            text-align: left;
+        }
+
+        .question-number {
+            color: #2a7c6f;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f7f7f7;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .option:hover {
+            background: #e8f6f3;
+            border-color: #2a7c6f;
+            transform: translateX(5px);
+        }
+
+        /* Notifications */
+        #feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            padding: 30px 60px;
+            border-radius: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #feedback.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .feedback-benar { background-color: #27ae60; }
+        .feedback-salah { background-color: #e74c3c; }
+
+        /* Results */
+        .result-container {
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .fail-title { color: #e74c3c; }
+        .success-title { color: #27ae60; }
+
+        .champion-animation {
+            animation: pulse-gold 1.5s infinite;
+            border: 4px solid gold;
+            box-shadow: 0 0 20px gold;
+        }
+
+        @keyframes pulse-gold {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, #2a7c6f 0%, #1a4d42 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: block;
+            margin: 10px auto;
+            width: fit-content;
+        }
+
+        .btn-alt {
+            background: #6c757d;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn-materi-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 999;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .hidden { display: none !important; }
+
+        .trophy {
+            font-size: 100px;
+            margin: 20px 0;
+            display: inline-block;
+            animation: trophy-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes trophy-bounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .moon-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="feedback"></div>
+
+    <div class="container">
+        <div class="moon-icon">⭐</div>
+        <h1>Quiz level 2</h1>
+        
+        <div id="start-screen">
+            <p class="start-text">Persiapkan diri menyambut bulan Ramadhan!</p>
+            <div style="margin-top: 20px;">
+                <p style="margin-bottom: 10px;">Pelajari materi:</p>
+                <div class="btn-materi-container">
+                    <a href="https://muin123-dr.github.io/Ramadhan/004.html" class="btn btn-alt">Materi 4: Waktu Sahur yang Tepat</a>
+                    <a href="https://muin123-dr.github.io/Ramadhan/005.html" class="btn btn-alt">Materi 5: Menjaga Hidrasi Saat Puasa</a>
+                    <a href="https://muin123-dr.github.io/Ramadhan/006.html" class="btn btn-alt">Materi 6: Aktivitas dan Istirahat di Bulan Puasa</a>
+                </div>
+                
+                <p style="margin-top: 30px; margin-bottom: 10px;">Jika sudah siap, klik tombol dibawah:</p>
+                <button class="btn" onclick="startQuiz()">MULAI KUIS</button>
+            </div>
+        </div>
+
+        <div id="main-quiz" class="hidden">
+            <h1>Quiz Persiapan Ramadhan - Edisi Lanjutan</h1>
+            <div class="score-board">
+                Skor: <span id="score">0</span>
+            </div>
+            <div id="quiz-container" class="question-container"></div>
+        </div>
+
+        <div id="result-container" class="result-container hidden"></div>
+    </div>
+
+    <script>
+        const questions = [
+            // Soal dari materi 004
+            {
+                number: 1,
+                question: "Sunnah terkait waktu sahur yang dianjurkan dalam artikel adalah…",
+                options: [
+                    "Menyegerakan sahur setelah Isya",
+                    "Mengakhirkan sahur mendekati terbit fajar",
+                    "Sahur tepat saat adzan Subuh",
+                    "Tidak perlu sahur jika sudah makan malam"
+                ],
+                correct: 1
+            },
+            {
+                number: 2,
+                question: "Salah satu dampak sahur terlalu awal (terlalu malam sebelum tidur) adalah…",
+                options: [
+                    "Cadangan energi bertahan lebih lama",
+                    "Memudahkan bangun Subuh",
+                    "Cadangan energi habis lebih cepat sebelum berbuka",
+                    "Menjaga kestabilan gula darah"
+                ],
+                correct: 2
+            },
+            {
+                number: 3,
+                question: "Dari tinjauan medis, mengakhirkan sahur membantu mencegah…",
+                options: [
+                    "Hipertensi",
+                    "Hipoglikemia di pagi hari",
+                    "Alergi makanan",
+                    "Infeksi lambung"
+                ],
+                correct: 1
+            },
+            {
+                number: 4,
+                question: "Salah satu kerugian tidur setelah sahur adalah…",
+                options: [
+                    "Mempercepat metabolisme",
+                    "Memperbaiki pencernaan",
+                    "Berisiko terlambat atau kehilangan sholat Subuh",
+                    "Menambah energi tubuh"
+                ],
+                correct: 2
+            },
+            {
+                number: 5,
+                question: "Hikmah menjaga interval antara sahur akhir dan berbuka awal bagi pencernaan adalah…",
+                options: [
+                    "Lambung kosong lebih lama tanpa manfaat",
+                    "Produksi asam lambung meningkat drastis",
+                    "Pola pengosongan dan pengisian lambung lebih teratur",
+                    "Mempercepat rasa lapar"
+                ],
+                correct: 2
+            },
+            // Soal dari materi 005
+            {
+                number: 6,
+                question: "Sunnah yang dicontohkan Nabi ﷺ untuk mengurangi rasa panas saat berpuasa adalah…",
+                options: [
+                    "Meminum air sedikit demi sedikit",
+                    "Menyiramkan air ke kepala saat puasa",
+                    "Membatalkan puasa ketika haus",
+                    "Mengurangi waktu puasa"
+                ],
+                correct: 1
+            },
+            {
+                number: 7,
+                question: "Secara medis, berendam atau membasahi tubuh saat puasa bermanfaat karena…",
+                options: [
+                    "Air masuk ke tubuh melalui kulit",
+                    "Menambah cadangan cairan tubuh",
+                    "Menurunkan suhu tubuh dan mengurangi penguapan keringat",
+                    "Menggantikan kebutuhan minum"
+                ],
+                correct: 2
+            },
+            {
+                number: 8,
+                question: "Pola minum yang dianjurkan untuk mencegah dehidrasi adalah…",
+                options: [
+                    "Minum banyak sekaligus saat sahur",
+                    "Tidak minum saat berbuka",
+                    "Minum bertahap dari berbuka hingga sahur",
+                    "Hanya minum sebelum tidur"
+                ],
+                correct: 2
+            },
+            {
+                number: 9,
+                question: "Berikut yang termasuk tanda dehidrasi berat adalah…",
+                options: [
+                    "Mulut sedikit kering",
+                    "Urine kuning muda",
+                    "Haus ringan",
+                    "Pingsan dan denyut nadi cepat"
+                ],
+                correct: 3
+            },
+            {
+                number: 10,
+                question: "Upaya menghindari dehidrasi saat berpuasa dalam aspek aktivitas adalah…",
+                options: [
+                    "Berolahraga berat di siang hari",
+                    "Beraktivitas di bawah terik matahari",
+                    "Menggunakan pakaian gelap dan tebal",
+                    "Menghindari aktivitas berat di terik matahari"
+                ],
+                correct: 3
+            },
+            // Soal dari materi 006
+            {
+                number: 11,
+                question: "Status hadits 'نَوْمُ الصَّائِمِ عِبَادَةٌ' menurut penjelasan artikel adalah…",
+                options: [
+                    "Shahih dan menjadi dalil utama",
+                    "Hasan dan boleh diamalkan mutlak",
+                    "Dha'if sehingga tidak bisa dijadikan sandaran",
+                    "Mutawatir dan disepakati ulama"
+                ],
+                correct: 2
+            },
+            {
+                number: 12,
+                question: "Kesalahan dalam memahami hadits tersebut di masyarakat adalah…",
+                options: [
+                    "Menganggap tidur membatalkan puasa",
+                    "Menjadikannya alasan untuk bermalas-malasan",
+                    "Melarang tidur siang sama sekali",
+                    "Mengharuskan bekerja terus-menerus"
+                ],
+                correct: 1
+            },
+            {
+                number: 13,
+                question: "Salah satu manfaat bekerja atau beraktivitas saat puasa secara fisiologis adalah…",
+                options: [
+                    "Mempercepat dehidrasi",
+                    "Menurunkan kadar gula darah drastis",
+                    "Memperlancar peredaran darah",
+                    "Menghilangkan kebutuhan istirahat"
+                ],
+                correct: 2
+            },
+            {
+                number: 14,
+                question: "Aktivitas yang sebaiknya dibatasi saat puasa adalah…",
+                options: [
+                    "Membaca dan menulis",
+                    "Administrasi ringan",
+                    "Silaturahmi",
+                    "Aktivitas fisik berat di bawah terik matahari"
+                ],
+                correct: 3
+            },
+            {
+                number: 15,
+                question: "Tujuan utama manajemen waktu di bulan Ramadhan menurut artikel adalah…",
+                options: [
+                    "Memperbanyak hiburan malam",
+                    "Menyeimbangkan ibadah, kerja, dan istirahat",
+                    "Mengurangi seluruh aktivitas dunia",
+                    "Fokus bekerja tanpa ibadah"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let canClick = true;
+
+        function startQuiz() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('main-quiz').classList.remove('hidden');
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const quizContainer = document.getElementById('quiz-container');
+            const q = questions[currentQuestion];
+            
+            let optionsHTML = '';
+            q.options.forEach((option, index) => {
+                optionsHTML += `
+                    <div class="option" onclick="checkAnswer(${index})">
+                        ${String.fromCharCode(65 + index)}. ${option}
+                    </div>
+                `;
+            });
+
+            quizContainer.innerHTML = `
+                <div class="question-number">Soal ${q.number} dari ${questions.length}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">
+                    ${optionsHTML}
+                </div>
+            `;
+            canClick = true;
+        }
+
+        function checkAnswer(selectedIndex) {
+            if (!canClick) return;
+            canClick = false;
+
+            const q = questions[currentQuestion];
+            const feedbackEl = document.getElementById('feedback');
+            
+            if (selectedIndex === q.correct) {
+                score += 10;
+                document.getElementById('score').textContent = score;
+                feedbackEl.textContent = "BENAR! 🎉";
+                feedbackEl.className = "show feedback-benar";
+            } else {
+                feedbackEl.textContent = "SALAH! ❌";
+                feedbackEl.className = "show feedback-salah";
+            }
+
+            // Tunggu 1 detik sebelum lanjut ke soal berikutnya
+            setTimeout(() => {
+                feedbackEl.className = "";
+                currentQuestion++;
+
+                if (currentQuestion < questions.length) {
+                    displayQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1000);
+        }
+
+        function showResult() {
+            document.getElementById('main-quiz').classList.add('hidden');
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.classList.remove('hidden');
+
+            if (score < 150) {
+                resultContainer.innerHTML = `
+                    <div class="result-title fail-title">MASIH BISA DITINGKATKAN!</div>
+                    <p style="font-size: 24px; margin: 20px 0;">Skor Kamu: ${score}</p>
+                    <p style="font-size: 18px; margin-bottom: 20px; color: #666;">
+                        Pelajari lagi materinya dan coba lagi untuk hasil yang lebih baik!
+                    </p>
+                    <div class="button-group">
+                        <button class="btn" onclick="restartQuiz()">Ulangi Kuis</button>
+                        
+                    </div>
+                `;
+            } else {
+                createConfetti();
+                resultContainer.innerHTML = `
+                    <div class="trophy">🏆</div>
+                    <div class="result-title success-title">SEMPURNA!</div>
+                    <div style="font-size: 30px; margin: 10px 0;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 24px; margin: 20px 0; color: #27ae60; font-weight: bold;">
+                        Skor Sempurna: ${score}
+                    </p>
+                    <p style="font-size: 18px; margin-bottom: 20px;">
+                        🎉 Selamat! Kamu telah menguasai materi persiapan Ramadhan dengan baik! 🎉
+                    </p>
+                    <p style="font-size: 16px; margin-bottom: 20px; color: #2a7c6f; font-style: italic;">
+                        Semoga Ramadhan tahun ini penuh berkah dan pahala!
+                    </p>
+                    <div class="button-group">
+                        
+                        <a href="https://muin123-dr.github.io/Ramadhan/Quiz/003.html" class="btn champion-animation">Naik Level</a>
+                    </div>
+                `;
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#2a7c6f', '#27ae60', '#f1c40f', '#e67e22', '#3498db', '#9b59b6', '#1abc9c'];
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 20);
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('score').textContent = score;
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

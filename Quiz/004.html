@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Persiapan Ramadhan - Edisi Lanjutan 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #795548 0%, #4E342E 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: #FFF8E1;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        h1 {
+            color: #2a7c6f;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        /* Start Screen */
+        .start-text {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        /* Score Board */
+        .score-board {
+            background: linear-gradient(135deg, #2a7c6f 0%, #1a4d42 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .question-container {
+            text-align: left;
+        }
+
+        .question-number {
+            color: #2a7c6f;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f7f7f7;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .option:hover {
+            background: #e8f6f3;
+            border-color: #2a7c6f;
+            transform: translateX(5px);
+        }
+
+        /* Notifications */
+        #feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            padding: 30px 60px;
+            border-radius: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #feedback.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .feedback-benar { background-color: #27ae60; }
+        .feedback-salah { background-color: #e74c3c; }
+
+        /* Results */
+        .result-container {
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .fail-title { color: #e74c3c; }
+        .success-title { color: #27ae60; }
+
+        .champion-animation {
+            animation: pulse-gold 1.5s infinite;
+            border: 4px solid gold;
+            box-shadow: 0 0 20px gold;
+        }
+
+        @keyframes pulse-gold {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, #2a7c6f 0%, #1a4d42 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: block;
+            margin: 10px auto;
+            width: fit-content;
+        }
+
+        .btn-alt {
+            background: #6c757d;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn-materi-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 999;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .hidden { display: none !important; }
+
+        .trophy {
+            font-size: 100px;
+            margin: 20px 0;
+            display: inline-block;
+            animation: trophy-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes trophy-bounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .moon-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="feedback"></div>
+
+    <div class="container">
+        <div class="moon-icon">🕌</div>
+        <h1>Quiz Level 4</h1>
+        
+        <div id="start-screen">
+            <p class="start-text">Persiapkan diri menyambut bulan Ramadhan!</p>
+            <div style="margin-top: 20px;">
+                <p style="margin-bottom: 10px;">Pelajari materi terlebih dahulu:</p>
+                <div class="btn-materi-container">
+                    <a href="https://muin123-dr.github.io/Ramadhan/010.html" class="btn btn-alt">Materi 1: Keutamaan Menyegerakan Berbuka</a>
+                    <a href="https://muin123-dr.github.io/Ramadhan/011.html" class="btn btn-alt">Materi 2: Adab Berbuka Puasa</a>
+                    <a href="https://muin123-dr.github.io/Ramadhan/012.html" class="btn btn-alt">Materi 3: Tahapan Berbuka yang Sehat</a>
+                </div>
+                
+                <p style="margin-top: 30px; margin-bottom: 10px;">Jika sudah siap, klik tombol dibawah:</p>
+                <button class="btn" onclick="startQuiz()">MULAI KUIS</button>
+            </div>
+        </div>
+
+        <div id="main-quiz" class="hidden">
+            <h1>Quiz Persiapan Ramadhan - Edisi Lanjutan 2</h1>
+            <div class="score-board">
+                Skor: <span id="score">0</span>
+            </div>
+            <div id="quiz-container" class="question-container"></div>
+        </div>
+
+        <div id="result-container" class="result-container hidden"></div>
+    </div>
+
+    <script>
+        const questions = [
+            // Soal dari materi 010
+            {
+                number: 1,
+                question: "Makna “senantiasa berada dalam kebaikan” pada hadits tentang menyegerakan berbuka adalah…",
+                options: [
+                    "Hanya mendapat kesehatan jasmani",
+                    "Mendapat kebaikan lahir dan batin",
+                    "Terhindar dari rasa lapar saja",
+                    "Mendapatkan makanan yang lezat"
+                ],
+                correct: 1
+            },
+            {
+                number: 2,
+                question: "Salah satu manfaat medis menyegerakan berbuka terhadap lambung adalah…",
+                options: [
+                    "Menghentikan produksi asam lambung",
+                    "Membuat lambung kosong lebih lama",
+                    "Menjaga keteraturan siklus asam lambung",
+                    "Mempercepat iritasi lambung"
+                ],
+                correct: 2
+            },
+            {
+                number: 3,
+                question: "Menyegerakan berbuka dapat membantu kesiapan ibadah malam karena…",
+                options: [
+                    "Menggantikan kewajiban shalat",
+                    "Memberikan tambahan energi tubuh",
+                    "Membuat tidur lebih cepat",
+                    "Mengurangi jumlah rakaat tarawih"
+                ],
+                correct: 1
+            },
+            {
+                number: 4,
+                question: "Risiko yang dapat terjadi jika seseorang menunda-nunda berbuka tanpa alasan adalah…",
+                options: [
+                    "Penyerapan nutrisi meningkat drastis",
+                    "Gula darah terlalu tinggi",
+                    "Kekuatan fisik bertambah",
+                    "Gula darah terlalu rendah"
+                ],
+                correct: 3
+            },
+            {
+                number: 5,
+                question: "Hikmah berbuka dengan kurma atau air putih terlebih dahulu adalah…",
+                options: [
+                    "Agar cepat kenyang total",
+                    "Mengganti fungsi makanan utama",
+                    "Memulihkan energi dan hidrasi secara cepat",
+                    "Menghindari kewajiban makan berat"
+                ],
+                correct: 2
+            },
+            // Soal dari materi 011
+            {
+                number: 6,
+                question: "Urutan berbuka puasa yang sesuai sunnah Rasulullah ﷺ berdasarkan hadits Anas bin Malik adalah…",
+                options: [
+                    "Makan besar → Shalat → Minum",
+                    "Kurma/air → Shalat Maghrib → Makan besar",
+                    "Minum → Makan besar → Shalat",
+                    "Shalat → Kurma → Makan besar"
+                ],
+                correct: 1
+            },
+            {
+                number: 7,
+                question: "Alasan kurma menjadi pilihan utama untuk berbuka secara medis adalah…",
+                options: [
+                    "Mengandung lemak tinggi",
+                    "Sulit dicerna tubuh",
+                    "Gulanya cepat diserap sebagai energi instan",
+                    "Membuat kenyang sangat lama"
+                ],
+                correct: 2
+            },
+            {
+                number: 8,
+                question: "Salah satu hikmah tidak langsung makan berat saat berbuka adalah…",
+                options: [
+                    "Agar makanan lebih hemat",
+                    "Menghindari gangguan pencernaan dan kantuk",
+                    "Supaya cepat tidur",
+                    "Mengurangi kebutuhan cairan"
+                ],
+                correct: 1
+            },
+            {
+                number: 9,
+                question: "Kandungan kalium dalam kurma berperan penting dalam…",
+                options: [
+                    "Meningkatkan kadar lemak darah",
+                    "Mengatur keseimbangan cairan dan fungsi saraf",
+                    "Mengurangi produksi air liur",
+                    "Menyebabkan lonjakan gula darah"
+                ],
+                correct: 1
+            },
+            {
+                number: 10,
+                question: "Jika tidak tersedia kurma, alternatif pembuka yang dianjurkan adalah…",
+                options: [
+                    "Gorengan dan minuman es",
+                    "Makanan pedas",
+                    "Buah berindeks glikemik rendah seperti pisang atau pepaya",
+                    "Makanan cepat saji"
+                ],
+                correct: 2
+            },
+            // Soal dari materi 012
+            {
+                number: 11,
+                question: "Berdasarkan hadits Anas bin Malik, urutan praktik berbuka Nabi ﷺ yang benar adalah…",
+                options: [
+                    "Shalat Maghrib → Kurma → Makan besar",
+                    "Kurma/air → Shalat Maghrib → Makan utama",
+                    "Makan besar → Shalat → Minum",
+                    "Air → Makan besar → Shalat"
+                ],
+                correct: 1
+            },
+            {
+                number: 12,
+                question: "Hikmah medis berbuka dengan makanan ringan terlebih dahulu adalah…",
+                options: [
+                    "Mempercepat rasa lapar kembali",
+                    "Menghindari gangguan pencernaan pada lambung kosong",
+                    "Menghentikan kerja lambung",
+                    "Mengurangi kebutuhan cairan tubuh"
+                ],
+                correct: 1
+            },
+            {
+                number: 13,
+                question: "Kandungan utama kurma yang bermanfaat untuk pemulihan energi cepat setelah puasa adalah…",
+                options: [
+                    "Lemak jenuh",
+                    "Protein tinggi",
+                    "Glukosa dan fruktosa",
+                    "Kolesterol alami"
+                ],
+                correct: 2
+            },
+            {
+                number: 14,
+                question: "Salah satu pelajaran adab dari hadits tentang makan malam sebelum sholat Maghrib adalah…",
+                options: [
+                    "Wajib makan besar sebelum shalat",
+                    "Berbuka harus tergesa-gesa",
+                    "Tidak tergesa-gesa dan tenang saat makan",
+                    "Menunda berbuka sampai larut"
+                ],
+                correct: 2
+            },
+            {
+                number: 15,
+                question: "Dampak positif berbuka secara bertahap terhadap ibadah adalah…",
+                options: [
+                    "Membuat shalat lebih singkat",
+                    "Mengurangi kewajiban ibadah malam",
+                    "Menjaga kekhusyukan karena tubuh tidak terlalu lapar atau kenyang",
+                    "Menggantikan kebutuhan makan utama"
+                ],
+                correct: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let canClick = true;
+
+        function startQuiz() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('main-quiz').classList.remove('hidden');
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const quizContainer = document.getElementById('quiz-container');
+            const q = questions[currentQuestion];
+            
+            let optionsHTML = '';
+            q.options.forEach((option, index) => {
+                optionsHTML += `
+                    <div class="option" onclick="checkAnswer(${index})">
+                        ${String.fromCharCode(65 + index)}. ${option}
+                    </div>
+                `;
+            });
+
+            quizContainer.innerHTML = `
+                <div class="question-number">Soal ${q.number} dari ${questions.length}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">
+                    ${optionsHTML}
+                </div>
+            `;
+            canClick = true;
+        }
+
+        function checkAnswer(selectedIndex) {
+            if (!canClick) return;
+            canClick = false;
+
+            const q = questions[currentQuestion];
+            const feedbackEl = document.getElementById('feedback');
+            
+            if (selectedIndex === q.correct) {
+                score += 10;
+                document.getElementById('score').textContent = score;
+                feedbackEl.textContent = "BENAR! 🎉";
+                feedbackEl.className = "show feedback-benar";
+            } else {
+                feedbackEl.textContent = "SALAH! ❌";
+                feedbackEl.className = "show feedback-salah";
+            }
+
+            // Tunggu 1 detik sebelum lanjut ke soal berikutnya
+            setTimeout(() => {
+                feedbackEl.className = "";
+                currentQuestion++;
+
+                if (currentQuestion < questions.length) {
+                    displayQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1000);
+        }
+
+        function showResult() {
+            document.getElementById('main-quiz').classList.add('hidden');
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.classList.remove('hidden');
+
+            if (score < 150) {
+                resultContainer.innerHTML = `
+                    <div class="result-title fail-title">MASIH BISA DITINGKATKAN!</div>
+                    <p style="font-size: 24px; margin: 20px 0;">Skor Kamu: ${score}</p>
+                    <p style="font-size: 18px; margin-bottom: 20px; color: #666;">
+                        Pelajari lagi materinya dan coba lagi untuk hasil yang lebih baik!
+                    </p>
+                    <div class="button-group">
+                        <button class="btn" onclick="restartQuiz()">Ulangi Kuis</button>
+                        
+                    </div>
+                `;
+            } else {
+                createConfetti();
+                resultContainer.innerHTML = `
+                    <div class="trophy">🏆</div>
+                    <div class="result-title success-title">SEMPURNA!</div>
+                    <div style="font-size: 30px; margin: 10px 0;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 24px; margin: 20px 0; color: #27ae60; font-weight: bold;">
+                        Skor Sempurna: ${score}
+                    </p>
+                    <p style="font-size: 18px; margin-bottom: 20px;">
+                        🎉 Selamat! Kamu telah menguasai materi persiapan Ramadhan dengan baik! 🎉
+                    </p>
+                    <p style="font-size: 16px; margin-bottom: 20px; color: #2a7c6f; font-style: italic;">
+                        Semoga Ramadhan tahun ini penuh berkah dan pahala!
+                    </p>
+                    <div class="button-group">
+                        
+                        <a href="https://muin123-dr.github.io/Ramadhan/Quiz/005.html" class="btn champion-animation">Naik Level</a>
+                    </div>
+                `;
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#2a7c6f', '#27ae60', '#f1c40f', '#e67e22', '#3498db', '#9b59b6', '#1abc9c'];
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 20);
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('score').textContent = score;
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
